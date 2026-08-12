@@ -835,11 +835,29 @@ function mudarModo(modo) {
 // ---------- tela ----------
 function carregar() {
   if (!MODO_SERVIDOR) DADOS = ordenar(ler());
+  marcarMontadosAutomaticamente();
   limparImagensConcluidas();
   limparAntigos();
   montarMesesDropdown();
   montarChips();
   renderizar();
+}
+
+function marcarMontadosAutomaticamente() {
+  var hoje = hojeISO();
+  var mudou = 0;
+  DADOS.forEach(function (it) {
+    if (it.status !== 'Agendado') return;
+    var ref = it.dataMontagem || it.dataEvento || '';
+    if (ref && ref < hoje) {
+      it.status = 'Montado';
+      mudou++;
+    }
+  });
+  if (mudou) {
+    gravar(DADOS);
+    toast(mudou + ' agendamento(s) marcado(s) como Montado automaticamente');
+  }
 }
 
 function limparImagensConcluidas() {
