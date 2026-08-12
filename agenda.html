@@ -628,7 +628,6 @@
     <select id="f-status">
       <option value="Agendado">Agendado</option>
       <option value="Montado">Montado</option>
-      <option value="Cancelado">Cancelado</option>
     </select>
 
     <div class="botoes">
@@ -681,7 +680,7 @@
 var DADOS = [];
 var MESES = ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'];
 var MESES_AB = ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'];
-var STATUS = ['Agendado','Montado','Cancelado'];
+var STATUS = ['Agendado','Montado'];
 var filtroStatus = '';
 var EDITANDO_ID = null;
 var DETALHE_ID = null;
@@ -847,6 +846,9 @@ function limparImagensConcluidas() {
   var mudou = false;
   DADOS.forEach(function (it) {
     if ((it.status === 'Montado' || it.status === 'Cancelado') && it.imagens && it.imagens.length) {
+      if (MODO_SERVIDOR) {
+        it.imagens.forEach(function (s) { if (ehCaminhoImagem(s)) apagarImagemServidor(s); });
+      }
       it.imagens = [];
       mudou = true;
     }
@@ -927,12 +929,55 @@ function carregarInicial() {
       }
       rodapeDado('Arquivo <b>dados.json</b> desta pasta &mdash; app port&aacute;til');
       carregar();
+      migrarImagensLegadas();
     })
     .catch(function () {
       MODO_SERVIDOR = false;
       rodapeDado('Dados salvos neste navegador. Para compartilhar, use <b>Exportar</b>/<b>Importar</b>.');
       carregar();
     });
+}
+
+function migrarImagensLegadas() {
+  if (!MODO_SERVIDOR) return;
+  var mudou = false;
+  DADOS.forEach(function (it) {
+    if (!Array.isArray(it.imagens)) return;
+    it.imagens.forEach(function (src) {
+      if (ehDataURL(src)) mudou = true;
+    });
+  });
+  if (!mudou) return;
+
+  var pend = [];
+  DADOS.forEach(function (it) {
+    if (!Array.isArray(it.imagens)) return;
+    it.imagens.forEach(function (src, i) {
+      if (ehDataURL(src)) pend.push({ it: it, i: i, src: src });
+    });
+  });
+
+  var p = Promise.resolve();
+  var total = pend.length;
+  rodapeDado('Movendo ' + total + ' foto(s) para a pasta <b>imagens/</b>...');
+  var feito = 0;
+  pend.forEach(function (t) {
+    p = p.then(function () {
+      return subirImagem(t.src).then(function (path) {
+        if (path) t.it.imagens[t.i] = path;
+        feito++;
+        if (feito % 5 === 0 || feito === total) {
+          rodapeDado('Movendo fotos... ' + feito + '/' + total);
+        }
+      });
+    });
+  });
+  p.then(function () {
+    gravar(DADOS);
+    rodapeDado('Fotos movidas para <b>imagens/</b> &mdash; dados.json agora &eacute; leve');
+    toast('Fotos antigas movidas para a pasta imagens/');
+    try { localStorage.setItem(CHAVE_DADOS, JSON.stringify(DADOS)); } catch (e) {}
+  });
 }
 
 function montarMesesDropdown() {
@@ -1239,6 +1284,54 @@ function carregarImagem(arquivo, cb) {
   leitor.readAsDataURL(arquivo);
 }
 
+// ---------- fotos em pasta separada (imagens/) ----------
+function ehDataURL(s) { return typeof s === 'string' && s.indexOf('data:') === 0; }
+function ehCaminhoImagem(s) { return typeof s === 'string' && s.indexOf('imagens/') === 0; }
+function novoNomeImagem() {
+  return 'foto-' + Date.now().toString(36) + '-' + Math.floor(Math.random() * 100000).toString(36) + '.jpg';
+}
+function subirImagem(dataUrl) {
+  return new Promise(function (resolve) {
+    var i = dataUrl.indexOf(',');
+    var b64 = i >= 0 ? dataUrl.slice(i + 1) : dataUrl;
+    var bin = atob(b64);
+    var bytes = new Uint8Array(bin.length);
+    for (var k = 0; k < bin.length; k++) bytes[k] = bin.charCodeAt(k);
+    var nome = novoNomeImagem();
+    fetch('imagens/' + nome, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/octet-stream' },
+      body: bytes
+    }).then(function (r) {
+      if (!r.ok) throw new Error('upload');
+      return r.text();
+    }).then(function (path) {
+      resolve(path || 'imagens/' + nome);
+    }).catch(function () { resolve(null); });
+  });
+}
+function apagarImagemServidor(caminho) {
+  if (!ehCaminhoImagem(caminho)) return;
+  fetch(caminho, { method: 'DELETE' }).catch(function () {});
+}
+function prepararImagensParaSalvar(lista) {
+  if (!Array.isArray(lista)) lista = [];
+  if (!MODO_SERVIDOR) return Promise.resolve(lista.filter(Boolean));
+  var pendentes = [];
+  lista.forEach(function (s, idx) { if (ehDataURL(s)) pendentes.push(idx); });
+  if (pendentes.length === 0) return Promise.resolve(lista.filter(Boolean));
+  var resultado = lista.slice();
+  var p = Promise.resolve();
+  pendentes.forEach(function (idx) {
+    p = p.then(function () {
+      return subirImagem(resultado[idx]).then(function (path) {
+        resultado[idx] = path;
+      });
+    });
+  });
+  return p.then(function () { return resultado.filter(Boolean); });
+}
+
 function adicionarImagens(ev) {
   var files = ev.target.files || [];
   for (var i = 0; i < files.length; i++) {
@@ -1420,40 +1513,68 @@ function salvarFormulario() {
     status: $('f-status').value,
     imagens: IMAGENS_EDITANDO.slice()
   };
-  if (obj.status === 'Montado' || obj.status === 'Cancelado') obj.imagens = [];
+  var statusFinal = obj.status;
+  if (statusFinal === 'Montado' || statusFinal === 'Cancelado') obj.imagens = [];
 
-  if (EDITANDO_ID === null) {
-    var maxId = 0;
-    dados.forEach(function (d) { if (d.id > maxId) maxId = d.id; });
-    obj.id = maxId + 1;
-    dados.push(obj);
-  } else {
-    var idx = dados.findIndex(function (d) { return d.id == EDITANDO_ID; });
-    if (idx >= 0) dados[idx] = obj;
+  var btnOk = null;
+  if (obj.id !== null) {
+    var antigo = dados.find(function (d) { return d.id == obj.id; });
+    if (antigo && antigo.imagens) btnOk = antigo.imagens;
   }
 
-  gravar(dados);
-  DADOS = ordenar(dados);
-  fecharFormulario();
-  toast('Salvo!');
-  carregar();
+  var btnSalvar = document.querySelector('.btn-salvar');
+  if (btnSalvar) btnSalvar.disabled = true;
+  prepararImagensParaSalvar(obj.imagens).then(function (imagensFinais) {
+    obj.imagens = imagensFinais;
+    if (obj.id === null) {
+      var maxId = 0;
+      dados.forEach(function (d) { if (d.id > maxId) maxId = d.id; });
+      obj.id = maxId + 1;
+      dados.push(obj);
+    } else {
+      var idx = dados.findIndex(function (d) { return d.id == obj.id; });
+      if (idx >= 0) dados[idx] = obj;
+    }
+
+    if (MODO_SERVIDOR && Array.isArray(btnOk)) {
+      var novos = {};
+      (obj.imagens || []).forEach(function (s) { if (ehCaminhoImagem(s)) novos[s] = true; });
+      btnOk.forEach(function (s) {
+        if (ehCaminhoImagem(s) && !novos[s]) apagarImagemServidor(s);
+      });
+    }
+
+    gravar(dados);
+    DADOS = ordenar(dados);
+    fecharFormulario();
+    toast('Salvo!');
+    carregar();
+    if (btnSalvar) btnSalvar.disabled = false;
+  }).catch(function () {
+    if (btnSalvar) btnSalvar.disabled = false;
+    toast('Não foi possível salvar as imagens');
+  });
 }
 
 function excluirAtual() {
   if (EDITANDO_ID === null) return;
   if (!confirm('Excluir este agendamento?')) return;
-  var dados = ler().filter(function (d) { return d.id != EDITANDO_ID; });
-  gravar(dados);
-  DADOS = dados;
+  var dados = ler();
+  var alvo = dados.find(function (d) { return d.id == EDITANDO_ID; });
+  if (MODO_SERVIDOR && alvo && Array.isArray(alvo.imagens)) {
+    alvo.imagens.forEach(function (s) { if (ehCaminhoImagem(s)) apagarImagemServidor(s); });
+  }
+  var restantes = dados.filter(function (d) { return d.id != EDITANDO_ID; });
+  gravar(restantes);
+  DADOS = restantes;
   fecharFormulario();
   toast('Excluído');
   carregar();
 }
 
 // ---------- exportar / importar ----------
-function exportar() {
-  var fonte = MODO_SERVIDOR ? DADOS : ler();
-  var blob = new Blob([JSON.stringify(fonte, null, 2)], { type: 'application/json' });
+function baixarJSON(objeto) {
+  var blob = new Blob([JSON.stringify(objeto, null, 2)], { type: 'application/json' });
   var url = URL.createObjectURL(blob);
   var a = document.createElement('a');
   a.href = url;
@@ -1462,7 +1583,36 @@ function exportar() {
   a.click();
   document.body.removeChild(a);
   URL.revokeObjectURL(url);
-  toast('Arquivo exportado');
+}
+
+function exportar() {
+  var fonte = MODO_SERVIDOR ? DADOS : ler();
+  var copia = JSON.parse(JSON.stringify(fonte));
+  var tarefas = [];
+  copia.forEach(function (it) {
+    if (!Array.isArray(it.imagens)) return;
+    it.imagens.forEach(function (src, i) {
+      if (!ehCaminhoImagem(src)) return;
+      tarefas.push(
+        fetch(src, { cache: 'no-store' })
+          .then(function (r) { if (!r.ok) throw new Error('img'); return r.blob(); })
+          .then(function (blob) {
+            return new Promise(function (resolve) {
+              var fr = new FileReader();
+              fr.onload = function () { resolve(fr.result); };
+              fr.onerror = function () { resolve(src); };
+              fr.readAsDataURL(blob);
+            });
+          })
+          .then(function (dataUrl) { it.imagens[i] = dataUrl; })
+          .catch(function () {})
+      );
+    });
+  });
+  Promise.all(tarefas).then(function () {
+    baixarJSON(copia);
+    toast('Arquivo exportado');
+  });
 }
 
 function importar(ev) {
@@ -1474,10 +1624,39 @@ function importar(ev) {
       var dados = JSON.parse(leitor.result);
       if (!Array.isArray(dados)) { toast('Arquivo inválido'); return null; }
       if (!confirm('Substituir os dados atuais pelos do arquivo?')) return null;
-      DADOS = ordenar(dados);
-      gravar(DADOS);
-      toast('Dados importados');
-      carregar();
+      var encTotal = 0;
+      dados.forEach(function (it) {
+        if (!Array.isArray(it.imagens)) return;
+        it.imagens.forEach(function (src) {
+          if (ehDataURL(src)) encTotal++;
+        });
+      });
+      var importou = function () {
+        DADOS = ordenar(dados);
+        gravar(DADOS);
+        toast(encTotal > 0 ? 'Dados importados (fotos subidas ao servidor)' : 'Dados importados');
+        carregar();
+      };
+      if (MODO_SERVIDOR && encTotal > 0) {
+        var pend = [];
+        dados.forEach(function (it) {
+          if (!Array.isArray(it.imagens)) return;
+          it.imagens.forEach(function (src, i) {
+            if (ehDataURL(src)) pend.push({ it: it, i: i, src: src });
+          });
+        });
+        var p = Promise.resolve();
+        pend.forEach(function (t) {
+          p = p.then(function () {
+            return subirImagem(t.src).then(function (path) {
+              if (path) t.it.imagens[t.i] = path;
+            });
+          });
+        });
+        p.then(importou);
+      } else {
+        importou();
+      }
     } catch (e) {
       toast('Não deu pra ler o arquivo');
     }
