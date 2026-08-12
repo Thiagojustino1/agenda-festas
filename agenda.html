@@ -1,0 +1,1627 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>Agenda de Festas</title>
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#0fa9a2">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Agenda">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230fa9a2'/%3E%3Cpath d='M16 42L32 24l16 18z' fill='%2326354a'/%3E%3Ccircle cx='48' cy='14' r='5' fill='%23fff'/%3E%3C/svg%3E">
+<style>
+  :root {
+    --tinta: #1f2428;
+    --cinza: #5b6570;
+    --fundo: #f4f6f8;
+    --cartao: #ffffff;
+    --borda: #e2e6ea;
+    --campo-bg: #f9fafb;
+    --campo-bg-foco: #fff;
+    --suave: #f7f8fa;
+    --suave2: #eef0f3;
+    --modal-bg: #ffffff;
+    --dourado: #15c1b8;
+    --laranja: #0e9d96;
+    --azul: #26354a;
+    --azul-escuro: #1a2433;
+    --verde: #27ae60;
+    --vermelho: #e74c3c;
+    --toast-bg: #1f2428;
+    --toast-tx: #ffffff;
+    --mat-bg: #e9f7f5;
+    --mat-borda: #c9e9e5;
+    --ag-bg: #d3f1ee;
+    --ag-tx: #0b7a74;
+    --mt-bg: #d7f2e3;
+    --mt-tx: #1e7a41;
+    --cx-bg: #fbe0dc;
+    --cx-tx: #b03a2e;
+    --bloco-data-bg: linear-gradient(180deg, #d7f1ee, #b9e4df);
+    --bloco-data-borda: #a3d7d1;
+    --bloco-data-tx: #0b6b66;
+  }
+  :root[data-tema="escuro"] {
+    --tinta: #e9edf1;
+    --cinza: #96a3b0;
+    --fundo: #12181f;
+    --cartao: #1b2530;
+    --borda: #2a3746;
+    --campo-bg: #141c26;
+    --campo-bg-foco: #1b2530;
+    --suave: #232f3d;
+    --suave2: #141c26;
+    --modal-bg: #1b2530;
+    --toast-bg: #e9edf1;
+    --toast-tx: #12181f;
+    --mat-bg: #0f2a28;
+    --mat-borda: #1a3f3c;
+    --ag-bg: #0e3a38;
+    --ag-tx: #7fd7d0;
+    --mt-bg: #143226;
+    --mt-tx: #82d3a6;
+    --cx-bg: #41231f;
+    --cx-tx: #f0a49a;
+    --bloco-data-bg: linear-gradient(180deg, #0d3533, #0a2b29);
+    --bloco-data-borda: #16504b;
+    --bloco-data-tx: #8fe0d8;
+  }
+  * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  html, body { margin: 0; padding: 0; }
+  :root[data-tema="escuro"] { color-scheme: dark; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    background: var(--fundo);
+    color: var(--tinta);
+    font-size: 15px;
+  }
+  .oculto { display: none !important; }
+
+  header {
+    position: sticky; top: 0; z-index: 20;
+    background: linear-gradient(120deg, var(--azul), var(--azul-escuro));
+    color: #fff;
+    min-height: 60px;
+    padding: 10px 14px;
+    display: flex; align-items: center; justify-content: space-between;
+    box-shadow: 0 2px 10px rgba(20,28,40,.25);
+    gap: 10px;
+  }
+  .cabe { display: flex; align-items: center; gap: 11px; min-width: 0; }
+  .logo { width: 40px; height: 40px; flex: none; }
+  .logo svg { width: 100%; height: 100%; display: block; }
+  .logo-img { width: 100%; height: 100%; object-fit: contain; display: block; }
+  .cabe .logo { width: 160px; height: 38px; }
+  .titulo h1 { margin: 0; font-size: 16px; font-weight: 800; letter-spacing: .3px; white-space: nowrap; }
+  .titulo .sub {
+    display: block; font-size: 10px; letter-spacing: .8px;
+    text-transform: uppercase; color: rgba(255,255,255,.72); margin-top: 1px;
+  }
+  .acoes { display: flex; gap: 6px; flex: none; }
+  .botao-topo {
+    background: rgba(255,255,255,.13);
+    border: 1px solid rgba(255,255,255,.2);
+    color: #fff; border-radius: 10px;
+    padding: 8px 11px; font-size: 11.5px; font-weight: 700; cursor: pointer;
+    display: inline-flex; align-items: center; justify-content: center; gap: 4px;
+    transition: background .15s;
+  }
+  .botao-topo:hover { background: rgba(255,255,255,.25); }
+  .botao-topo:active { background: rgba(255,255,255,.34); }
+  .botao-topo .ic { width: 16px; height: 16px; }
+
+  .filtros {
+    background: var(--cartao);
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--borda);
+    position: sticky; top: 60px; z-index: 15;
+    box-shadow: 0 1px 4px rgba(20,28,40,.05);
+  }
+  .busca-wrap { position: relative; }
+  .busca-wrap .lupa {
+    position: absolute; left: 13px; top: 50%; transform: translateY(-50%);
+    width: 16px; height: 16px; color: var(--cinza); pointer-events: none;
+  }
+  .pesquisa {
+    width: 100%;
+    padding: 11px 12px 11px 38px;
+    border: 1px solid var(--borda);
+    border-radius: 12px;
+    font-size: 15px;
+    outline: none;
+    background: var(--campo-bg);
+    color: var(--tinta);
+    transition: border-color .15s, box-shadow .15s, background .15s;
+  }
+  .pesquisa:focus {
+    border-color: var(--laranja);
+    background: var(--campo-bg-foco);
+    box-shadow: 0 0 0 3px rgba(21,193,184,.25);
+  }
+  .linha-filtros { display: flex; gap: 8px; margin-top: 9px; flex-wrap: wrap; align-items: center; }
+  select {
+    padding: 8px 10px;
+    border: 1px solid var(--borda);
+    border-radius: 9px;
+    background: var(--campo-bg);
+    color: var(--tinta);
+    font-size: 13.5px;
+    outline: none;
+  }
+  select:focus { border-color: var(--laranja); }
+  .seg { display: flex; background: var(--suave); border: 1px solid var(--borda); border-radius: 10px; padding: 3px; flex: none; }
+  .seg-btn {
+    border: none; background: transparent; color: var(--cinza);
+    font-size: 12.5px; font-weight: 700; padding: 6px 14px; border-radius: 8px; cursor: pointer;
+    transition: background .15s, color .15s;
+  }
+  .seg-btn.ativo { background: var(--azul); color: #fff; }
+  .chips { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 9px; }
+  .chip {
+    border: 1px solid var(--borda);
+    background: var(--suave);
+    color: var(--cinza);
+    border-radius: 999px;
+    padding: 5px 13px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    user-select: none;
+    transition: background .15s, color .15s, border-color .15s;
+  }
+  .chip.ativo { background: var(--azul); border-color: var(--azul); color: #fff; }
+
+  main { padding: 12px; max-width: 820px; margin: 0 auto; padding-bottom: 108px; }
+
+  .mes {
+    display: flex; align-items: center; gap: 8px;
+    margin: 20px 4px 10px;
+    font-size: 13px; font-weight: 800;
+    color: var(--tinta);
+    text-transform: uppercase;
+    letter-spacing: .6px;
+  }
+  .mes:first-child { margin-top: 8px; }
+  .mes::before { content: ""; width: 4px; height: 16px; border-radius: 2px; background: var(--laranja); flex: none; }
+  .mes .qtd { margin-left: auto; color: var(--cinza); font-weight: 600; font-size: 11px; }
+
+  .cartao {
+    position: relative;
+    overflow: hidden;
+    background: var(--cartao);
+    border-radius: 16px;
+    padding: 12px 14px;
+    margin: 0 0 12px;
+    box-shadow: 0 1px 2px rgba(23,32,45,.06), 0 5px 16px rgba(23,32,45,.05);
+    cursor: pointer;
+    display: flex; gap: 12px;
+    transition: transform .08s ease, box-shadow .18s ease;
+  }
+  .cartao:hover { box-shadow: 0 6px 22px rgba(23,32,45,.12); transform: translateY(-1px); }
+  .cartao:active { transform: scale(.99); }
+  .cartao::before {
+    content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 5px;
+    background: linear-gradient(180deg, var(--dourado), var(--laranja));
+  }
+  .cartao.status-montado::before { background: linear-gradient(180deg, #2ecc71, var(--verde)); }
+  .cartao.status-cancelado::before { background: linear-gradient(180deg, #e74c3c, #c0392b); }
+  .cartao.status-montado { opacity: .82; }
+  .cartao.status-cancelado { opacity: .55; }
+
+  .bloco-data {
+    flex: none; align-self: flex-start;
+    width: 54px; height: 58px;
+    border-radius: 12px;
+    background: var(--bloco-data-bg);
+    border: 1px solid var(--bloco-data-borda);
+    color: var(--bloco-data-tx);
+    text-align: center; padding-top: 10px;
+  }
+  .bloco-data.sem { background: var(--suave); border-color: var(--borda); color: var(--cinza); }
+  .bloco-data .dia { font-size: 20px; font-weight: 800; line-height: 1; }
+  .bloco-data .mes-ab { font-size: 10px; font-weight: 700; letter-spacing: .6px; margin-top: 3px; text-transform: uppercase; }
+
+  .corpo { flex: 1; min-width: 0; }
+  .topo { display: flex; justify-content: space-between; gap: 8px; align-items: flex-start; }
+  .cliente { font-size: 15.5px; font-weight: 800; line-height: 1.25; }
+  .evento { font-size: 12.5px; color: var(--cinza); margin-top: 2px; }
+  .status {
+    display: inline-flex; align-items: center; gap: 5px;
+    font-size: 11px; font-weight: 700;
+    padding: 4px 10px; border-radius: 999px;
+    background: var(--ag-bg); color: var(--ag-tx);
+    white-space: nowrap; flex: none;
+  }
+  .status::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+  .cartao.status-montado .status { background: var(--mt-bg); color: var(--mt-tx); }
+  .cartao.status-cancelado .status { background: var(--cx-bg); color: var(--cx-tx); }
+
+  .detalhes { margin-top: 8px; font-size: 13px; color: var(--cinza); display: flex; flex-direction: column; gap: 3px; }
+  .detalhes .item { display: flex; gap: 7px; align-items: flex-start; line-height: 1.4; }
+  .detalhes .item b { color: var(--tinta); font-weight: 700; }
+  .detalhes .ic { width: 15px; height: 15px; flex: none; margin-top: 2px; color: var(--cinza); }
+  .detalhes .mat-rotulo { margin-top: 7px; font-size: 11px; font-weight: 700; color: var(--cinza); text-transform: uppercase; letter-spacing: .4px; }
+  .materiais {
+    margin-top: 4px; padding: 8px 10px;
+    background: var(--mat-bg); border: 1px solid var(--mat-borda);
+    border-radius: 10px;
+    color: var(--tinta); white-space: pre-line; font-size: 13px;
+  }
+
+  .badge-hoje {
+    display: inline-block; margin-left: 8px;
+    background: var(--vermelho); color: #fff;
+    font-size: 10px; font-weight: 800;
+    padding: 2px 8px; border-radius: 999px;
+    vertical-align: 2px;
+  }
+  .badge-amanha {
+    display: inline-block; margin-left: 8px;
+    background: #e67e22; color: #fff;
+    font-size: 10px; font-weight: 800;
+    padding: 2px 8px; border-radius: 999px;
+    vertical-align: 2px;
+  }
+
+  .vazio { text-align: center; color: var(--cinza); padding: 46px 20px 30px; }
+  .vazio .logo { width: 220px; height: 50px; margin: 0 auto 16px; opacity: .9; }
+  .vazio p { margin: 0; line-height: 1.6; font-size: 14px; }
+
+  .rodape {
+    margin: 24px 10px 8px; text-align: center;
+    color: var(--cinza); font-size: 12px; line-height: 1.6;
+  }
+
+  /* calendario */
+  .cal-card { background: var(--cartao); border: 1px solid var(--borda); border-radius: 16px; padding: 12px; }
+  .cal-cab { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 10px; }
+  .cal-titulo { font-size: 15px; font-weight: 800; }
+  .cal-setas {
+    width: 34px; height: 34px; border-radius: 9px;
+    border: 1px solid var(--borda); background: transparent;
+    color: var(--tinta); cursor: pointer; font-size: 16px; line-height: 1;
+  }
+  .cal-setas:hover { background: var(--suave); }
+  .cal-semana, .cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 5px; }
+  .cal-semana { margin-bottom: 6px; }
+  .cal-semana span { text-align: center; font-size: 10.5px; font-weight: 700; color: var(--cinza); }
+  .cal-dia {
+    background: var(--suave); border: 1px solid var(--borda);
+    border-radius: 9px; min-height: 62px; padding: 4px;
+    cursor: pointer; overflow: hidden; transition: transform .08s;
+  }
+  .cal-dia:hover { border-color: var(--laranja); }
+  .cal-dia:active { transform: scale(.97); }
+  .cal-dia.fora { opacity: .3; pointer-events: none; background: transparent; border-style: dashed; }
+  .cal-dia.hoje { border: 1.5px solid var(--vermelho); background: linear-gradient(180deg, rgba(231,76,60,.12), transparent); }
+  .cal-dia .num { font-size: 11px; font-weight: 800; color: var(--cinza); }
+  .cal-dia.hoje .num { color: var(--vermelho); }
+  .cal-bloco {
+    display: block; margin-top: 4px; padding: 2px 5px; border-radius: 6px;
+    font-size: 10px; font-weight: 700;
+    background: var(--ag-bg); color: var(--ag-tx);
+    border-left: 2.5px solid var(--laranja);
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+  .cal-bloco.status-montado { background: var(--mt-bg); color: var(--mt-tx); border-left-color: var(--verde); }
+  .cal-bloco.status-cancelado { background: var(--cx-bg); color: var(--cx-tx); border-left-color: var(--vermelho); }
+  .cal-mais { margin-top: 4px; font-size: 10px; font-weight: 700; color: var(--cinza); }
+
+  body[data-modo="cal"] #filtro-mes { display: none; }
+
+  .fab {
+    position: fixed; right: 18px; bottom: 22px;
+    width: 58px; height: 58px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--dourado), var(--laranja));
+    color: #fff; border: 2px solid #fff;
+    font-size: 30px; line-height: 1;
+    box-shadow: 0 5px 16px rgba(0,0,0,.28);
+    cursor: pointer; z-index: 30; font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+    transition: transform .08s ease;
+  }
+  .fab:active { transform: scale(.92); }
+
+  .fundo-modal {
+    position: fixed; inset: 0; z-index: 40;
+    background: rgba(15,22,32,.58);
+    display: flex; align-items: flex-end; justify-content: center;
+  }
+  .modal {
+    background: var(--modal-bg);
+    width: 100%; max-width: 560px;
+    border-radius: 22px 22px 0 0;
+    padding: 14px 16px 28px;
+    max-height: 92vh; overflow-y: auto;
+    animation: sobe .2s ease;
+  }
+  @keyframes sobe { from { transform: translateY(32px); opacity: .3; } to { transform: none; opacity: 1; } }
+  .cab-modal { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 6px; }
+  .cab-modal h2 { margin: 0; font-size: 17px; font-weight: 800; color: var(--tinta); }
+  .btn-fechar {
+    width: 32px; height: 32px; border-radius: 50%;
+    border: none; background: var(--suave); color: var(--cinza);
+    cursor: pointer; display: flex; align-items: center; justify-content: center; flex: none;
+  }
+  .btn-fechar:hover { background: var(--suave2); }
+  .btn-fechar .ic { width: 15px; height: 15px; }
+  .modal label { display: block; font-size: 12px; font-weight: 700; color: var(--cinza); margin: 13px 0 4px; }
+  .modal input, .modal select, .modal textarea {
+    width: 100%; padding: 11px 12px;
+    border: 1px solid var(--borda); border-radius: 11px;
+    font-size: 15px; font-family: inherit; color: var(--tinta);
+    outline: none; background: var(--campo-bg);
+    color-scheme: inherit;
+    transition: border-color .15s, box-shadow .15s, background .15s;
+  }
+  .modal input:focus, .modal select:focus, .modal textarea:focus {
+    border-color: var(--laranja);
+    box-shadow: 0 0 0 3px rgba(21,193,184,.25);
+  }
+  .modal textarea { resize: vertical; min-height: 72px; }
+  .duas { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .botoes { display: flex; gap: 10px; margin-top: 22px; }
+  .botoes .btn {
+    flex: 1; padding: 13px; border: none; border-radius: 11px;
+    font-size: 15px; font-weight: 700; cursor: pointer;
+    transition: transform .08s ease;
+  }
+  .botoes .btn:active { transform: scale(.97); }
+  .btn-salvar {
+    background: linear-gradient(135deg, var(--dourado), var(--laranja));
+    color: #fff;
+    box-shadow: 0 2px 8px rgba(14,157,150,.35);
+  }
+  .btn-cancelar { background: var(--suave2); color: var(--cinza); }
+  .btn-excluir { background: var(--vermelho); color: #fff; }
+  .btn-imprimir-modal { background: var(--azul); color: #fff; }
+  .topo-dir { display: flex; flex-direction: column; align-items: flex-end; gap: 6px; flex: none; }
+  .btn-imprimir {
+    flex: none; width: 32px; height: 32px; border-radius: 9px;
+    border: 1px solid var(--borda); background: var(--suave); color: var(--cinza);
+    cursor: pointer; display: inline-flex; align-items: center; justify-content: center; padding: 0;
+    transition: color .15s, border-color .15s;
+  }
+  .btn-imprimir:hover { color: var(--tinta); border-color: var(--laranja); }
+  .btn-imprimir .ic { width: 15px; height: 15px; }
+  .btn-editar {
+    flex: none; width: 32px; height: 32px; border-radius: 9px;
+    border: 1px solid var(--borda); background: var(--suave); color: var(--cinza);
+    cursor: pointer; display: inline-flex; align-items: center; justify-content: center; padding: 0;
+    transition: color .15s, border-color .15s;
+  }
+  .btn-editar:hover { color: var(--tinta); border-color: var(--laranja); }
+  .btn-editar .ic { width: 15px; height: 15px; }
+
+  .modal-detalhe { max-width: 480px; }
+  .dt-cab { min-width: 0; }
+  .dt-cab h2 { margin: 0 0 4px; }
+  .dt-chip {
+    display: inline-flex; align-items: center; gap: 5px;
+    font-size: 11px; font-weight: 700;
+    padding: 4px 10px; border-radius: 999px;
+    background: var(--ag-bg); color: var(--ag-tx);
+  }
+  .dt-chip.montado { background: var(--mt-bg); color: var(--mt-tx); }
+  .dt-chip.cancelado { background: var(--cx-bg); color: var(--cx-tx); }
+  .dt-corpo { margin-top: 6px; }
+  .dt-bloco { display: flex; gap: 14px; padding: 14px; background: var(--suave); border-radius: 14px; margin-bottom: 6px; }
+  .dt-data { display: flex; flex-direction: column; align-items: center; gap: 1px; flex: none; padding-right: 14px; border-right: 1px solid var(--borda); }
+  .dt-data .dia { font-size: 32px; font-weight: 800; line-height: 1; color: var(--tinta); }
+  .dt-data .mes { font-size: 11px; font-weight: 700; text-transform: uppercase; color: var(--cinza); letter-spacing: .6px; margin-top: 3px; }
+  .dt-infos { display: flex; flex-direction: column; gap: 4px; min-width: 0; justify-content: center; }
+  .dt-titulo { font-size: 17px; font-weight: 800; color: var(--tinta); }
+  .dt-sub { font-size: 13px; color: var(--cinza); }
+  .dt-secao { margin: 16px 0 6px; font-size: 11px; font-weight: 800; letter-spacing: .9px; text-transform: uppercase; color: var(--cinza); }
+  .dt-linha { display: flex; gap: 9px; font-size: 14px; line-height: 1.5; margin: 8px 0; color: var(--tinta); }
+  .dt-linha .ic { width: 17px; height: 17px; flex: none; margin-top: 2px; color: var(--cinza); }
+  .dt-linha b { font-weight: 700; color: var(--cinza); }
+  .dt-materiais { list-style: none; padding: 0; margin: 4px 0 0; }
+  .dt-materiais li { display: flex; gap: 10px; align-items: flex-start; padding: 6px 0; font-size: 14px; line-height: 1.45; color: var(--tinta); border-bottom: 1px dashed var(--borda); }
+  .dt-materiais li:last-child { border-bottom: none; }
+  .dt-materiais .ck { flex: none; width: 17px; height: 17px; border: 1.5px solid var(--borda); border-radius: 5px; margin-top: 3px; }
+  .dt-nav {
+    display: flex; align-items: center; justify-content: center; gap: 12px;
+    margin: 4px 0 12px;
+  }
+  .dt-contador { font-size: 13px; font-weight: 800; color: var(--cinza); min-width: 46px; text-align: center; }
+
+  .imgs-prev { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 2px; }
+  .imgs-prev.vazio {
+    border: 1.5px dashed var(--borda); border-radius: 12px;
+    padding: 18px 12px; text-align: center; color: var(--cinza);
+    font-size: 13px; cursor: pointer; justify-content: center;
+    background: var(--suave);
+  }
+  .imgs-prev.vazio small { display: block; margin-top: 3px; opacity: .8; }
+  .img-mini { position: relative; width: 92px; height: 92px; flex: none; }
+  .img-mini img {
+    width: 100%; height: 100%; object-fit: cover;
+    border: 1px solid var(--borda); border-radius: 11px; cursor: zoom-in;
+    background: var(--suave);
+  }
+  .img-remover {
+    position: absolute; top: -7px; right: -7px;
+    width: 24px; height: 24px; border-radius: 50%;
+    border: 2px solid var(--cartao); background: var(--vermelho); color: #fff;
+    font-size: 15px; line-height: 1; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 2px 6px rgba(0,0,0,.25);
+  }
+  .imgs-acoes { display: flex; align-items: center; gap: 10px; margin-top: 9px; flex-wrap: wrap; }
+  .btn-imgs {
+    border: 1px solid var(--borda); background: var(--suave); color: var(--tinta);
+    padding: 9px 13px; border-radius: 10px; font-size: 13.5px; font-weight: 700; cursor: pointer;
+  }
+  .btn-imgs:hover { border-color: var(--laranja); color: var(--laranja); }
+  .imgs-dica { font-size: 12px; color: var(--cinza); }
+
+  .cartao-imgs { display: flex; gap: 6px; margin-top: 9px; flex-wrap: wrap; }
+  .cartao-imgs img {
+    width: 52px; height: 52px; object-fit: cover;
+    border: 1px solid var(--borda); border-radius: 9px; cursor: zoom-in;
+    background: var(--suave);
+  }
+  .cartao-mais-imgs {
+    width: 52px; height: 52px; border-radius: 9px;
+    background: var(--suave2); color: var(--cinza);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 12px; font-weight: 800;
+  }
+  .dt-imgs { display: flex; gap: 8px; flex-wrap: wrap; }
+  .dt-imgs img {
+    width: 82px; height: 82px; object-fit: cover;
+    border: 1px solid var(--borda); border-radius: 11px; cursor: zoom-in;
+    background: var(--suave);
+  }
+
+  .luz {
+    position: fixed; inset: 0; z-index: 70;
+    background: rgba(10,14,18,.92);
+    display: flex; align-items: center; justify-content: center; padding: 20px;
+  }
+  .luz img { max-width: 100%; max-height: 100%; object-fit: contain; border-radius: 6px; }
+  .luz-fechar {
+    position: absolute; top: 14px; right: 14px;
+    width: 40px; height: 40px; border-radius: 50%;
+    border: none; background: rgba(255,255,255,.15); color: #fff;
+    font-size: 20px; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .luz-fechar:hover { background: rgba(255,255,255,.28); }
+
+  .toast {
+    position: fixed; left: 50%; bottom: 96px; transform: translateX(-50%);
+    background: var(--toast-bg); color: var(--toast-tx);
+    padding: 10px 18px; border-radius: 999px; font-size: 14px;
+    z-index: 60; box-shadow: 0 4px 14px rgba(0,0,0,.32);
+    opacity: 0; transition: opacity .25s ease; pointer-events: none;
+  }
+  .toast.mostrar { opacity: 1; }
+
+  #impressao { display: none; }
+  .ordem { font-family: Arial, Helvetica, sans-serif; color: #111; font-size: 13px; line-height: 1.5; }
+  .ordem-topo { display: flex; align-items: center; gap: 12px; border-bottom: 3px solid #0fa9a2; padding-bottom: 10px; margin-bottom: 14px; }
+  .ordem-logo { width: 160px; height: 42px; flex: none; }
+  .ordem-logo svg { width: 100%; height: 100%; display: block; }
+  .ordem-titulo { font-size: 16px; font-weight: 800; letter-spacing: .5px; }
+  .ordem-sub { font-size: 11px; color: #444; text-transform: uppercase; letter-spacing: 1px; }
+  .ordem-num { margin-left: auto; font-size: 12px; font-weight: 700; color: #666; }
+  .ordem-dados p { margin: 5px 0; }
+  .ordem-duas { display: flex; gap: 20px; flex-wrap: wrap; }
+  .ordem-secao { margin-top: 16px; font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; color: #333; border-bottom: 1px solid #999; padding-bottom: 3px; }
+  .ordem-checklist { margin-top: 6px; }
+  .ordem-imgs { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 6px; }
+  .ordem-img {
+    max-width: 46%; max-height: 240px; object-fit: contain;
+    border: 1px solid #bbb; border-radius: 4px;
+  }
+  .ck { display: flex; align-items: center; gap: 10px; padding: 7px 2px; border-bottom: 1px dotted #bbb; }
+  .cd { width: 14px; height: 14px; border: 1.5px solid #333; border-radius: 3px; flex: none; }
+  .ordem-rodape { margin-top: 26px; display: flex; justify-content: space-between; gap: 20px; font-size: 12px; }
+  .ordem-rodape .linha { flex: 1; border-top: 1px solid #999; padding-top: 4px; text-align: center; color: #444; }
+  @media print {
+    #app, .fundo-modal, #in-importar, #toast, #luz { display: none !important; }
+    #impressao { display: block; }
+    @page { margin: 12mm; }
+  }
+
+  @media (max-width: 420px) {
+    .botao-topo { padding: 8px 9px; font-size: 11px; }
+  }
+  @media (min-width: 600px) {
+    .fundo-modal { align-items: center; }
+    .modal { border-radius: 20px; }
+    .cal-grid, .cal-semana { gap: 7px; }
+    .cal-dia { min-height: 78px; }
+  }
+</style>
+</head>
+<body>
+
+<div id="app">
+  <header>
+    <div class="cabe">
+      <div id="logo-app" class="logo"></div>
+      <div class="titulo">
+        <h1>Agenda de Festas</h1>
+        <span class="sub">Montagens &amp; Festas</span>
+      </div>
+    </div>
+    <div class="acoes">
+      <button class="botao-topo" id="btn-tema" onclick="alternarTema()" title="Alternar tema"></button>
+      <button class="botao-topo" id="btn-exportar" onclick="exportar()">Exportar</button>
+      <button class="botao-topo" id="btn-importar" onclick="$('in-importar').click()">Importar</button>
+    </div>
+  </header>
+
+  <div class="filtros">
+    <div class="busca-wrap">
+      <svg class="lupa" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+      <input id="busca" class="pesquisa" type="search" placeholder="Buscar por cliente, local, evento...">
+    </div>
+    <div class="linha-filtros">
+      <div class="seg">
+        <button class="seg-btn ativo" data-modo="lista" onclick="mudarModo('lista')">Lista</button>
+        <button class="seg-btn" data-modo="cal" onclick="mudarModo('cal')">Calend&#225;rio</button>
+      </div>
+      <select id="filtro-mes"><option value="">Todos os meses</option></select>
+      <button id="btn-hoje" class="chip">Ir para hoje</button>
+      <button id="btn-atualizar" class="chip oculto" onclick="carregarLeitura()">Atualizar</button>
+    </div>
+    <div class="chips" id="chips-status"></div>
+  </div>
+
+  <main id="lista"></main>
+
+  <p class="rodape" id="rodape-dado"></p>
+
+  <button id="btn-add" class="fab" onclick="abrirFormulario()">+</button>
+</div>
+
+<div id="modal" class="fundo-modal oculto">
+  <div class="modal">
+    <div class="cab-modal">
+      <h2 id="titulo-modal">Novo agendamento</h2>
+      <button class="btn-fechar" onclick="fecharFormulario()" title="Fechar">
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+
+    <label for="f-cliente">Cliente *</label>
+    <input id="f-cliente" placeholder="Nome do cliente">
+
+    <label for="f-evento">Evento / festa</label>
+    <input id="f-evento" placeholder="Ex.: Casamento, Aniversário 15 anos...">
+
+    <div class="duas">
+      <div>
+        <label for="f-montagem">Data da montagem</label>
+        <input id="f-montagem" type="date">
+      </div>
+      <div>
+        <label for="f-evento-dt">Data do evento</label>
+        <input id="f-evento-dt" type="date">
+      </div>
+    </div>
+
+    <label for="f-local">Local da montagem</label>
+    <input id="f-local" placeholder="Endereço / local">
+
+    <label for="f-materiais">Materiais (um por linha)</label>
+    <textarea id="f-materiais" placeholder="Piso em lona - 3x3m&#10;Painel em lona - 2x4m&#10;Toldo - 5x3m"></textarea>
+
+    <label for="f-obs">Observações</label>
+    <textarea id="f-obs" placeholder="Valor, contato, orientações da equipe..."></textarea>
+
+    <label for="imagens-previa">Imagem / layout</label>
+    <div id="imagens-previa" class="imgs-prev"></div>
+    <div class="imgs-acoes">
+      <button type="button" class="btn-imgs" onclick="$('in-imagem').click()">Adicionar imagem</button>
+      <span class="imgs-dica">Copie a imagem no WhatsApp e cole aqui com Ctrl+V</span>
+    </div>
+
+    <label for="f-status">Status</label>
+    <select id="f-status">
+      <option value="Agendado">Agendado</option>
+      <option value="Montado">Montado</option>
+      <option value="Cancelado">Cancelado</option>
+    </select>
+
+    <div class="botoes">
+      <button class="btn btn-excluir oculto" id="btn-excluir" onclick="excluirAtual()">Excluir</button>
+      <button class="btn btn-imprimir-modal oculto" id="btn-imprimir" onclick="imprimirAtual()">Imprimir</button>
+      <button class="btn btn-cancelar" onclick="fecharFormulario()">Cancelar</button>
+      <button class="btn btn-salvar" onclick="salvarFormulario()">Salvar</button>
+    </div>
+  </div>
+</div>
+
+<div id="modal-detalhe" class="fundo-modal oculto">
+  <div class="modal modal-detalhe">
+    <div class="cab-modal">
+      <div class="dt-cab">
+        <h2 id="dt-titulo">Detalhes</h2>
+        <span id="dt-status" class="dt-chip"></span>
+      </div>
+      <button class="btn-fechar" onclick="fecharDetalhes()" title="Fechar">
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <div class="dt-nav oculto" id="dt-nav">
+      <button class="cal-setas" onclick="navDetalhe(-1)" title="Anterior">&#10094;</button>
+      <span class="dt-contador" id="dt-contador"></span>
+      <button class="cal-setas" onclick="navDetalhe(1)" title="Próximo">&#10095;</button>
+    </div>
+    <div id="dt-corpo"></div>
+    <div class="botoes">
+      <button class="btn btn-cancelar" onclick="fecharDetalhes()">Fechar</button>
+      <button class="btn btn-imprimir-modal" onclick="imprimirDeDetalhe()">Imprimir</button>
+      <button class="btn btn-salvar" id="btn-dt-editar" onclick="editarDeDetalhe()">Editar</button>
+    </div>
+  </div>
+</div>
+
+<input id="in-importar" type="file" accept=".json,application/json" class="oculto" onchange="importar(event)">
+<input id="in-imagem" type="file" accept="image/*" multiple class="oculto" onchange="adicionarImagens(event)">
+
+<div id="toast" class="toast"></div>
+
+<div id="luz" class="luz oculto" onclick="fecharLuz()">
+  <img id="luz-img" src="" alt="">
+  <button class="luz-fechar" onclick="event.stopPropagation();fecharLuz()" title="Fechar">&#10005;</button>
+</div>
+
+<div id="impressao"></div>
+
+<script>
+var DADOS = [];
+var MESES = ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'];
+var MESES_AB = ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'];
+var STATUS = ['Agendado','Montado','Cancelado'];
+var filtroStatus = '';
+var EDITANDO_ID = null;
+var DETALHE_ID = null;
+var DETALHE_GRUPO = [];
+var DETALHE_INDEX = 0;
+var IMAGENS_EDITANDO = [];
+var CHAVE_DADOS = 'agenda_de_festas';
+var CHAVE_TEMA = 'agenda_tema';
+var MODO = 'lista';
+var MODO_LEITURA = /[?&](modo|view|somente)=leitura/i.test(location.search);
+var MODO_SERVIDOR = false;
+var CAL = { a: new Date().getFullYear(), m: new Date().getMonth() };
+
+var LOGO_SVG =
+  '<svg viewBox="0 0 64 64" fill="none">' +
+    '<rect width="64" height="64" rx="15" fill="#0fa9a2"/>' +
+    '<path d="M16 44 L32 24 L48 44 Z" fill="#26354a"/>' +
+    '<path d="M16 35.5 C23 27.5 41 27.5 48 35.5 L48 44 L16 44 Z" fill="#26354a"/>' +
+    '<path d="M25 44 L28.3 31.6 M32 44 L32 29.6 M39 44 L35.7 31.6" stroke="#0fa9a2" stroke-width="2.6" stroke-linecap="round"/>' +
+    '<circle cx="48" cy="14" r="3.6" fill="#fff"/>' +
+    '<circle cx="20" cy="14" r="1.9" fill="#26354a"/>' +
+    '<path d="M46 18 l1.7 3.5 3.9.6-2.8 2.7.7 3.9-3.5-1.9-3.5 1.9.7-3.9-2.8-2.7 3.9-.6z" fill="#26354a"/>' +
+  '</svg>';
+
+var LOGO_HEADER = LOGO_SVG;
+var LOGO_ESCURO = LOGO_SVG;
+var LOGO_CLARO = LOGO_SVG;
+
+function resolverLogo(lista, i, cb) {
+  if (i >= lista.length) { cb(LOGO_SVG); return; }
+  var img = new Image();
+  img.onload = function () { cb('<img class="logo-img" src="' + lista[i] + '" alt="logo">'); };
+  img.onerror = function () { resolverLogo(lista, i + 1, cb); };
+  img.src = lista[i];
+}
+
+function prepararLogos(cb) {
+  var candClaro = ['logo/logo-claro.svg', 'logo/logo-claro.png'];
+  var candEscuro = ['logo/logo-escuro.svg', 'logo/logo-escuro.png'];
+  resolverLogo(candClaro, 0, function (src) {
+    LOGO_CLARO = src;
+    LOGO_HEADER = src;
+    resolverLogo(candEscuro, 0, function (src2) {
+      LOGO_ESCURO = src2;
+      cb();
+    });
+  });
+}
+
+function logoVazio() {
+  return temaAtual() === 'escuro' ? LOGO_CLARO : LOGO_ESCURO;
+}
+
+var ICONE_LUA =
+  '<svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>';
+var ICONE_SOL =
+  '<svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>';
+
+var ICONES = {
+  estrela: '<svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M12 2l3 6.1 6.6.9-4.8 4.6 1.2 6.6L12 17l-6 3.2 1.2-6.6L2.4 9l6.6-.9z"/></svg>',
+  pin: '<svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>',
+  nota: '<svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>',
+  caixa: '<svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8l-9-5-9 5v8l9 5 9-5z"/><path d="M3 8l9 5 9-5"/><path d="M12 13v8"/></svg>',
+  impressora: '<svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>',
+  lapis: '<svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.8 2.8 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5z"/></svg>'
+};
+
+function $(id) { return document.getElementById(id); }
+
+// ---------- persistencia ----------
+function ler() {
+  try { return JSON.parse(localStorage.getItem(CHAVE_DADOS)) || []; }
+  catch (e) { return []; }
+}
+function gravar(dados) {
+  try { localStorage.setItem(CHAVE_DADOS, JSON.stringify(dados)); } catch (e) {}
+  if (MODO_SERVIDOR) {
+    fetch('/dados', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(dados)
+    }).catch(function () {});
+  }
+}
+
+// ---------- utilidades ----------
+function pad2(n) { return (n < 10 ? '0' : '') + n; }
+function fmtData(iso) {
+  if (!iso) return '';
+  var p = iso.split('-');
+  return p.length === 3 ? p[2] + '/' + p[1] + '/' + p[0] : iso;
+}
+function hojeISO() {
+  var d = new Date();
+  return d.toISOString().split('T')[0];
+}
+function amanhaISO() {
+  var d = new Date();
+  d.setDate(d.getDate() + 1);
+  return d.toISOString().split('T')[0];
+}
+function defData(iso) {
+  if (!iso) return { num: '--', mes: '', sem: true };
+  var p = iso.split('-');
+  if (p.length !== 3) return { num: '--', mes: '', sem: true };
+  return { num: p[2], mes: (MESES_AB[parseInt(p[1], 10) - 1] || ''), sem: false };
+}
+function abrevia(s) {
+  return s.length > 13 ? s.slice(0, 12) + '\u2026' : s;
+}
+function ordenar(lista) {
+  return lista.sort(function (a, b) {
+    var da = a.dataMontagem || '';
+    var db = b.dataMontagem || '';
+    if (da === db) {
+      var ea = a.dataEvento || '';
+      var eb = b.dataEvento || '';
+      return ea < eb ? -1 : ea > eb ? 1 : 0;
+    }
+    return da < db ? -1 : 1;
+  });
+}
+
+// ---------- tema ----------
+function temaAtual() {
+  return document.documentElement.getAttribute('data-tema') || 'claro';
+}
+function alternarTema() {
+  var t = temaAtual() === 'escuro' ? 'claro' : 'escuro';
+  document.documentElement.setAttribute('data-tema', t);
+  try { localStorage.setItem(CHAVE_TEMA, t); } catch (e) {}
+  atualizarIconeTema();
+}
+function atualizarIconeTema() {
+  var b = $('btn-tema');
+  if (!b) return;
+  b.title = temaAtual() === 'escuro' ? 'Tema claro' : 'Tema escuro';
+  b.innerHTML = temaAtual() === 'escuro' ? ICONE_SOL : ICONE_LUA;
+}
+
+// ---------- modo de visualizacao ----------
+function mudarModo(modo) {
+  MODO = modo;
+  document.body.setAttribute('data-modo', modo);
+  var bts = document.querySelectorAll('.seg-btn');
+  for (var i = 0; i < bts.length; i++) {
+    bts[i].classList.toggle('ativo', bts[i].getAttribute('data-modo') === modo);
+  }
+  renderizar();
+}
+
+// ---------- tela ----------
+function carregar() {
+  if (!MODO_SERVIDOR) DADOS = ordenar(ler());
+  limparImagensConcluidas();
+  limparAntigos();
+  montarMesesDropdown();
+  montarChips();
+  renderizar();
+}
+
+function limparImagensConcluidas() {
+  var mudou = false;
+  DADOS.forEach(function (it) {
+    if ((it.status === 'Montado' || it.status === 'Cancelado') && it.imagens && it.imagens.length) {
+      it.imagens = [];
+      mudou = true;
+    }
+  });
+  if (mudou) gravar(DADOS);
+}
+
+var DIAS_EXCLUIR_ANTIGOS = 30;
+
+function limparAntigos() {
+  var limite = new Date();
+  limite.setDate(limite.getDate() - DIAS_EXCLUIR_ANTIGOS);
+  var removidos = 0;
+  DADOS = DADOS.filter(function (it) {
+    if (it.status !== 'Montado' && it.status !== 'Cancelado') return true;
+    var ref = it.dataEvento || it.dataMontagem || '';
+    if (!ref) return true;
+    var p = ref.split('-');
+    var d = new Date(parseInt(p[0], 10), parseInt(p[1], 10) - 1, parseInt(p[2], 10));
+    if (isNaN(d.getTime())) return true;
+    if (d < limite) { removidos++; return false; }
+    return true;
+  });
+  if (removidos) {
+    gravar(DADOS);
+    toast(removidos + ' agendamento(s) antigo(s) removido(s)');
+  }
+}
+
+function rodapeDado(msg) {
+  var r = $('rodape-dado');
+  if (r) r.innerHTML = msg;
+}
+
+function carregarLeitura() {
+  var r = $('btn-atualizar');
+  if (r && r.textContent !== 'Atualizar') return;
+  if (r) r.textContent = 'Buscando...';
+  fetch('dados.json', { cache: 'no-store' })
+    .then(function (resp) { if (!resp.ok) throw new Error('erro'); return resp.json(); })
+    .then(function (j) {
+      if (!Array.isArray(j)) throw new Error('erro');
+      DADOS = ordenar(j);
+      rodapeDado('Atualizado &agrave;s ' + new Date().toLocaleTimeString('pt-BR'));
+      montarMesesDropdown();
+      montarChips();
+      renderizar();
+    })
+    .catch(function () {
+      rodapeDado('N&atilde;o foi poss&iacute;vel carregar os dados &mdash; sem conex&atilde;o?');
+      if (DADOS.length === 0) renderizar();
+    })
+    .then(function () {
+      if (r) r.textContent = 'Atualizar';
+    });
+}
+
+function carregarInicial() {
+  rodapeDado('Carregando dados...');
+  fetch('/dados', { cache: 'no-store' })
+    .then(function (r) { if (!r.ok) throw new Error('offline'); return r.json(); })
+    .then(function (j) {
+      if (!Array.isArray(j)) throw new Error('offline');
+      MODO_SERVIDOR = true;
+      var locais = ler();
+      if (j.length > 0) {
+        DADOS = ordenar(j);
+        try { localStorage.setItem(CHAVE_DADOS, JSON.stringify(DADOS)); } catch (e) {}
+      } else if (locais.length > 0) {
+        DADOS = ordenar(locais);
+        fetch('/dados', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(DADOS)
+        }).catch(function () {});
+      } else {
+        DADOS = [];
+      }
+      rodapeDado('Arquivo <b>dados.json</b> desta pasta &mdash; app port&aacute;til');
+      carregar();
+    })
+    .catch(function () {
+      MODO_SERVIDOR = false;
+      rodapeDado('Dados salvos neste navegador. Para compartilhar, use <b>Exportar</b>/<b>Importar</b>.');
+      carregar();
+    });
+}
+
+function montarMesesDropdown() {
+  var sel = $('filtro-mes');
+  var atual = sel.value;
+  var meses = {};
+  DADOS.forEach(function (it) {
+    var m = (it.dataMontagem || it.dataEvento || '').slice(0, 7);
+    if (m) meses[m] = true;
+  });
+  var chaves = Object.keys(meses).sort();
+  sel.innerHTML = '<option value="">Todos os meses</option>';
+  chaves.forEach(function (m) {
+    var p = m.split('-');
+    var a = p[0], mm = p[1];
+    var opt = document.createElement('option');
+    opt.value = m;
+    opt.textContent = MESES[parseInt(mm, 10) - 1] + ' ' + a;
+    sel.appendChild(opt);
+  });
+  sel.value = atual;
+}
+
+function montarChips() {
+  var area = $('chips-status');
+  area.innerHTML = '';
+  var todos = document.createElement('span');
+  todos.className = 'chip' + (filtroStatus === '' ? ' ativo' : '');
+  todos.textContent = 'Todos';
+  todos.onclick = function () { filtroStatus = ''; montarChips(); renderizar(); };
+  area.appendChild(todos);
+  STATUS.forEach(function (s) {
+    var c = document.createElement('span');
+    c.className = 'chip' + (filtroStatus === s ? ' ativo' : '');
+    c.textContent = s;
+    c.onclick = function () { filtroStatus = s; montarChips(); renderizar(); };
+    area.appendChild(c);
+  });
+}
+
+function filtrar() {
+  var termo = ($('busca').value || '').toLowerCase().trim();
+  var mes = $('filtro-mes').value;
+  return DADOS.filter(function (it) {
+    if (mes && (it.dataMontagem || it.dataEvento || '').slice(0, 7) !== mes) return false;
+    if (filtroStatus && it.status !== filtroStatus) return false;
+    if (termo) {
+      var alvo = [it.cliente, it.local, it.evento, it.materiais, it.obs].join(' ').toLowerCase();
+      if (alvo.indexOf(termo) === -1) return false;
+    }
+    return true;
+  });
+}
+
+function renderizar() {
+  if (MODO === 'cal') renderizarCalendario();
+  else renderizarLista();
+}
+
+function renderizarLista() {
+  var lista = filtrar();
+  var main = $('lista');
+  main.innerHTML = '';
+  var hoje = hojeISO(), amanha = amanhaISO();
+
+  if (lista.length === 0) {
+    main.innerHTML = '<div class="vazio"><div class="logo">' + logoVazio() + '</div><p>Nenhum agendamento encontrado.<br>Toque em <b>+</b> para criar o primeiro.</p></div>';
+    return;
+  }
+
+  var contagem = {};
+  lista.forEach(function (it) {
+    var c = (it.dataMontagem || it.dataEvento || '').slice(0, 7);
+    contagem[c] = (contagem[c] || 0) + 1;
+  });
+
+  var grupo = null;
+  lista.forEach(function (it) {
+    var chaveMes = (it.dataMontagem || it.dataEvento || '').slice(0, 7);
+    if (chaveMes !== grupo) {
+      grupo = chaveMes;
+      var p = chaveMes.split('-');
+      var a = p[0], mm = p[1];
+      var rotulo = chaveMes ? (MESES[parseInt(mm, 10) - 1] + ' ' + a) : 'Sem data';
+      var divMes = document.createElement('div');
+      divMes.className = 'mes';
+      divMes.innerHTML = escapar(rotulo) + '<span class="qtd">' + (contagem[chaveMes] || '') + ' agendamento' + (contagem[chaveMes] === 1 ? '' : 's') + '</span>';
+      main.appendChild(divMes);
+    }
+    main.appendChild(cartaoHTML(it, hoje, amanha));
+  });
+}
+
+function renderizarCalendario() {
+  var lista = filtrar();
+  var main = $('lista');
+  var hoje = hojeISO();
+
+  var porData = {};
+  lista.forEach(function (it) {
+    var d = it.dataMontagem || '';
+    if (!d) return;
+    (porData[d] = porData[d] || []).push(it);
+  });
+
+  var primeiro = new Date(CAL.a, CAL.m, 1);
+  var offset = primeiro.getDay();
+  var diasNoMes = new Date(CAL.a, CAL.m + 1, 0).getDate();
+  var hISO = hoje.split('-');
+  var hojeAno = parseInt(hISO[0], 10), hojeMes = parseInt(hISO[1], 10) - 1, hojeDia = parseInt(hISO[2], 10);
+
+  var html = '';
+  html += '<div class="cal-card">';
+  html += '<div class="cal-cab">' +
+    '<button class="cal-setas" onclick="mxMes(-1)">&#10094;</button>' +
+    '<div class="cal-titulo">' + MESES[CAL.m] + ' ' + CAL.a + '</div>' +
+    '<button class="cal-setas" onclick="mxMes(1)">&#10095;</button>' +
+  '</div>';
+
+  var semana = ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb'];
+  html += '<div class="cal-semana">';
+  for (var w = 0; w < semana.length; w++) html += '<span>' + semana[w] + '</span>';
+  html += '</div>';
+
+  html += '<div class="cal-grid">';
+  var total = Math.ceil((offset + diasNoMes) / 7) * 7;
+  for (var i = 0; i < total; i++) {
+    var num = i - offset + 1;
+    if (num < 1 || num > diasNoMes) {
+      html += '<div class="cal-dia fora"></div>';
+      continue;
+    }
+    var iso = CAL.a + '-' + pad2(CAL.m + 1) + '-' + pad2(num);
+    var ehHoje = (CAL.a === hojeAno && CAL.m === hojeMes && num === hojeDia);
+    var itens = porData[iso] || [];
+    var idsJson = JSON.stringify(itens.map(function (x) { return x.id; }));
+    var acao = itens.length
+      ? 'abrirDetalhesDia(' + idsJson + ',0)'
+      : 'abrirFormulario(null,\'' + iso + '\')';
+    html += '<div class="cal-dia' + (ehHoje ? ' hoje' : '') + '" onclick="' + acao + '">';
+    html += '<div class="num">' + num + '</div>';
+    var visiveis = itens.slice(0, 3);
+    for (var k = 0; k < visiveis.length; k++) {
+      var it = visiveis[k];
+      html += '<div class="cal-bloco status-' + (it.status || '').toLowerCase() + '" onclick="event.stopPropagation();abrirDetalhesDia(' + idsJson + ',' + k + ')">' + escapar(abrevia(it.cliente || 'Sem nome')) + '</div>';
+    }
+    if (itens.length > 3) html += '<div class="cal-mais">+' + (itens.length - 3) + ' mais</div>';
+    html += '</div>';
+  }
+  html += '</div>';
+  html += '</div>';
+
+  main.innerHTML = html;
+}
+
+function mxMes(dir) {
+  CAL.m += dir;
+  if (CAL.m < 0) { CAL.m = 11; CAL.a--; }
+  if (CAL.m > 11) { CAL.m = 0; CAL.a++; }
+  renderizar();
+}
+
+function cartaoHTML(it, hoje, amanha) {
+  var el = document.createElement('div');
+  el.className = 'cartao status-' + (it.status || '').toLowerCase();
+  var badge = '';
+  if ((it.dataMontagem || '') === hoje) badge = '<span class="badge-hoje">Hoje</span>';
+  else if ((it.dataMontagem || '') === amanha) badge = '<span class="badge-amanha">Amanhã</span>';
+
+  var d = defData(it.dataMontagem || it.dataEvento);
+  var bloco = '<div class="bloco-data' + (d.sem ? ' sem' : '') + '">' +
+      '<div class="dia">' + d.num + '</div>' +
+      '<div class="mes-ab">' + d.mes + '</div>' +
+    '</div>';
+
+  var materiais = (it.materiais || '').trim();
+  var blocoMat = materiais
+    ? '<div class="mat-rotulo">' + ICONES.caixa + '<span style="display:inline-block;margin-left:5px;">Materiais</span></div>' +
+      '<div class="materiais">' + escapar(materiais) + '</div>'
+    : '';
+
+  el.innerHTML =
+    bloco +
+    '<div class="corpo">' +
+      '<div class="topo">' +
+        '<div><div class="cliente">' + escapar(it.cliente || 'Sem nome') + badge + '</div>' +
+        (it.evento ? '<div class="evento">' + escapar(it.evento) + '</div>' : '') +
+        '</div>' +
+        '<div class="topo-dir">' +
+          '<span class="status">' + escapar(it.status || 'Agendado') + '</span>' +
+          '<button class="btn-imprimir" onclick="event.stopPropagation();imprimirOrdem(' + it.id + ')" title="Imprimir ordem de montagem">' + ICONES.impressora + '</button>' +
+          (!MODO_LEITURA ? '<button class="btn-editar" onclick="event.stopPropagation();abrirFormulario(' + it.id + ')" title="Editar agendamento">' + ICONES.lapis + '</button>' : '') +
+        '</div>' +
+      '</div>' +
+      '<div class="detalhes">' +
+        (it.dataEvento ? '<div class="item">' + ICONES.estrela + '<span>Evento: <b>' + fmtData(it.dataEvento) + '</b></span></div>' : '') +
+        (it.local ? '<div class="item">' + ICONES.pin + '<span>' + escapar(it.local) + '</span></div>' : '') +
+        (it.obs ? '<div class="item">' + ICONES.nota + '<span>' + escapar(it.obs) + '</span></div>' : '') +
+        blocoMat +
+      '</div>' +
+    '</div>';
+
+  var imgs = (it.imagens || []).filter(Boolean);
+  if (imgs.length) {
+    var wrap = document.createElement('div');
+    wrap.className = 'cartao-imgs';
+    for (var ii = 0; ii < imgs.length && ii < 4; ii++) {
+      (function (src) {
+        var im = document.createElement('img');
+        im.src = src;
+        im.alt = '';
+        im.onclick = function (e) { e.stopPropagation(); abrirLuz(src); };
+        wrap.appendChild(im);
+      })(imgs[ii]);
+    }
+    if (imgs.length > 4) {
+      var mais = document.createElement('span');
+      mais.className = 'cartao-mais-imgs';
+      mais.textContent = '+' + (imgs.length - 4);
+      wrap.appendChild(mais);
+    }
+    el.querySelector('.corpo').appendChild(wrap);
+  }
+
+  el.addEventListener('mousedown', function (ev) {
+    el._ix = ev.clientX;
+    el._iy = ev.clientY;
+    el._arrastou = false;
+  });
+  el.addEventListener('mousemove', function (ev) {
+    if (el._arrastou) return;
+    if (Math.abs(ev.clientX - (el._ix || 0)) > 6 || Math.abs(ev.clientY - (el._iy || 0)) > 6) {
+      el._arrastou = true;
+    }
+  });
+  el.addEventListener('click', function () {
+    if (el._arrastou) return;
+    var sel = window.getSelection();
+    if (sel && !sel.isCollapsed && sel.toString().trim() !== '') return;
+    abrirDetalhes(it.id);
+  });
+  return el;
+}
+
+function escapar(txt) {
+  var div = document.createElement('div');
+  div.textContent = txt;
+  return div.innerHTML;
+}
+
+// ---------- formulario ----------
+function abrirFormulario(id, dataPre) {
+  if (MODO_LEITURA) return;
+  EDITANDO_ID = id || null;
+  var it = null;
+  if (EDITANDO_ID !== null) {
+    it = DADOS.find(function (d) { return d.id == EDITANDO_ID; });
+  }
+  $('titulo-modal').textContent = it ? 'Editar agendamento' : 'Novo agendamento';
+  $('f-cliente').value = it ? it.cliente : '';
+  $('f-evento').value = it ? it.evento : '';
+  $('f-montagem').value = it ? it.dataMontagem : (dataPre || '');
+  $('f-evento-dt').value = it ? it.dataEvento : '';
+  $('f-local').value = it ? it.local : '';
+  $('f-materiais').value = it ? it.materiais : '';
+  $('f-obs').value = it ? it.obs : '';
+  $('f-status').value = it ? it.status : 'Agendado';
+  IMAGENS_EDITANDO = (it && it.imagens) ? it.imagens.filter(Boolean).slice() : [];
+  renderImagens();
+  $('btn-excluir').classList.toggle('oculto', !it);
+  $('btn-imprimir').classList.toggle('oculto', !it);
+  $('modal').classList.remove('oculto');
+  setTimeout(function () { $('f-cliente').focus(); }, 60);
+}
+
+function fecharFormulario() {
+  $('modal').classList.add('oculto');
+  EDITANDO_ID = null;
+  IMAGENS_EDITANDO = [];
+}
+
+// ---------- imagens / layout ----------
+function carregarImagem(arquivo, cb) {
+  var leitor = new FileReader();
+  leitor.onload = function () {
+    var img = new Image();
+    img.onload = function () {
+      var max = 1280;
+      var escala = Math.min(1, max / Math.max(img.width, img.height));
+      var w = Math.max(1, Math.round(img.width * escala));
+      var h = Math.max(1, Math.round(img.height * escala));
+      var cv = document.createElement('canvas');
+      cv.width = w; cv.height = h;
+      var ctx = cv.getContext('2d');
+      ctx.fillStyle = '#fff';
+      ctx.fillRect(0, 0, w, h);
+      ctx.drawImage(img, 0, 0, w, h);
+      cb(cv.toDataURL('image/jpeg', 0.75));
+    };
+    img.onerror = function () { cb(null); };
+    img.src = leitor.result;
+  };
+  leitor.onerror = function () { cb(null); };
+  leitor.readAsDataURL(arquivo);
+}
+
+function adicionarImagens(ev) {
+  var files = ev.target.files || [];
+  for (var i = 0; i < files.length; i++) {
+    (function (f) {
+      carregarImagem(f, function (src) {
+        if (src) { IMAGENS_EDITANDO.push(src); renderImagens(); }
+      });
+    })(files[i]);
+  }
+  ev.target.value = '';
+}
+
+function renderImagens() {
+  var area = $('imagens-previa');
+  if (!area) return;
+  area.innerHTML = '';
+  if (IMAGENS_EDITANDO.length === 0) {
+    area.classList.add('vazio');
+    area.onclick = function () { $('in-imagem').click(); };
+    area.innerHTML = 'Cole a imagem aqui (Ctrl+V)<small>ou toque para escolher do dispositivo</small>';
+    return;
+  }
+  area.classList.remove('vazio');
+  area.onclick = null;
+  IMAGENS_EDITANDO.forEach(function (src, idx) {
+    var div = document.createElement('div');
+    div.className = 'img-mini';
+    var img = document.createElement('img');
+    img.src = src;
+    img.title = 'Ampliar';
+    img.onclick = function () { abrirLuz(src); };
+    var x = document.createElement('button');
+    x.className = 'img-remover';
+    x.title = 'Remover imagem';
+    x.textContent = '\u00d7';
+    x.onclick = function (e) {
+      e.stopPropagation();
+      IMAGENS_EDITANDO.splice(idx, 1);
+      renderImagens();
+    };
+    div.appendChild(img);
+    div.appendChild(x);
+    area.appendChild(div);
+  });
+}
+
+function abrirLuz(src) {
+  var luz = $('luz');
+  var img = $('luz-img');
+  img.src = src;
+  luz.classList.remove('oculto');
+}
+
+function fecharLuz() {
+  var luz = $('luz');
+  luz.classList.add('oculto');
+  $('luz-img').src = '';
+}
+
+// ---------- detalhes ----------
+function abrirDetalhes(id) {
+  DETALHE_GRUPO = [id];
+  DETALHE_INDEX = 0;
+  renderDetalhe();
+}
+
+function abrirDetalhesDia(ids, idx) {
+  DETALHE_GRUPO = ids.slice();
+  DETALHE_INDEX = idx;
+  renderDetalhe();
+}
+
+function navDetalhe(dir) {
+  var n = DETALHE_GRUPO.length;
+  if (n < 2) return;
+  DETALHE_INDEX = (DETALHE_INDEX + dir + n) % n;
+  renderDetalhe();
+}
+
+function renderDetalhe() {
+  var id = DETALHE_GRUPO[DETALHE_INDEX];
+  var it = null;
+  for (var i = 0; i < DADOS.length; i++) {
+    if (DADOS[i].id == id) { it = DADOS[i]; break; }
+  }
+  if (!it) return;
+  DETALHE_ID = id;
+
+  var d = defData(it.dataMontagem);
+  var corpo = '';
+  corpo += '<div class="dt-bloco">';
+  if (!d.sem) {
+    corpo += '<div class="dt-data"><span class="dia">' + d.num + '</span><span class="mes">' + d.mes + '</span></div>';
+  }
+  corpo += '<div class="dt-infos">' +
+    '<div class="dt-titulo">' + escapar(it.cliente || 'Sem nome') + '</div>' +
+    (it.evento ? '<div class="dt-sub">' + escapar(it.evento) + '</div>' : '') +
+    '<div class="dt-sub">N&ordm; ' + it.id + '</div>' +
+    '</div>' +
+  '</div>';
+
+  corpo += '<div class="dt-secao">Dados</div>';
+  corpo += '<div class="dt-linha">' + ICONES.pin + '<span><b>Local:</b> ' + escapar(it.local || '—') + '</span></div>';
+  corpo += '<div class="dt-linha">' + ICONES.estrela + '<span><b>Data do evento:</b> ' + fmtData(it.dataEvento) + '</span></div>';
+  corpo += '<div class="dt-linha">' + ICONES.caixa + '<span><b>Data da montagem:</b> ' + fmtData(it.dataMontagem) + '</span></div>';
+
+  var mats = (it.materiais || '').split('\n').map(function (s) { return s.trim(); }).filter(Boolean);
+  if (mats.length) {
+    corpo += '<div class="dt-secao">Materiais</div>';
+    corpo += '<ul class="dt-materiais">';
+    mats.forEach(function (m) { corpo += '<li><span class="ck"></span><span>' + escapar(m) + '</span></li>'; });
+    corpo += '</ul>';
+  }
+
+  if (it.obs) {
+    corpo += '<div class="dt-secao">Observa&ccedil;&otilde;es</div>';
+    corpo += '<div class="dt-linha">' + escapar(it.obs) + '</div>';
+  }
+
+  var imgsDet = (it.imagens || []).filter(Boolean);
+  if (imgsDet.length) {
+    corpo += '<div class="dt-secao">Imagem / Layout</div>';
+    corpo += '<div class="dt-imgs">' + imgsDet.map(function (s) { return '<img class="dt-img" src="' + s + '" alt="">'; }).join('') + '</div>';
+  }
+
+  $('dt-titulo').textContent = it.cliente || 'Sem nome';
+  var st = $('dt-status');
+  st.textContent = it.status || 'Agendado';
+  st.className = 'dt-chip ' + (it.status || '').toLowerCase();
+  $('btn-dt-editar').classList.toggle('oculto', MODO_LEITURA);
+  $('dt-corpo').innerHTML = corpo;
+
+  var elsImgs = $('dt-corpo').querySelectorAll('.dt-img');
+  for (var q = 0; q < elsImgs.length; q++) {
+    (function (el2, src) {
+      el2.onclick = function () { abrirLuz(src); };
+    })(elsImgs[q], imgsDet[q]);
+  }
+
+  var nav = $('dt-nav');
+  var n = DETALHE_GRUPO.length;
+  nav.classList.toggle('oculto', n < 2);
+  $('dt-contador').textContent = (DETALHE_INDEX + 1) + '/' + n;
+
+  $('modal-detalhe').classList.remove('oculto');
+}
+
+function fecharDetalhes() {
+  $('modal-detalhe').classList.add('oculto');
+  DETALHE_ID = null;
+  DETALHE_GRUPO = [];
+  DETALHE_INDEX = 0;
+}
+
+function editarDeDetalhe() {
+  var id = DETALHE_ID;
+  fecharDetalhes();
+  if (id !== null) abrirFormulario(id);
+}
+
+function imprimirDeDetalhe() {
+  if (DETALHE_ID !== null) imprimirOrdem(DETALHE_ID);
+}
+
+function salvarFormulario() {
+  var cliente = $('f-cliente').value.trim();
+  if (!cliente) { toast('Informe o nome do cliente'); $('f-cliente').focus(); return; }
+
+  var dados = ler();
+  var obj = {
+    id: EDITANDO_ID,
+    cliente: cliente,
+    evento: $('f-evento').value.trim(),
+    dataMontagem: $('f-montagem').value,
+    dataEvento: $('f-evento-dt').value,
+    local: $('f-local').value.trim(),
+    materiais: $('f-materiais').value.trim(),
+    obs: $('f-obs').value.trim(),
+    status: $('f-status').value,
+    imagens: IMAGENS_EDITANDO.slice()
+  };
+  if (obj.status === 'Montado' || obj.status === 'Cancelado') obj.imagens = [];
+
+  if (EDITANDO_ID === null) {
+    var maxId = 0;
+    dados.forEach(function (d) { if (d.id > maxId) maxId = d.id; });
+    obj.id = maxId + 1;
+    dados.push(obj);
+  } else {
+    var idx = dados.findIndex(function (d) { return d.id == EDITANDO_ID; });
+    if (idx >= 0) dados[idx] = obj;
+  }
+
+  gravar(dados);
+  DADOS = ordenar(dados);
+  fecharFormulario();
+  toast('Salvo!');
+  carregar();
+}
+
+function excluirAtual() {
+  if (EDITANDO_ID === null) return;
+  if (!confirm('Excluir este agendamento?')) return;
+  var dados = ler().filter(function (d) { return d.id != EDITANDO_ID; });
+  gravar(dados);
+  DADOS = dados;
+  fecharFormulario();
+  toast('Excluído');
+  carregar();
+}
+
+// ---------- exportar / importar ----------
+function exportar() {
+  var fonte = MODO_SERVIDOR ? DADOS : ler();
+  var blob = new Blob([JSON.stringify(fonte, null, 2)], { type: 'application/json' });
+  var url = URL.createObjectURL(blob);
+  var a = document.createElement('a');
+  a.href = url;
+  a.download = 'agenda-festas-dados.json';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+  toast('Arquivo exportado');
+}
+
+function importar(ev) {
+  var arquivo = ev.target.files[0];
+  if (!arquivo) return;
+  var leitor = new FileReader();
+  leitor.onload = function () {
+    try {
+      var dados = JSON.parse(leitor.result);
+      if (!Array.isArray(dados)) { toast('Arquivo inválido'); return null; }
+      if (!confirm('Substituir os dados atuais pelos do arquivo?')) return null;
+      DADOS = ordenar(dados);
+      gravar(DADOS);
+      toast('Dados importados');
+      carregar();
+    } catch (e) {
+      toast('Não deu pra ler o arquivo');
+    }
+  };
+  leitor.readAsText(arquivo);
+  ev.target.value = '';
+}
+
+// ---------- ordem de montagem / impressao ----------
+function montarOrdem(it) {
+  var linhas = (it.materiais || '').split('\n').map(function (s) { return s.trim(); }).filter(Boolean);
+  var checks = '';
+  linhas.forEach(function (l) {
+    checks += '<div class="ck"><span class="cd"></span>' + escapar(l) + '</div>';
+  });
+
+  var html = '';
+  html += '<div class="ordem">';
+  html += '<div class="ordem-topo">' +
+    '<div class="ordem-logo">' + LOGO_ESCURO + '</div>' +
+    '<div><div class="ordem-titulo">AGENDA DE FESTAS</div><div class="ordem-sub">Ordem de Montagem</div></div>' +
+    '<div class="ordem-num">N&ordm; ' + it.id + '</div>' +
+  '</div>';
+  html += '<div class="ordem-dados">';
+  html += '<p><strong>Cliente:</strong> ' + escapar(it.cliente || '\u2014') + '</p>';
+  if (it.evento) html += '<p><strong>Evento:</strong> ' + escapar(it.evento) + '</p>';
+
+  var datas = '';
+  if (it.dataMontagem) datas += '<p><strong>Data da montagem:</strong> ' + fmtData(it.dataMontagem) + '</p>';
+  if (it.dataEvento) datas += '<p><strong>Data do evento:</strong> ' + fmtData(it.dataEvento) + '</p>';
+  if (datas) html += '<div class="ordem-duas">' + datas + '</div>';
+
+  if (it.local) html += '<p><strong>Local da montagem:</strong> ' + escapar(it.local) + '</p>';
+  if (it.obs) html += '<p><strong>Observa&ccedil;&otilde;es:</strong> ' + escapar(it.obs) + '</p>';
+  html += '</div>';
+
+  html += '<div class="ordem-secao">Checklist de materiais</div>';
+  html += linhas.length
+    ? '<div class="ordem-checklist">' + checks + '</div>'
+    : '<p style="margin-top:8px;color:#444;">Nenhum material informado.</p>';
+
+  var imgsOrd = (it.imagens || []).filter(Boolean);
+  if (imgsOrd.length) {
+    html += '<div class="ordem-secao">Imagem / Layout</div>';
+    html += '<div class="ordem-imgs">' + imgsOrd.map(function (s) { return '<img class="ordem-img" src="' + s + '">'; }).join('') + '</div>';
+  }
+
+  html += '<div class="ordem-rodape"><div class="linha">Montador</div><div class="linha">Conferido por</div><div class="linha">Data</div></div>';
+  html += '</div>';
+  return html;
+}
+
+function imprimirOrdem(id) {
+  var it = null;
+  for (var i = 0; i < DADOS.length; i++) {
+    if (DADOS[i].id == id) { it = DADOS[i]; break; }
+  }
+  if (!it) return;
+  $('impressao').innerHTML = montarOrdem(it);
+  setTimeout(function () { window.print(); }, 40);
+}
+
+function imprimirAtual() {
+  if (EDITANDO_ID !== null) imprimirOrdem(EDITANDO_ID);
+}
+
+function toast(msg) {
+  var t = $('toast');
+  t.textContent = msg;
+  t.classList.add('mostrar');
+  setTimeout(function () { t.classList.remove('mostrar'); }, 2200);
+}
+
+window.addEventListener('DOMContentLoaded', function () {
+  try {
+    if (localStorage.getItem(CHAVE_TEMA) === 'escuro') {
+      document.documentElement.setAttribute('data-tema', 'escuro');
+    }
+  } catch (e) {}
+
+  $('busca').addEventListener('input', renderizar);
+  $('filtro-mes').addEventListener('change', renderizar);
+  $('f-status').addEventListener('change', function () {
+    if (($('f-status').value === 'Montado' || $('f-status').value === 'Cancelado') && IMAGENS_EDITANDO.length) {
+      toast('Ao salvar, as imagens de layout serão removidas (montagem concluída)');
+    }
+  });
+  $('btn-hoje').addEventListener('click', function () {
+    if (MODO === 'cal') {
+      var d = new Date();
+      CAL.a = d.getFullYear();
+      CAL.m = d.getMonth();
+      renderizar();
+      return;
+    }
+    var hoje = hojeISO();
+    $('filtro-mes').value = hoje.slice(0, 7);
+    renderizar();
+    var hojeS = document.querySelector('.badge-hoje');
+    if (hojeS) hojeS.scrollIntoView({ block: 'center' });
+  });
+  document.addEventListener('keydown', function (ev) {
+    if (ev.key !== 'Escape') return;
+    if (!$('luz').classList.contains('oculto')) { fecharLuz(); return; }
+    if (!$('modal-detalhe').classList.contains('oculto')) { fecharDetalhes(); return; }
+    fecharFormulario();
+  });
+  document.addEventListener('paste', function (ev) {
+    if ($('modal').classList.contains('oculto')) return;
+    var itens = ev.clipboardData ? ev.clipboardData.items : [];
+    var achou = false;
+    for (var i = 0; i < itens.length; i++) {
+      if (itens[i].type && itens[i].type.indexOf('image/') === 0) {
+        var arquivo = itens[i].getAsFile();
+        if (!arquivo) continue;
+        achou = true;
+        carregarImagem(arquivo, function (src) {
+          if (src) { IMAGENS_EDITANDO.push(src); renderImagens(); }
+        });
+      }
+    }
+    if (achou) ev.preventDefault();
+  });
+  prepararLogos(function () {
+    $('logo-app').innerHTML = LOGO_HEADER;
+    atualizarIconeTema();
+    if (MODO_LEITURA) {
+      $('btn-add').classList.add('oculto');
+      $('btn-exportar').classList.add('oculto');
+      $('btn-importar').classList.add('oculto');
+      $('btn-atualizar').classList.remove('oculto');
+      carregarLeitura();
+      setInterval(carregarLeitura, 30000);
+      document.addEventListener('visibilitychange', function () {
+        if (document.visibilityState === 'visible') carregarLeitura();
+      });
+      if ('serviceWorker' in navigator && location.protocol === 'https:') {
+        navigator.serviceWorker.register('sw.js').catch(function () {});
+      }
+      return;
+    }
+    carregarInicial();
+  });
+});
+</script>
+</body>
+</html>
