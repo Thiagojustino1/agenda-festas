@@ -855,6 +855,7 @@ function notificarMudanca(ehNovo, obj) {
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
       tipo: ehNovo ? 'novo' : 'editado',
+      status: obj.status || '',
       cliente: obj.cliente || '',
       evento: obj.evento || '',
       dataMontagem: obj.dataMontagem || ''
