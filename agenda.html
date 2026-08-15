@@ -28,8 +28,47 @@ OneSignalDeferred.push(async function (OneSignal) {
   };
   if (local) opcoes.allowLocalhostAsSecureOrigin = true;
   await OneSignal.init(opcoes);
-  OneSignal.Notifications.requestPermission();
+  var appInstalado = window.matchMedia && matchMedia('(display-mode: standalone)').matches;
+  if (appInstalado) {
+    bn_atualizar(OneSignal);
+  } else {
+    OneSignal.Notifications.requestPermission().then(function () {
+      bn_atualizar(OneSignal);
+    });
+  }
 });
+
+function bn_atualizar(OneSignal) {
+  var b = document.getElementById('banner-notif');
+  if (!b || !OneSignal || !OneSignal.Notifications) return;
+  try { if (localStorage.getItem('bn-notif-fechado') === '1') { b.classList.add('oculto'); return; } } catch (e) {}
+  OneSignal.Notifications.getPermission().then(function (p) {
+    if (p === 'granted') { b.classList.add('oculto'); return; }
+    var tx = b.querySelector('.bn-tx');
+    var bt = b.querySelector('#btn-bn-ativar');
+    if (p === 'denied') {
+      tx.textContent = 'Notificações bloqueadas neste navegador. Abra as configurações do site (cadeado na barra) e permita "Notificações".';
+      bt.style.display = 'none';
+    } else {
+      tx.textContent = 'Ative as notificações para receber avisos das novas montagens.';
+      bt.style.display = '';
+    }
+    b.classList.remove('oculto');
+  });
+}
+
+async function bn_ativar() {
+  var OneSignal = window.OneSignal;
+  if (!OneSignal) return;
+  await OneSignal.Notifications.requestPermission();
+  bn_atualizar(OneSignal);
+}
+
+function bn_fechar() {
+  try { localStorage.setItem('bn-notif-fechado', '1'); } catch (e) {}
+  var b = document.getElementById('banner-notif');
+  if (b) b.classList.add('oculto');
+}
 </script>
 <style>
   :root {
@@ -98,6 +137,22 @@ OneSignalDeferred.push(async function (OneSignal) {
     font-size: 15px;
   }
   .oculto { display: none !important; }
+
+  .banner-notif {
+    display: flex; align-items: center; justify-content: center; flex-wrap: wrap;
+    gap: 8px; text-align: center;
+    background: #26354a; color: #fff;
+    padding: 9px 12px; font-size: 13px; line-height: 1.35;
+  }
+  .banner-notif.oculto { display: none; }
+  .bn-btn {
+    background: #15c1b8; color: #fff; border: 0; border-radius: 6px;
+    padding: 7px 16px; font-weight: 700; font-size: 13px; cursor: pointer;
+  }
+  .bn-x {
+    background: none; border: 0; color: #fff; font-size: 14px; line-height: 1;
+    cursor: pointer; opacity: .7; padding: 4px;
+  }
 
   header {
     position: sticky; top: 0; z-index: 20;
@@ -576,6 +631,12 @@ OneSignalDeferred.push(async function (OneSignal) {
       <button class="botao-topo" id="btn-importar" onclick="$('in-importar').click()">Importar</button>
     </div>
   </header>
+
+  <div id="banner-notif" class="banner-notif oculto">
+    <span class="bn-tx">Ative as notificações para receber avisos das novas montagens.</span>
+    <button id="btn-bn-ativar" class="bn-btn" onclick="bn_ativar()">Ativar</button>
+    <button class="bn-x" onclick="bn_fechar()" title="Fechar">x</button>
+  </div>
 
   <div class="filtros">
     <div class="busca-wrap">
