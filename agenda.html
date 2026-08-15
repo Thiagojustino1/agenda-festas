@@ -32,9 +32,13 @@ OneSignalDeferred.push(async function (OneSignal) {
   if (appInstalado) {
     bn_atualizar(OneSignal);
   } else {
-    OneSignal.Notifications.requestPermission().then(function () {
-      bn_atualizar(OneSignal);
-    });
+    var aviso = function () { bn_atualizar(OneSignal); };
+    try {
+      var timer = setTimeout(aviso, 2500);
+      Promise.resolve(OneSignal.Notifications.requestPermission())
+        .then(function () { clearTimeout(timer); aviso(); })
+        .catch(function () { clearTimeout(timer); aviso(); });
+    } catch (e) { aviso(); }
   }
 });
 
