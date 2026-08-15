@@ -45,7 +45,6 @@ OneSignalDeferred.push(async function (OneSignal) {
 function bn_atualizar(OneSignal) {
   var b = document.getElementById('banner-notif');
   if (!b || !OneSignal || !OneSignal.Notifications) return;
-  try { if (localStorage.getItem('bn-notif-fechado') === '1') { b.classList.add('oculto'); return; } } catch (e) {}
   OneSignal.Notifications.getPermission().then(function (p) {
     if (p === 'granted') { b.classList.add('oculto'); return; }
     var tx = b.querySelector('.bn-tx');
@@ -69,7 +68,6 @@ async function bn_ativar() {
 }
 
 function bn_fechar() {
-  try { localStorage.setItem('bn-notif-fechado', '1'); } catch (e) {}
   var b = document.getElementById('banner-notif');
   if (b) b.classList.add('oculto');
 }
