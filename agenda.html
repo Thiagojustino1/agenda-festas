@@ -12,6 +12,22 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Agenda">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230fa9a2'/%3E%3Cpath d='M16 42L32 24l16 18z' fill='%2326354a'/%3E%3Ccircle cx='48' cy='14' r='5' fill='%23fff'/%3E%3C/svg%3E">
+<script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
+<script>
+window.OneSignalDeferred = window.OneSignalDeferred || [];
+OneSignalDeferred.push(async function (OneSignal) {
+  if (!/[?&](modo|view|somente)=leitura/i.test(location.search)) return;
+  var local = location.hostname === '127.0.0.1' || location.hostname === 'localhost';
+  var opcoes = {
+    appId: local ? 'TROCAR_APP_ID_TESTE' : '7cd5d6c9-c615-460e-9a2a-a1bca5a1ef4c',
+    serviceWorkerPath: 'push/onesignal/OneSignalSDKWorker.js',
+    serviceWorkerParam: { scope: '/push/onesignal/' }
+  };
+  if (local) opcoes.allowLocalhostAsSecureOrigin = true;
+  await OneSignal.init(opcoes);
+  OneSignal.Slidedown.promptPush();
+});
+</script>
 <style>
   :root {
     --tinta: #1f2428;
@@ -764,6 +780,20 @@ function gravar(dados) {
       body: JSON.stringify(dados)
     }).catch(function () {});
   }
+}
+
+function notificarMudanca(ehNovo, obj) {
+  if (!MODO_SERVIDOR) return;
+  fetch('/notificar', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      tipo: ehNovo ? 'novo' : 'editado',
+      cliente: obj.cliente || '',
+      evento: obj.evento || '',
+      dataMontagem: obj.dataMontagem || ''
+    })
+  }).catch(function () {});
 }
 
 // ---------- utilidades ----------
@@ -1533,6 +1563,7 @@ function salvarFormulario() {
   };
   var statusFinal = obj.status;
   if (statusFinal === 'Montado' || statusFinal === 'Cancelado') obj.imagens = [];
+  var ehNovo = (obj.id === null);
 
   var btnOk = null;
   if (obj.id !== null) {
@@ -1563,6 +1594,7 @@ function salvarFormulario() {
     }
 
     gravar(dados);
+    notificarMudanca(ehNovo, obj);
     DADOS = ordenar(dados);
     fecharFormulario();
     toast('Salvo!');
