@@ -28,7 +28,7 @@ OneSignalDeferred.push(async function (OneSignal) {
   };
   if (local) opcoes.allowLocalhostAsSecureOrigin = true;
   await OneSignal.init(opcoes);
-  OneSignal.Slidedown.promptPush();
+  OneSignal.Notifications.requestPermission();
 });
 </script>
 <style>
