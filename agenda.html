@@ -20,8 +20,7 @@ OneSignalDeferred.push(async function (OneSignal) {
   var local = location.hostname === '127.0.0.1' || location.hostname === 'localhost';
   var opcoes = {
     appId: local ? 'TROCAR_APP_ID_TESTE' : '7cd5d6c9-c615-460e-9a2a-a1bca5a1ef4c',
-    serviceWorkerPath: 'push/onesignal/OneSignalSDKWorker.js',
-    serviceWorkerParam: { scope: '/push/onesignal/' }
+    serviceWorkerPath: 'push/onesignal/OneSignalSDKWorker.js'
   };
   if (local) opcoes.allowLocalhostAsSecureOrigin = true;
   await OneSignal.init(opcoes);
