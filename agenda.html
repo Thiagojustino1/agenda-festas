@@ -289,15 +289,16 @@ function bn_fechar() {
 
   .bloco-data {
     flex: none; align-self: flex-start;
-    width: 54px; height: 58px;
+    width: 54px; height: 70px;
     border-radius: 12px;
     background: var(--bloco-data-bg);
     border: 1px solid var(--bloco-data-borda);
     color: var(--bloco-data-tx);
-    text-align: center; padding-top: 10px;
+    text-align: center; padding-top: 8px;
   }
   .bloco-data.sem { background: var(--suave); border-color: var(--borda); color: var(--cinza); }
   .bloco-data .dia { font-size: 20px; font-weight: 800; line-height: 1; }
+  .bloco-data .semana { font-size: 9px; font-weight: 700; letter-spacing: .3px; text-transform: uppercase; opacity: .75; line-height: 1; margin-bottom: 2px; }
   .bloco-data .mes-ab { font-size: 10px; font-weight: 700; letter-spacing: .6px; margin-top: 3px; text-transform: uppercase; }
 
   .corpo { flex: 1; min-width: 0; }
@@ -373,6 +374,7 @@ function bn_fechar() {
   .cal-dia:active { transform: scale(.97); }
   .cal-dia.fora { opacity: .3; pointer-events: none; background: transparent; border-style: dashed; }
   .cal-dia.hoje { border: 1.5px solid var(--vermelho); background: linear-gradient(180deg, rgba(231,76,60,.12), transparent); }
+  .cal-dia .semana { font-size: 9px; font-weight: 700; color: var(--cinza); text-transform: uppercase; letter-spacing: .2px; line-height: 1; }
   .cal-dia .num { font-size: 11px; font-weight: 800; color: var(--cinza); }
   .cal-dia.hoje .num { color: var(--vermelho); }
   .cal-bloco {
@@ -486,6 +488,7 @@ function bn_fechar() {
   .dt-corpo { margin-top: 6px; }
   .dt-bloco { display: flex; gap: 14px; padding: 14px; background: var(--suave); border-radius: 14px; margin-bottom: 6px; }
   .dt-data { display: flex; flex-direction: column; align-items: center; gap: 1px; flex: none; padding-right: 14px; border-right: 1px solid var(--borda); }
+  .dt-data .semana { font-size: 11px; font-weight: 700; text-transform: uppercase; color: var(--cinza); letter-spacing: .4px; line-height: 1; }
   .dt-data .dia { font-size: 32px; font-weight: 800; line-height: 1; color: var(--tinta); }
   .dt-data .mes { font-size: 11px; font-weight: 700; text-transform: uppercase; color: var(--cinza); letter-spacing: .6px; margin-top: 3px; }
   .dt-infos { display: flex; flex-direction: column; gap: 4px; min-width: 0; justify-content: center; }
@@ -879,11 +882,18 @@ function amanhaISO() {
   d.setDate(d.getDate() + 1);
   return d.toISOString().split('T')[0];
 }
-function defData(iso) {
-  if (!iso) return { num: '--', mes: '', sem: true };
+function diaSemana(iso) {
+  if (!iso) return '';
   var p = iso.split('-');
-  if (p.length !== 3) return { num: '--', mes: '', sem: true };
-  return { num: p[2], mes: (MESES_AB[parseInt(p[1], 10) - 1] || ''), sem: false };
+  if (p.length !== 3) return '';
+  var d = new Date(parseInt(p[0], 10), parseInt(p[1], 10) - 1, parseInt(p[2], 10));
+  return ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb'][d.getDay()];
+}
+function defData(iso) {
+  if (!iso) return { num: '--', mes: '', semana: '', sem: true };
+  var p = iso.split('-');
+  if (p.length !== 3) return { num: '--', mes: '', semana: '', sem: true };
+  return { num: p[2], mes: (MESES_AB[parseInt(p[1], 10) - 1] || ''), semana: diaSemana(iso), sem: false };
 }
 function abrevia(s) {
   return s.length > 13 ? s.slice(0, 12) + '\u2026' : s;
@@ -1233,6 +1243,7 @@ function renderizarCalendario() {
       ? 'abrirDetalhesDia(' + idsJson + ',0)'
       : 'abrirFormulario(null,\'' + iso + '\')';
     html += '<div class="cal-dia' + (ehHoje ? ' hoje' : '') + '" onclick="' + acao + '">';
+    html += '<div class="semana">' + diaSemana(iso) + '</div>';
     html += '<div class="num">' + num + '</div>';
     var visiveis = itens.slice(0, 3);
     for (var k = 0; k < visiveis.length; k++) {
@@ -1264,6 +1275,7 @@ function cartaoHTML(it, hoje, amanha) {
 
   var d = defData(it.dataMontagem || it.dataEvento);
   var bloco = '<div class="bloco-data' + (d.sem ? ' sem' : '') + '">' +
+      (d.semana ? '<div class="semana">' + d.semana + '</div>' : '') +
       '<div class="dia">' + d.num + '</div>' +
       '<div class="mes-ab">' + d.mes + '</div>' +
     '</div>';
@@ -1539,7 +1551,7 @@ function renderDetalhe() {
   var corpo = '';
   corpo += '<div class="dt-bloco">';
   if (!d.sem) {
-    corpo += '<div class="dt-data"><span class="dia">' + d.num + '</span><span class="mes">' + d.mes + '</span></div>';
+    corpo += '<div class="dt-data"><span class="semana">' + d.semana + '</span><span class="dia">' + d.num + '</span><span class="mes">' + d.mes + '</span></div>';
   }
   corpo += '<div class="dt-infos">' +
     '<div class="dt-titulo">' + escapar(it.cliente || 'Sem nome') + '</div>' +
@@ -1550,8 +1562,8 @@ function renderDetalhe() {
 
   corpo += '<div class="dt-secao">Dados</div>';
   corpo += '<div class="dt-linha">' + ICONES.pin + '<span><b>Local:</b> ' + escapar(it.local || '—') + '</span></div>';
-  corpo += '<div class="dt-linha">' + ICONES.estrela + '<span><b>Data do evento:</b> ' + fmtData(it.dataEvento) + '</span></div>';
-  corpo += '<div class="dt-linha">' + ICONES.caixa + '<span><b>Data da montagem:</b> ' + fmtData(it.dataMontagem) + '</span></div>';
+  corpo += '<div class="dt-linha">' + ICONES.estrela + '<span><b>Data do evento:</b> ' + diaSemana(it.dataEvento) + ' ' + fmtData(it.dataEvento) + '</span></div>';
+  corpo += '<div class="dt-linha">' + ICONES.caixa + '<span><b>Data da montagem:</b> ' + diaSemana(it.dataMontagem) + ' ' + fmtData(it.dataMontagem) + '</span></div>';
 
   var mats = (it.materiais || '').split('\n').map(function (s) { return s.trim(); }).filter(Boolean);
   if (mats.length) {
@@ -1802,8 +1814,8 @@ function montarOrdem(it) {
   if (it.evento) html += '<p><strong>Evento:</strong> ' + escapar(it.evento) + '</p>';
 
   var datas = '';
-  if (it.dataMontagem) datas += '<p><strong>Data da montagem:</strong> ' + fmtData(it.dataMontagem) + '</p>';
-  if (it.dataEvento) datas += '<p><strong>Data do evento:</strong> ' + fmtData(it.dataEvento) + '</p>';
+  if (it.dataMontagem) datas += '<p><strong>Data da montagem:</strong> ' + diaSemana(it.dataMontagem) + ' ' + fmtData(it.dataMontagem) + '</p>';
+  if (it.dataEvento) datas += '<p><strong>Data do evento:</strong> ' + diaSemana(it.dataEvento) + ' ' + fmtData(it.dataEvento) + '</p>';
   if (datas) html += '<div class="ordem-duas">' + datas + '</div>';
 
   if (it.local) html += '<p><strong>Local da montagem:</strong> ' + escapar(it.local) + '</p>';
