@@ -473,6 +473,30 @@ function bn_fechar() {
   }
   .btn-editar:hover { color: var(--tinta); border-color: var(--laranja); }
   .btn-editar .ic { width: 15px; height: 15px; }
+  .btn-check {
+    flex: none; height: 32px; border-radius: 9px;
+    border: 1px solid #16a34a; background: #16a34a; color: #fff;
+    cursor: pointer; display: inline-flex; align-items: center; gap: 4px; padding: 0 10px;
+    font-size: 12px; font-weight: 700;
+    transition: background .15s;
+  }
+  .btn-check:hover { background: #15803d; }
+  .btn-check .ic { width: 15px; height: 15px; }
+  .check-ok {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 28px; height: 28px; border-radius: 50%;
+    background: #dcfce7; color: #16a34a;
+  }
+  .check-ok .ic { width: 16px; height: 16px; }
+  .modal-check { max-width: 380px; }
+  .check-corpo { padding: 10px 0; }
+  .check-corpo label { display: block; font-size: 13px; color: var(--cinza); margin-bottom: 6px; }
+  .check-corpo input {
+    width: 100%; padding: 12px; border: 1px solid var(--borda); border-radius: 10px;
+    font-size: 22px; text-align: center; letter-spacing: 8px; background: var(--suave);
+    color: var(--tinta); box-sizing: border-box;
+  }
+  .check-erro { color: #dc2626; font-size: 13px; margin-top: 8px; text-align: center; }
 
   .modal-detalhe { max-width: 480px; }
   .dt-cab { min-width: 0; }
@@ -744,6 +768,7 @@ function bn_fechar() {
     <div class="botoes">
       <button class="btn btn-cancelar" onclick="fecharDetalhes()">Fechar</button>
       <button class="btn btn-imprimir-modal" onclick="imprimirDeDetalhe()">Imprimir</button>
+      <button class="btn btn-check-modal oculto" id="btn-dt-check" style="background:#16a34a;color:#fff;border:none;" onclick="abrirCheckMontador(DETALHE_ID)">✓ Montei</button>
       <button class="btn btn-salvar" id="btn-dt-editar" onclick="editarDeDetalhe()">Editar</button>
     </div>
   </div>
@@ -757,6 +782,27 @@ function bn_fechar() {
 <div id="luz" class="luz oculto" onclick="fecharLuz()">
   <img id="luz-img" src="" alt="">
   <button class="luz-fechar" onclick="event.stopPropagation();fecharLuz()" title="Fechar">&#10005;</button>
+</div>
+
+<div id="modal-check" class="fundo-modal oculto">
+  <div class="modal modal-check">
+    <div class="cab-modal">
+      <h2>Confirmar montagem</h2>
+      <button class="btn-fechar" onclick="fecharCheckMontador()" title="Fechar">
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <div class="check-corpo">
+      <p id="check-nome"></p>
+      <label>Digite o PIN para confirmar:</label>
+      <input id="check-pin" type="password" maxlength="4" inputmode="numeric" pattern="[0-9]*" placeholder="PIN" autocomplete="off">
+      <div id="check-erro" class="check-erro oculto"></div>
+      <div class="botoes">
+        <button class="btn btn-cancelar" onclick="fecharCheckMontador()">Cancelar</button>
+        <button class="btn btn-salvar" id="btn-check-confirmar" onclick="confirmarCheck()">Confirmar ✓</button>
+      </div>
+    </div>
+  </div>
 </div>
 
 <div id="impressao"></div>
@@ -830,8 +876,10 @@ var ICONES = {
   nota: '<svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>',
   caixa: '<svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8l-9-5-9 5v8l9 5 9-5z"/><path d="M3 8l9 5 9-5"/><path d="M12 13v8"/></svg>',
   impressora: '<svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>',
-  lapis: '<svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.8 2.8 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5z"/></svg>'
+  lapis: '<svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.8 2.8 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5z"/></svg>',
+  check: '<svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>'
 };
+var WORKER_URL = 'https://calm-bush-4d00.thiago-justino73.workers.dev/';
 
 function $(id) { return document.getElementById(id); }
 
@@ -1297,6 +1345,8 @@ function cartaoHTML(it, hoje, amanha) {
           '<span class="status">' + escapar(it.status || 'Agendado') + '</span>' +
           '<button class="btn-imprimir" onclick="event.stopPropagation();imprimirOrdem(' + it.id + ')" title="Imprimir ordem de montagem">' + ICONES.impressora + '</button>' +
           (!MODO_LEITURA ? '<button class="btn-editar" onclick="event.stopPropagation();abrirFormulario(' + it.id + ')" title="Editar agendamento">' + ICONES.lapis + '</button>' : '') +
+          (MODO_LEITURA && !it.checkMontador ? '<button class="btn-check" onclick="event.stopPropagation();abrirCheckMontador(\'' + it.id + '\')" title="Marcar como montado">' + ICONES.check + '<span>Montei</span></button>' : '') +
+          (MODO_LEITURA && it.checkMontador ? '<span class="check-ok" title="Montagem confirmada">' + ICONES.check + '</span>' : '') +
         '</div>' +
       '</div>' +
       '<div class="detalhes">' +
@@ -1518,6 +1568,67 @@ function fecharLuz() {
   $('luz-img').src = '';
 }
 
+// ---------- check montador ----------
+var CHECK_ID = null;
+
+function abrirCheckMontador(id) {
+  CHECK_ID = id;
+  var it = DADOS.find(function (d) { return d.id == id; });
+  $('check-nome').textContent = it ? (it.cliente || 'Sem nome') + (it.evento ? ' — ' + it.evento : '') : '';
+  $('check-pin').value = '';
+  $('check-erro').classList.add('oculto');
+  $('modal-check').classList.remove('oculto');
+  setTimeout(function () { $('check-pin').focus(); }, 60);
+}
+
+function fecharCheckMontador() {
+  $('modal-check').classList.add('oculto');
+  CHECK_ID = null;
+}
+
+function confirmarCheck() {
+  var pin = $('check-pin').value.trim();
+  if (!pin) { mostrarCheckErro('Digite o PIN'); return; }
+  var btn = $('btn-check-confirmar');
+  btn.disabled = true;
+  btn.textContent = 'Enviando...';
+
+  fetch(WORKER_URL, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ montagemId: CHECK_ID, pin: pin })
+  })
+  .then(function (r) { return r.json(); })
+  .then(function (res) {
+    btn.disabled = false;
+    btn.textContent = 'Confirmar ✓';
+    if (res.success) {
+      fecharCheckMontador();
+      var it = DADOS.find(function (d) { return d.id == CHECK_ID; });
+      if (it) it.checkMontador = { checked: true, timestamp: res.timestamp };
+      toast('Montagem confirmada!');
+      renderizar();
+    } else {
+      mostrarCheckErro(res.error || 'Erro ao confirmar');
+    }
+  })
+  .catch(function (e) {
+    btn.disabled = false;
+    btn.textContent = 'Confirmar ✓';
+    mostrarCheckErro('Falha na conexão. Tente novamente.');
+  });
+}
+
+function mostrarCheckErro(msg) {
+  var el = $('check-erro');
+  el.textContent = msg;
+  el.classList.remove('oculto');
+}
+
+$('check-pin').addEventListener('keydown', function (e) {
+  if (e.key === 'Enter') confirmarCheck();
+});
+
 // ---------- detalhes ----------
 function abrirDetalhes(id) {
   DETALHE_GRUPO = [id];
@@ -1584,11 +1695,19 @@ function renderDetalhe() {
     corpo += '<div class="dt-imgs">' + imgsDet.map(function (s) { return '<img class="dt-img" src="' + s + '" alt="">'; }).join('') + '</div>';
   }
 
+  if (it.checkMontador) {
+    var dtCheck = new Date(it.checkMontador.timestamp);
+    var dtCheckStr = dtCheck.toLocaleDateString('pt-BR') + ' ' + dtCheck.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
+    corpo += '<div class="dt-secao">' + ICONES.check + ' Montagem confirmada</div>';
+    corpo += '<div class="dt-linha" style="color:#16a34a;font-weight:600;">Confirmado em ' + dtCheckStr + '</div>';
+  }
+
   $('dt-titulo').textContent = it.cliente || 'Sem nome';
   var st = $('dt-status');
   st.textContent = it.status || 'Agendado';
   st.className = 'dt-chip ' + (it.status || '').toLowerCase();
   $('btn-dt-editar').classList.toggle('oculto', MODO_LEITURA);
+  $('btn-dt-check').classList.toggle('oculto', !MODO_LEITURA || !!it.checkMontador);
   $('dt-corpo').innerHTML = corpo;
 
   var elsImgs = $('dt-corpo').querySelectorAll('.dt-img');
