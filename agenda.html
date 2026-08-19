@@ -688,9 +688,14 @@ function bn_fechar() {
         <input id="f-montagem" type="date">
       </div>
       <div>
-        <label for="f-evento-dt">Data do evento</label>
-        <input id="f-evento-dt" type="date">
+        <label for="f-horario">Hor&aacute;rio da montagem</label>
+        <input id="f-horario" type="time">
       </div>
+    </div>
+
+    <div>
+      <label for="f-evento-dt">Data do evento</label>
+      <input id="f-evento-dt" type="date">
     </div>
 
     <label for="f-local">Local da montagem</label>
@@ -830,7 +835,8 @@ var ICONES = {
   nota: '<svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>',
   caixa: '<svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8l-9-5-9 5v8l9 5 9-5z"/><path d="M3 8l9 5 9-5"/><path d="M12 13v8"/></svg>',
   impressora: '<svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>',
-  lapis: '<svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.8 2.8 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5z"/></svg>'
+  lapis: '<svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.8 2.8 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5z"/></svg>',
+  relogio: '<svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>'
 };
 
 function $(id) { return document.getElementById(id); }
@@ -1300,6 +1306,7 @@ function cartaoHTML(it, hoje, amanha) {
         '</div>' +
       '</div>' +
       '<div class="detalhes">' +
+        (it.horario ? '<div class="item">' + ICONES.relogio + '<span>Hor&aacute;rio: <b>' + escapar(it.horario) + '</b></span></div>' : '') +
         (it.dataEvento ? '<div class="item">' + ICONES.estrela + '<span>Evento: <b>' + fmtData(it.dataEvento) + '</b></span></div>' : '') +
         (it.local ? '<div class="item">' + ICONES.pin + '<span>' + escapar(it.local) + '</span></div>' : '') +
         (it.obs ? '<div class="item">' + ICONES.nota + '<span>' + escapar(it.obs) + '</span></div>' : '') +
@@ -1367,6 +1374,7 @@ function abrirFormulario(id, dataPre) {
   $('f-cliente').value = it ? it.cliente : '';
   $('f-evento').value = it ? it.evento : '';
   $('f-montagem').value = it ? it.dataMontagem : (dataPre || '');
+  $('f-horario').value = it ? it.horario : '';
   $('f-evento-dt').value = it ? it.dataEvento : '';
   $('f-local').value = it ? it.local : '';
   $('f-materiais').value = it ? it.materiais : '';
@@ -1563,6 +1571,7 @@ function renderDetalhe() {
   corpo += '<div class="dt-secao">Dados</div>';
   corpo += '<div class="dt-linha">' + ICONES.pin + '<span><b>Local:</b> ' + escapar(it.local || '—') + '</span></div>';
   corpo += '<div class="dt-linha">' + ICONES.estrela + '<span><b>Data do evento:</b> ' + diaSemana(it.dataEvento) + ' ' + fmtData(it.dataEvento) + '</span></div>';
+  corpo += '<div class="dt-linha">' + ICONES.relogio + '<span><b>Hor&aacute;rio da montagem:</b> ' + escapar(it.horario || '\u2014') + '</span></div>';
   corpo += '<div class="dt-linha">' + ICONES.caixa + '<span><b>Data da montagem:</b> ' + diaSemana(it.dataMontagem) + ' ' + fmtData(it.dataMontagem) + '</span></div>';
 
   var mats = (it.materiais || '').split('\n').map(function (s) { return s.trim(); }).filter(Boolean);
@@ -1633,6 +1642,7 @@ function salvarFormulario() {
     cliente: cliente,
     evento: $('f-evento').value.trim(),
     dataMontagem: $('f-montagem').value,
+    horario: $('f-horario').value,
     dataEvento: $('f-evento-dt').value,
     local: $('f-local').value.trim(),
     materiais: $('f-materiais').value.trim(),
@@ -1815,6 +1825,7 @@ function montarOrdem(it) {
 
   var datas = '';
   if (it.dataMontagem) datas += '<p><strong>Data da montagem:</strong> ' + diaSemana(it.dataMontagem) + ' ' + fmtData(it.dataMontagem) + '</p>';
+  if (it.horario) datas += '<p><strong>Hor&aacute;rio da montagem:</strong> ' + escapar(it.horario) + '</p>';
   if (it.dataEvento) datas += '<p><strong>Data do evento:</strong> ' + diaSemana(it.dataEvento) + ' ' + fmtData(it.dataEvento) + '</p>';
   if (datas) html += '<div class="ordem-duas">' + datas + '</div>';
 
