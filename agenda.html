@@ -950,7 +950,6 @@ function carregar() {
   if (!MODO_SERVIDOR) DADOS = ordenar(ler());
   marcarMontadosAutomaticamente();
   limparImagensConcluidas();
-  limparAntigos();
   montarMesesDropdown();
   montarChips();
   renderizar();
@@ -973,10 +972,23 @@ function marcarMontadosAutomaticamente() {
   }
 }
 
+var DIAS_MANTER_IMAGENS = 15;
+
 function limparImagensConcluidas() {
+  var limite = new Date();
+  limite.setDate(limite.getDate() - DIAS_MANTER_IMAGENS);
   var mudou = false;
   DADOS.forEach(function (it) {
     if ((it.status === 'Montado' || it.status === 'Cancelado') && it.imagens && it.imagens.length) {
+      var ref = it.dataEvento || it.dataMontagem || '';
+      if (ref) {
+        var p = ref.split('-');
+        var d = new Date(parseInt(p[0], 10), parseInt(p[1], 10) - 1, parseInt(p[2], 10));
+        var passou = isNaN(d.getTime()) || d < limite;
+      } else {
+        passou = false;
+      }
+      if (!passou) return;
       if (MODO_SERVIDOR) {
         it.imagens.forEach(function (s) { if (ehCaminhoImagem(s)) apagarImagemServidor(s); });
       }
@@ -985,28 +997,6 @@ function limparImagensConcluidas() {
     }
   });
   if (mudou) gravar(DADOS);
-}
-
-var DIAS_EXCLUIR_ANTIGOS = 30;
-
-function limparAntigos() {
-  var limite = new Date();
-  limite.setDate(limite.getDate() - DIAS_EXCLUIR_ANTIGOS);
-  var removidos = 0;
-  DADOS = DADOS.filter(function (it) {
-    if (it.status !== 'Montado' && it.status !== 'Cancelado') return true;
-    var ref = it.dataEvento || it.dataMontagem || '';
-    if (!ref) return true;
-    var p = ref.split('-');
-    var d = new Date(parseInt(p[0], 10), parseInt(p[1], 10) - 1, parseInt(p[2], 10));
-    if (isNaN(d.getTime())) return true;
-    if (d < limite) { removidos++; return false; }
-    return true;
-  });
-  if (removidos) {
-    gravar(DADOS);
-    toast(removidos + ' agendamento(s) antigo(s) removido(s)');
-  }
 }
 
 function rodapeDado(msg) {
