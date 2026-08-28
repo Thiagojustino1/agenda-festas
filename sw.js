@@ -1,4 +1,4 @@
-var CACHE = 'agenda-pwa-v18';
+var CACHE = 'agenda-pwa-v19';
 
 var ESTATICOS = [
   './agenda.html',
