@@ -981,12 +981,14 @@ function limparImagensConcluidas() {
   DADOS.forEach(function (it) {
     if ((it.status === 'Montado' || it.status === 'Cancelado') && it.imagens && it.imagens.length) {
       var ref = it.dataEvento || it.dataMontagem || '';
-      if (ref) {
+      var passou = false;
+      if (ref && /^\d{4}-\d{2}-\d{2}$/.test(ref)) {
         var p = ref.split('-');
-        var d = new Date(parseInt(p[0], 10), parseInt(p[1], 10) - 1, parseInt(p[2], 10));
-        var passou = isNaN(d.getTime()) || d < limite;
-      } else {
-        passou = false;
+        var ano = parseInt(p[0], 10);
+        if (ano >= 2000) {
+          var d = new Date(ano, parseInt(p[1], 10) - 1, parseInt(p[2], 10));
+          passou = !isNaN(d.getTime()) && d < limite;
+        }
       }
       if (!passou) return;
       if (MODO_SERVIDOR) {
