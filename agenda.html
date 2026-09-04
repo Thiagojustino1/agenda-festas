@@ -1141,6 +1141,15 @@ function montarChips() {
   });
 }
 
+function debounce(fn, ms) {
+  var t;
+  return function () {
+    var a = arguments, c = this;
+    clearTimeout(t);
+    t = setTimeout(function () { fn.apply(c, a); }, ms || 250);
+  };
+}
+
 function filtrar() {
   var termo = ($('busca').value || '').toLowerCase().trim();
   var mes = $('filtro-mes').value;
@@ -1314,6 +1323,8 @@ function cartaoHTML(it, hoje, amanha) {
       (function (src) {
         var im = document.createElement('img');
         im.src = src;
+        im.loading = 'lazy';
+        im.decoding = 'async';
         im.alt = '';
         im.onclick = function (e) { e.stopPropagation(); abrirLuz(src); };
         wrap.appendChild(im);
@@ -1582,7 +1593,7 @@ function renderDetalhe() {
   var imgsDet = (it.imagens || []).filter(Boolean);
   if (imgsDet.length) {
     corpo += '<div class="dt-secao">Imagem / Layout</div>';
-    corpo += '<div class="dt-imgs">' + imgsDet.map(function (s) { return '<img class="dt-img" src="' + s + '" alt="">'; }).join('') + '</div>';
+    corpo += '<div class="dt-imgs">' + imgsDet.map(function (s) { return '<img class="dt-img" src="' + s + '" alt="" loading="lazy" decoding="async">'; }).join('') + '</div>';
   }
 
   $('dt-titulo').textContent = it.cliente || 'Sem nome';
@@ -1831,7 +1842,7 @@ function montarOrdem(it) {
   var imgsOrd = (it.imagens || []).filter(Boolean);
   if (imgsOrd.length) {
     html += '<div class="ordem-secao">Imagem / Layout</div>';
-    html += '<div class="ordem-imgs">' + imgsOrd.map(function (s) { return '<img class="ordem-img" src="' + s + '">'; }).join('') + '</div>';
+    html += '<div class="ordem-imgs">' + imgsOrd.map(function (s) { return '<img class="ordem-img" src="' + s + '" loading="lazy" decoding="async">'; }).join('') + '</div>';
   }
 
   html += '<div class="ordem-rodape"><div class="linha">Montador</div><div class="linha">Conferido por</div><div class="linha">Data</div></div>';
@@ -1867,7 +1878,7 @@ window.addEventListener('DOMContentLoaded', function () {
     }
   } catch (e) {}
 
-  $('busca').addEventListener('input', renderizar);
+  $('busca').addEventListener('input', debounce(renderizar, 250));
   $('filtro-mes').addEventListener('change', renderizar);
   $('f-status').addEventListener('change', function () {
     if (($('f-status').value === 'Montado' || $('f-status').value === 'Cancelado') && IMAGENS_EDITANDO.length) {
