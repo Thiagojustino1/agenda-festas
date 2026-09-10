@@ -673,10 +673,11 @@
         "local":  "Local: Rua Mermoz 231 cidade alta centro em frente cosern",
         "materiais":  "Painel 4 x 2,90m",
         "obs":  "",
-        "status":  "Agendado",
+        "status":  "Montado",
         "imagens":  [
                         "imagens/foto-mtvgo0vi-1915.jpg"
-                    ]
+                    ],
+        "updatedAt":  "2026-09-10T20:21:22.799Z"
     },
     {
         "id":  46,
