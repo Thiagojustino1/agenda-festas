@@ -583,14 +583,15 @@
         "horario":  "",
         "dataEvento":  "2026-09-11",
         "local":  "",
-        "materiais":  "Painel 4,00 x 2,30 \n4 und Painel 1,00 x 2,88 \n2 und Painel Pórtico 0,90 x 2,53\nadesivo 3,80 x 0,80 \npiso 6,00 x 1,20 \n4 und adesivo para mesas 0,80 x 0,80",
+        "materiais":  "Painel 4,00 x 2,30 \n4 und Painel 1,00 x 2,88 \n2 und Painel Pórtico 0,90 x 2,53\nadesivo 3,80 x 0,80 \npiso 6,00 x 1,20 \n4 und adesivo para mesas 0,80 x 0,80\n2 und adesivo mesa 1,10 x 2,10",
         "obs":  "",
         "status":  "Agendado",
         "imagens":  [
                         "imagens/foto-mtvinocd-1exy.jpg",
                         "imagens/foto-mtvinoo9-ct8.jpg",
                         "imagens/foto-mtvinoqz-1vsi.jpg"
-                    ]
+                    ],
+        "updatedAt":  "2026-09-10T17:40:14.988Z"
     },
     {
         "id":  41,
