@@ -717,18 +717,20 @@
     {
         "id":  48,
         "cliente":  "Emanuelle",
-        "evento":  "Aniversário",
+        "evento":  "Aniversário Bernard",
         "dataMontagem":  "2026-09-12",
         "horario":  "",
         "dataEvento":  "",
         "local":  "Let´s Party",
-        "materiais":  "Painel 4,65 x 2,65\nPiso 4,65 x 2,90\nDisplay 80x32cm\nPiso Externo 1,60 x 6,00m",
+        "materiais":  "Painel 4,65 x 2,65\nPiso 4,65 x 2,90\nDisplay 80x32cm\nPiso Externo 1,60 x 6,00m\nPainel foto",
         "obs":  "",
         "status":  "Agendado",
         "imagens":  [
-                        "imagens/foto-mtvk7hwf-ca3.jpg"
+                        "imagens/foto-mtvk7hwf-ca3.jpg",
+                        "imagens/foto-mtx1pvzl-1bri.jpg",
+                        "imagens/foto-mtx1pwez-1ew7.jpg"
                     ],
-        "updatedAt":  "2026-09-11T12:04:10.692Z"
+        "updatedAt":  "2026-09-11T14:22:49.133Z"
     },
     {
         "id":  49,
