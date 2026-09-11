@@ -692,11 +692,12 @@
         "local":  "",
         "materiais":  "Painel 4,30 x 2,60 ( terá duas jardineiras )\nPainel 1,30 x 2,30 \nPiso 4,30 x 2,50 \npiso orgânico \ncavalete 0,80 x 1,20 ( 1 jardineira )",
         "obs":  "",
-        "status":  "Agendado",
+        "status":  "Montado",
         "imagens":  [
                         "imagens/foto-mtvhwd52-1c4m.jpg",
                         "imagens/foto-mtvir5ep-17dd.jpg"
-                    ]
+                    ],
+        "updatedAt":  "2026-09-11T20:08:37.693Z"
     },
     {
         "id":  47,
