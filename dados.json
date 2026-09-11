@@ -743,5 +743,21 @@
                         "imagens/foto-mtvkch11-10h1.jpg"
                     ],
         "updatedAt":  "2026-09-10T13:28:43.571Z"
+    },
+    {
+        "id":  50,
+        "cliente":  "Emanuelle",
+        "evento":  "Mesa de 1,50m",
+        "dataMontagem":  "2026-09-12",
+        "horario":  "",
+        "dataEvento":  "",
+        "local":  "Let\u0027s Party - Rua Dr. Poty Nóbrega, 338 - Lagoa Nova, Natal - RN, 59056-180",
+        "materiais":  "Mesa de 1,50m de frente",
+        "obs":  "",
+        "status":  "Agendado",
+        "imagens":  [
+                        "imagens/foto-mtwz45ew-nkv.jpg"
+                    ],
+        "updatedAt":  "2026-09-11T13:09:55.686Z"
     }
 ]
