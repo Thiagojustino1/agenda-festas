@@ -643,12 +643,13 @@
         "horario":  "",
         "dataEvento":  "2026-09-12",
         "local":  "Shake Joy - Natal Shopping - L2 próximo à escada do cinema",
-        "materiais":  "Painel esquerdo 1,70 x 2,20m\nPainel central Painel 1,35 x 2,20m (Só lona)\nPainel direito Painel 1,20 x 2,20m",
+        "materiais":  "Painel esquerdo 1,70 x 2,20m\nPainel central Painel 1,35 x 2,20m (Só lona)\nPainel direito Painel 1,20 x 2,20m\nDisplay 50x50cm",
         "obs":  "*LEVAR ESTRUTURAS APENAS DOS 2 PAINÉIS LATERAIS, O PAINEL CENTRAL DE 1,35 x 2,20m ELA JÁ TEM LÁ.",
         "status":  "Agendado",
         "imagens":  [
                         "imagens/foto-mtudzasx-npf.jpg"
-                    ]
+                    ],
+        "updatedAt":  "2026-09-11T13:46:59.483Z"
     },
     {
         "id":  44,
