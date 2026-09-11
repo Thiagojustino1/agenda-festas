@@ -151,11 +151,12 @@
         "local":  "Assembleia de Deus  Rua Mirassol, 267_Felipe Camarão",
         "materiais":  "Adesivo 1,50x3,00m (APENAS ENTREGAR)\nPainel Lona 2,30 x 2,80m",
         "obs":  "Para desmontar só no dia 14 de Setembro.\n-Montagem apenas do painel, adesivo só entregar\n-Pode ser montado na Sexta, dia 11.",
-        "status":  "Agendado",
+        "status":  "Montado",
         "imagens":  [
                         "imagens/foto-msswbh82-dsg.jpg",
                         "imagens/foto-msswqezh-s9n.jpg"
-                    ]
+                    ],
+        "updatedAt":  "2026-09-11T13:31:16.633Z"
     },
     {
         "id":  12,
