@@ -722,7 +722,7 @@
         "horario":  "",
         "dataEvento":  "",
         "local":  "Let´s Party",
-        "materiais":  "Painel 4,65 x 2,65\nPiso 4,65 x 2,90\nDisplay 80x32cm\nPiso Externo 1,60 x 6,00m\nPainel foto",
+        "materiais":  "Painel 4,65 x 2,65\nPiso 4,65 x 2,90\nDisplay 80x32cm\nPiso Externo 1,60 x 6,00m\nPainel foto 1,20m L x 2,20m A",
         "obs":  "",
         "status":  "Agendado",
         "imagens":  [
@@ -730,7 +730,7 @@
                         "imagens/foto-mtx1pvzl-1bri.jpg",
                         "imagens/foto-mtx1pwez-1ew7.jpg"
                     ],
-        "updatedAt":  "2026-09-11T14:22:49.133Z"
+        "updatedAt":  "2026-09-11T15:01:38.390Z"
     },
     {
         "id":  49,
