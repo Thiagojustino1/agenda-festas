@@ -812,5 +812,22 @@
                         "imagens/foto-mu4jc3we-a8l.jpg"
                     ],
         "updatedAt":  "2026-09-16T20:10:22.523Z"
+    },
+    {
+        "id":  54,
+        "cliente":  "Emanuelle",
+        "evento":  "Amaro Neto 5 anos",
+        "dataMontagem":  "2026-09-18",
+        "horario":  "",
+        "dataEvento":  "2026-09-20",
+        "local":  "Let\u0027s Party - Rua Dr. Poty Nóbrega, 338 - Lagoa Nova, Natal - RN, 59056-180",
+        "materiais":  "02 Und. Painel 0,80 x 2,20m\nPainel central 1,35 x 2,65m\nPiso 4,65 x 0,70m\nPainel lojinha 2,20 x 2,20m",
+        "obs":  "- Festa no domingo, mas pode adiantar amanhã também ou sexta!\n- O painel da lojinha só consegue montar no sábado depois da festa, ou domingo pela manhã.",
+        "status":  "Agendado",
+        "imagens":  [
+                        "imagens/foto-mu4k1dtv-50g.jpg",
+                        "imagens/foto-mu4k1e9q-1jru.jpg"
+                    ],
+        "updatedAt":  "2026-09-16T20:30:01.791Z"
     }
 ]
