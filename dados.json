@@ -830,5 +830,21 @@
                         "imagens/foto-mu6v02ke-214g.jpg"
                     ],
         "updatedAt":  "2026-09-18T11:12:28.662Z"
+    },
+    {
+        "id":  55,
+        "cliente":  "Emanuelle",
+        "evento":  "Marcelo 9 anos",
+        "dataMontagem":  "2026-09-20",
+        "horario":  "",
+        "dataEvento":  "2026-09-20",
+        "local":  "Let\u0027s Party - Rua Dr. Poty Nóbrega, 338 - Lagoa Nova, Natal - RN, 59056-180",
+        "materiais":  "Mesa de 1,50m",
+        "obs":  "- Colocar por cima da lona de mesa da festa de Amaro Neto",
+        "status":  "Agendado",
+        "imagens":  [
+                        "imagens/foto-mu6wn1mh-12io.jpg"
+                    ],
+        "updatedAt":  "2026-09-18T11:58:20.151Z"
     }
 ]
