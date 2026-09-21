@@ -862,5 +862,21 @@
                         "imagens/foto-mu72nkvb-zxx.jpg"
                     ],
         "updatedAt":  "2026-09-18T14:46:42.787Z"
+    },
+    {
+        "id":  57,
+        "cliente":  "Denize",
+        "evento":  "",
+        "dataMontagem":  "2026-09-25",
+        "horario":  "",
+        "dataEvento":  "",
+        "local":  "Rua Rondônia 425 Neopolis-Salão de festa da paróquia de Nossa Senhora Aparecida",
+        "materiais":  "2 und Painel 3,70x 2,70",
+        "obs":  "",
+        "status":  "Agendado",
+        "imagens":  [
+
+                    ],
+        "updatedAt":  "2026-09-21T11:58:17.944Z"
     }
 ]
