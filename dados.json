@@ -916,16 +916,16 @@
         "id":  60,
         "cliente":  "Irda",
         "evento":  "Aniversário",
-        "dataMontagem":  "2026-09-25",
+        "dataMontagem":  "2026-09-26",
         "horario":  "",
         "dataEvento":  "",
-        "local":  "",
+        "local":  "Rua Sandoval tavares guerreiro, 100, nova Parnamirim",
         "materiais":  "Painel 3,00 x 2,30",
         "obs":  "",
         "status":  "Agendado",
         "imagens":  [
                         "imagens/foto-mue5v72i-11x.jpg"
                     ],
-        "updatedAt":  "2026-09-23T13:51:00.228Z"
+        "updatedAt":  "2026-09-23T13:59:13.804Z"
     }
 ]
