@@ -927,5 +927,21 @@
                         "imagens/foto-mue5v72i-11x.jpg"
                     ],
         "updatedAt":  "2026-09-23T13:59:13.804Z"
+    },
+    {
+        "id":  61,
+        "cliente":  "Emanuelle",
+        "evento":  "Fernanda 7 anos",
+        "dataMontagem":  "2026-09-26",
+        "horario":  "",
+        "dataEvento":  "2026-09-26",
+        "local":  "Let\u0027s Party - Rua Dr. Poty Nóbrega, 338 - Lagoa Nova, Natal - RN, 59056-180",
+        "materiais":  "Painel 1,20 x 2,30m\nPainel 0,80 x 2,00m\nAdesivo recortado 1,40 x 0,77m\nCilindro 1,35 x 0,95m\nCilindro 1,35 x 0,43m",
+        "obs":  "Pode montar hoje ou amanhã",
+        "status":  "Agendado",
+        "imagens":  [
+                        "imagens/foto-mufhqeol-evi.jpg"
+                    ],
+        "updatedAt":  "2026-09-24T12:10:58.385Z"
     }
 ]
