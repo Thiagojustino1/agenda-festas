@@ -914,19 +914,19 @@
     },
     {
         "id":  60,
-        "cliente":  "Irda",
+        "cliente":  "Adila",
         "evento":  "Aniversário",
         "dataMontagem":  "2026-09-26",
         "horario":  "",
         "dataEvento":  "",
-        "local":  "Rua Sandoval tavares guerreiro, 100, nova Parnamirim",
+        "local":  "Iguaçu park  Salão de festas - Rua Sandoval tavares guerreiro, 100, nova Parnamirim",
         "materiais":  "Painel 3,00 x 2,30",
         "obs":  "",
         "status":  "Agendado",
         "imagens":  [
                         "imagens/foto-mue5v72i-11x.jpg"
                     ],
-        "updatedAt":  "2026-09-23T13:59:13.804Z"
+        "updatedAt":  "2026-09-25T17:04:25.231Z"
     },
     {
         "id":  61,
