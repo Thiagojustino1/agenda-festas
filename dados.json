@@ -738,16 +738,16 @@
         "cliente":  "Clínica de Oncologia e Mastologia de Natal",
         "evento":  "Outubro Rosa",
         "dataMontagem":  "2026-09-30",
-        "horario":  "",
+        "horario":  "15:15",
         "dataEvento":  "",
         "local":  "Av. Afonso Pena, 1071 - Tirol",
         "materiais":  "Painel 2x2m",
-        "obs":  "*O PAINEL FICARÁ DURANTE 30 DIAS POR LÁ - 30/09 deixar e vir pegar dia 01/11",
+        "obs":  "*O PAINEL FICARÁ DURANTE 30 DIAS POR LÁ - 30/09 deixar e vir pegar dia 01/11\n- Horário da montagem: Depois das 15h",
         "status":  "Agendado",
         "imagens":  [
                         "imagens/foto-mtvkch11-10h1.jpg"
                     ],
-        "updatedAt":  "2026-09-10T13:28:43.571Z"
+        "updatedAt":  "2026-09-25T12:38:57.372Z"
     },
     {
         "id":  50,
