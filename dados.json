@@ -1007,5 +1007,21 @@
                         "imagens/foto-mul6b6lb-1qh0.jpg"
                     ],
         "updatedAt":  "2026-09-28T11:37:49.341Z"
+    },
+    {
+        "id":  66,
+        "cliente":  "cliente nova",
+        "evento":  "Happy day",
+        "dataMontagem":  "",
+        "horario":  "",
+        "dataEvento":  "",
+        "local":  "",
+        "materiais":  "Painel 10m x 2,85m \nPainel 4,00 x 2,85 m\nportico 4,60 x 4,00 ( tamanho da porta 2,16 x 2,34 )",
+        "obs":  "",
+        "status":  "Agendado",
+        "imagens":  [
+                        "imagens/foto-mulazmli-1eoh.jpg"
+                    ],
+        "updatedAt":  "2026-09-28T13:48:48.292Z"
     }
 ]
