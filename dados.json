@@ -1065,13 +1065,13 @@
         "horario":  "",
         "dataEvento":  "2026-10-04",
         "local":  "",
-        "materiais":  "Painel 4,65 x 2,65m",
+        "materiais":  "Painel 4,65 x 2,65m\nPiso 4,65 x 2,90m",
         "obs":  "- Pode montar amanhã também, junto da festa de Lívia, colocando no verso",
         "status":  "Agendado",
         "imagens":  [
                         "imagens/foto-muo2gwrh-1l2r.jpg",
                         "imagens/foto-muo2gx2p-19u1.jpg"
                     ],
-        "updatedAt":  "2026-09-30T12:13:36.601Z"
+        "updatedAt":  "2026-09-30T12:17:54.585Z"
     }
 ]
