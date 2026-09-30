@@ -1039,5 +1039,22 @@
 
                     ],
         "updatedAt":  "2026-09-29T17:36:55.575Z"
+    },
+    {
+        "id":  68,
+        "cliente":  "Emanuelle",
+        "evento":  "Livia",
+        "dataMontagem":  "2026-10-02",
+        "horario":  "",
+        "dataEvento":  "2026-10-03",
+        "local":  "Let\u0027s Party - Rua Dr. Poty Nóbrega, 338 - Lagoa Nova, Natal - RN, 59056-180",
+        "materiais":  "Painel 4,65 x 2,65m\nPainel lateral 2,90 x 2,65m\nPiso 4,65 x 2,90m",
+        "obs":  "- Pode montar amanhã",
+        "status":  "Agendado",
+        "imagens":  [
+                        "imagens/foto-muo27422-mng.jpg",
+                        "imagens/foto-muo274rv-386.jpg"
+                    ],
+        "updatedAt":  "2026-09-30T12:05:59.492Z"
     }
 ]
