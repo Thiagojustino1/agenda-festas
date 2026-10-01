@@ -1102,12 +1102,12 @@
         "horario":  "",
         "dataEvento":  "2026-10-03",
         "local":  "Rua Dr Nizario Gurgel, 85, apto 1000",
-        "materiais":  "Painel 2,50 x 2,15m\nPiso 3,00 x 2,50m\nDisplay 15x5cm",
+        "materiais":  "Painel 2,50 x 2,15m\nPiso 3,00 x 2,50m\nDisplay óculos 15x5cm\nDisplay gato 25cm largura",
         "obs":  "- Pode montar na sexta final da tarde\n- O piso é somente para levar a lona, ela que vai colocar.",
         "status":  "Agendado",
         "imagens":  [
                         "imagens/foto-muptyhqe-3hq.jpg"
                     ],
-        "updatedAt":  "2026-10-01T19:30:11.243Z"
+        "updatedAt":  "2026-10-01T19:32:50.538Z"
     }
 ]
