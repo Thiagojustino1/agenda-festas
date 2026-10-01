@@ -620,7 +620,7 @@
         "dataEvento":  "",
         "local":  "Versailles Recepções -  R. Cel. Milton Freire, 2919 - Cidade Jardim, Natal - RN, 59078-310",
         "materiais":  "10 painéis 0,60 x 2,20m",
-        "obs":  "*Horários disponíveis para montagem: 09h/12h - 14h/17h\n*Obs: Pedir pra toda estrutura vir padronizada na mesma coloração.",
+        "obs":  "*Horários disponíveis para montagem: 09h/12h - 13h/17h\n*Obs: Pedir pra toda estrutura vir padronizada na mesma coloração.",
         "status":  "Agendado",
         "imagens":  [
                         "imagens/foto-mtu4i0ap-2197.jpg",
@@ -633,7 +633,8 @@
                         "imagens/foto-mtu4i1lq-xid.jpg",
                         "imagens/foto-mtu4i1s7-p4v.jpg",
                         "imagens/foto-mtu4i1yn-mwu.jpg"
-                    ]
+                    ],
+        "updatedAt":  "2026-10-01T13:13:15.381Z"
     },
     {
         "id":  43,
