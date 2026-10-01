@@ -1081,17 +1081,17 @@
     {
         "id":  70,
         "cliente":  "Emanuelle",
-        "evento":  "aniversário",
+        "evento":  "Aniversário",
         "dataMontagem":  "2026-10-04",
         "horario":  "",
         "dataEvento":  "",
-        "local":  "sterbom do espaço America",
-        "materiais":  "Painel 2,20 x 2,40",
+        "local":  "Ster Bom - Espaço América -  Av. Rodrigues Alves, 930 - Tirol, Natal - RN, 59020-000",
+        "materiais":  "Painel 2,20 x 2,40m",
         "obs":  "",
         "status":  "Agendado",
         "imagens":  [
                         "imagens/foto-mupjoroa-21h4.jpg"
                     ],
-        "updatedAt":  "2026-10-01T13:03:22.902Z"
+        "updatedAt":  "2026-10-01T14:27:19.703Z"
     }
 ]
