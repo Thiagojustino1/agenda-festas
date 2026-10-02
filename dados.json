@@ -1035,14 +1035,14 @@
         "horario":  "",
         "dataEvento":  "",
         "local":  "",
-        "materiais":  "painel 6,56m x 2,35m\nPainel lateral 1,90m x 2,35m \nPiso 6,56m x 1,40m\nPainel prateleiras 2,98m x 2,70m ( 5 und cada lado ) \npisi 2,98m x 1,60m\n2 und painel 0,80 x 1,17m",
+        "materiais":  "painel 6,56m x 2,35m\nPainel lateral 1,90m x 2,35m \nPiso 6,56m x 1,40m\nPainel prateleiras 2,98m x 2,70m ( 5 und cada lado ) \npiso 2,98m x 1,60m\n2 und painel 0,80 x 1,17m",
         "obs":  "",
         "status":  "Agendado",
         "imagens":  [
                         "imagens/foto-muoj4a18-17xh.jpg",
                         "imagens/foto-muoj4abp-sei.jpg"
                     ],
-        "updatedAt":  "2026-09-30T19:59:40.746Z"
+        "updatedAt":  "2026-10-02T11:16:39.817Z"
     },
     {
         "id":  68,
