@@ -1017,15 +1017,17 @@
         "horario":  "",
         "dataEvento":  "",
         "local":  "Happy day",
-        "materiais":  "4 und 1,80m x2,85m\nPainel 10m x 2,85m \nPainel 4,00 x 2,85 m\nPiso 10m x 3m\nportico 4,60 x 4,00 ( tamanho da porta 2,16 x 2,34 )\nENTRADA PÓRTICO ESCADA 5,63 x 2,85m",
+        "materiais":  "4 und 1,80m x2,85m\nPainel 10m x 2,85m \nPainel 4,00 x 2,85 m\nPiso 10m x 3m\nportico 4,60 x 4,00 ( tamanho da porta 2,16 x 2,34 )\nENTRADA PÓRTICO ESCADA 5,63 x 2,85m\n04 painéis 1,80 x 2,90m",
         "obs":  "",
         "status":  "Agendado",
         "imagens":  [
                         "imagens/foto-mulazmli-1eoh.jpg",
                         "imagens/foto-muo3ii70-1t43.jpg",
-                        "imagens/foto-muo3iigs-1n2w.jpg"
+                        "imagens/foto-muo3iigs-1n2w.jpg",
+                        "imagens/foto-murb381c-1tr.jpg",
+                        "imagens/foto-murb38cb-1w4p.jpg"
                     ],
-        "updatedAt":  "2026-10-01T19:49:48.788Z"
+        "updatedAt":  "2026-10-02T18:38:13.100Z"
     },
     {
         "id":  67,
