@@ -1084,15 +1084,16 @@
         "evento":  "Aniversário",
         "dataMontagem":  "2026-10-04",
         "horario":  "",
-        "dataEvento":  "",
+        "dataEvento":  "2026-10-04",
         "local":  "Ster Bom - Espaço América -  Av. Rodrigues Alves, 930 - Tirol, Natal - RN, 59020-000",
-        "materiais":  "Painel 2,20 x 2,40m",
+        "materiais":  "Painel 2,20 x 2,40m\nDisplay tartaruga 35cm altura",
         "obs":  "",
         "status":  "Agendado",
         "imagens":  [
-                        "imagens/foto-mupjoroa-21h4.jpg"
+                        "imagens/foto-mupjoroa-21h4.jpg",
+                        "imagens/foto-muqzsksp-1kea.jpg"
                     ],
-        "updatedAt":  "2026-10-01T14:27:19.703Z"
+        "updatedAt":  "2026-10-02T13:22:00.645Z"
     },
     {
         "id":  71,
