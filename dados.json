@@ -1017,7 +1017,7 @@
         "horario":  "",
         "dataEvento":  "",
         "local":  "Happy day",
-        "materiais":  "4 und 1,80m x2,85m\nPainel 10m x 2,85m \nPainel 4,00 x 2,85 m\nPiso 10m x 3m\nPórtico 4,56 x 1,66 \n2 und Pórtico 1,20 x 2,34m\nENTRADA PÓRTICO ESCADA 5,63 x 2,85m\n04 painéis 1,80 x 2,90m",
+        "materiais":  "4 und 1,80m x2,85m\nPainel 10m x 2,85m \nPainel 4,00 x 2,85 m\nPiso 10m x 3m\nPórtico 4,56 x 1,66 \n2 und Pórtico 1,20 x 2,34m\nENTRADA PÓRTICO ESCADA 5,63 x 2,85m",
         "obs":  "",
         "status":  "Agendado",
         "imagens":  [
@@ -1028,7 +1028,7 @@
                         "imagens/foto-muv737it-1nom.jpg",
                         "imagens/foto-muv76gv2-r5i.jpg"
                     ],
-        "updatedAt":  "2026-10-05T11:59:50.749Z"
+        "updatedAt":  "2026-10-05T12:03:29.502Z"
     },
     {
         "id":  67,
