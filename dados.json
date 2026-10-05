@@ -1139,13 +1139,13 @@
         "horario":  "",
         "dataEvento":  "",
         "local":  "Let´s Party",
-        "materiais":  "Painel 0,80 x 2,20 \nPainel 1,30 x 2,65\npiso 4,65 x 0,70 \ncilindro 1,35 x 0,43",
+        "materiais":  "2 und Painel 0,80 x 2,20 \nPainel 1,30 x 2,65\npiso 4,65 x 0,70 \ncilindro 1,35 x 0,43",
         "obs":  "",
         "status":  "Agendado",
         "imagens":  [
                         "imagens/foto-muvatb31-j8w.jpg"
                     ],
-        "updatedAt":  "2026-10-05T17:40:22.383Z"
+        "updatedAt":  "2026-10-05T17:41:01.639Z"
     },
     {
         "id":  74,
