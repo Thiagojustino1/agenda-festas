@@ -1178,5 +1178,21 @@
                         "imagens/foto-muvjeu81-nrt.jpg"
                     ],
         "updatedAt":  "2026-10-06T11:45:28.042Z"
+    },
+    {
+        "id":  76,
+        "cliente":  "Tati",
+        "evento":  "FENACAM",
+        "dataMontagem":  "2026-10-08",
+        "horario":  "",
+        "dataEvento":  "2026-10-08",
+        "local":  "Casa Nuestra Recepções - Rua Joca Soares, 1906 - Parque das Colinas, Natal - RN, 59066-070",
+        "materiais":  "Painel 2x2m\n02 Painéis 75cmx2m",
+        "obs":  "",
+        "status":  "Agendado",
+        "imagens":  [
+                        "imagens/foto-mux4bboy-1jzd.jpg"
+                    ],
+        "updatedAt":  "2026-10-06T20:15:10.829Z"
     }
 ]
