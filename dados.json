@@ -1201,18 +1201,18 @@
         "id":  77,
         "cliente":  "Daiane",
         "evento":  "Casamento",
-        "dataMontagem":  "2026-10-10",
+        "dataMontagem":  "2026-10-09",
         "horario":  "",
-        "dataEvento":  "2026-10-10",
-        "local":  "",
+        "dataEvento":  "2026-10-11",
+        "local":  "Cidade da esperança (Aguardando endereço completo)",
         "materiais":  "3 Painéis 0,80 x 2,00m",
-        "obs":  "",
+        "obs":  "Festa no domingo, mas pode montar na sexta feira",
         "status":  "Agendado",
         "imagens":  [
                         "imagens/foto-muye2xxx-8lt.jpg",
                         "imagens/foto-muye2y4r-1d7.jpg",
                         "imagens/foto-muye2yfy-1676.jpg"
                     ],
-        "updatedAt":  "2026-10-07T17:36:22.099Z"
+        "updatedAt":  "2026-10-07T20:51:33.916Z"
     }
 ]
