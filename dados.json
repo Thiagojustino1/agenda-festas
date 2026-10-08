@@ -1230,5 +1230,21 @@
 
                     ],
         "updatedAt":  "2026-10-08T13:14:38.676Z"
+    },
+    {
+        "id":  79,
+        "cliente":  "Ana Lady",
+        "evento":  "Batizado",
+        "dataMontagem":  "2026-10-17",
+        "horario":  "",
+        "dataEvento":  "2026-10-18",
+        "local":  "Valéria Calazans - Rua Paulo Lira, 3582 - Candelária, Natal - RN, CEP 59064-520",
+        "materiais":  "Painel 2,30 x 2,00m",
+        "obs":  "- Com possibilidade de montar na Sexta (16), se não houver festa lá no dia.",
+        "status":  "Agendado",
+        "imagens":  [
+
+                    ],
+        "updatedAt":  "2026-10-08T13:36:20.646Z"
     }
 ]
