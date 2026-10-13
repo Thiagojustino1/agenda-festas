@@ -117,15 +117,16 @@
         "cliente":  "Claudia",
         "evento":  "Tema Toy story - aniversário",
         "dataMontagem":  "2026-10-17",
+        "horario":  "",
         "dataEvento":  "",
         "local":  "",
-        "materiais":  "Painel 1,20m x 2,20m \n2 und Painel 1,00m x 2,00m ( boleados)\nPainel 0,80 x2,00\nPiso 3,00m x 2,50m\n2 und cubo 0,40cm x 0,80cm\ncubo 0,50cm x 0,80cm \n2 displays",
-        "obs":  "os painéis ainda podem sofrer alteração nos tamanhos",
+        "materiais":  "Painel 1,20m x 2,20m \n2 und Painel 1,00m x 2,00m\nPainel 0,80 x2,00\nPiso 3,00m x 2,50m\n2 und cubo 0,40cm x 0,80cm\ncubo 0,50cm x 0,80cm \n2 displays",
+        "obs":  "Instalação na sexta entre 9hs às  11hs",
         "status":  "Agendado",
         "imagens":  [
-                        "imagens/foto-msqlg53w-1xok.jpg",
-                        "imagens/foto-msqlg58g-1e.jpg"
-                    ]
+                        "imagens/foto-msqlg53w-1xok.jpg"
+                    ],
+        "updatedAt":  "2026-10-13T12:46:03.597Z"
     },
     {
         "id":  10,
