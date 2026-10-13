@@ -1298,5 +1298,21 @@
                         "imagens/foto-mv6ntc19-11jx.jpg"
                     ],
         "updatedAt":  "2026-10-13T12:30:59.369Z"
+    },
+    {
+        "id":  83,
+        "cliente":  "Mariana MMS",
+        "evento":  "aniversário",
+        "dataMontagem":  "2026-10-24",
+        "horario":  "",
+        "dataEvento":  "2026-10-24",
+        "local":  "84 Complexo Esportivo  Av. Militar chaves 2117 Candelária",
+        "materiais":  "Painel 1,50 x 2,20 \npiso lona 1,80 x 1,80",
+        "obs":  "Muito importante a área corre vento, importante ter aqueles peso que seguram o painel",
+        "status":  "Agendado",
+        "imagens":  [
+                        "imagens/foto-mv6ohzql-1qp.jpg"
+                    ],
+        "updatedAt":  "2026-10-13T12:50:09.835Z"
     }
 ]
