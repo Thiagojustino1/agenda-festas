@@ -1241,13 +1241,13 @@
         "horario":  "",
         "dataEvento":  "2026-10-18",
         "local":  "Valéria Calazans - Rua Paulo Lira, 3582 - Candelária, Natal - RN, CEP 59064-520",
-        "materiais":  "Painel 2,30 x 2,00m",
+        "materiais":  "Painel 2,00 x 2,30",
         "obs":  "- Com possibilidade de montar na Sexta (16), se não houver festa lá no dia.",
         "status":  "Agendado",
         "imagens":  [
-
+                        "imagens/foto-mv6nyfxw-1j1w.jpg"
                     ],
-        "updatedAt":  "2026-10-08T13:44:02.895Z"
+        "updatedAt":  "2026-10-13T12:34:57.715Z"
     },
     {
         "id":  80,
