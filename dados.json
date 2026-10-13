@@ -570,12 +570,14 @@
         "horario":  "",
         "dataEvento":  "",
         "local":  "",
-        "materiais":  "Painel 3,00 x 2,30 \nPiso 3,00 x 2,50",
+        "materiais":  "Painel 3,00 x 2,30 \nPiso 3,00 x 2,50\npiso redondo 3,00 x 3,00",
         "obs":  "",
         "status":  "Agendado",
         "imagens":  [
-                        "imagens/foto-mtsls1ek-87o.jpg"
-                    ]
+                        "imagens/foto-mv6mm5dq-13cn.jpg",
+                        "imagens/foto-mv6mm5jo-128g.jpg"
+                    ],
+        "updatedAt":  "2026-10-13T11:57:24.533Z"
     },
     {
         "id":  40,
