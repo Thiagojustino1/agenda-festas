@@ -1284,22 +1284,6 @@
         "updatedAt":  "2026-10-13T11:26:00.485Z"
     },
     {
-        "id":  82,
-        "cliente":  "Mariana MMS",
-        "evento":  "aniversário",
-        "dataMontagem":  "",
-        "horario":  "",
-        "dataEvento":  "2026-10-24",
-        "local":  "84 Complexo Esportivo  Av. Militar chaves 2117 Candelária",
-        "materiais":  "Painel boleado 1,50 x 2,20\npiso lona 1,80 x 1,80",
-        "obs":  "",
-        "status":  "Agendado",
-        "imagens":  [
-                        "imagens/foto-mv6ntc19-11jx.jpg"
-                    ],
-        "updatedAt":  "2026-10-13T12:30:59.369Z"
-    },
-    {
         "id":  83,
         "cliente":  "Mariana MMS",
         "evento":  "aniversário",
