@@ -119,14 +119,14 @@
         "dataMontagem":  "2026-10-16",
         "horario":  "",
         "dataEvento":  "",
-        "local":  "",
+        "local":  "renascer recepção",
         "materiais":  "Painel 1,20m x 2,20m \n2 und Painel 1,00m x 2,00m\nPainel 0,80 x2,00\nPiso 3,00m x 2,50m\n2 und cubo 0,40cm x 0,80cm\ncubo 0,50cm x 0,80cm",
-        "obs":  "Instalação na sexta entre 9hs às  11hs",
+        "obs":  "Instalação na sexta às 9h",
         "status":  "Agendado",
         "imagens":  [
                         "imagens/foto-mv6p9pdi-1xge.jpg"
                     ],
-        "updatedAt":  "2026-10-13T18:37:31.305Z"
+        "updatedAt":  "2026-10-14T12:37:32.861Z"
     },
     {
         "id":  10,
@@ -1347,21 +1347,5 @@
                         "imagens/foto-mv822ewx-1zvj.jpg"
                     ],
         "updatedAt":  "2026-10-14T11:57:43.805Z"
-    },
-    {
-        "id":  87,
-        "cliente":  "Emanuelle",
-        "evento":  "Álvaro 1 ano",
-        "dataMontagem":  "2026-10-15",
-        "horario":  "",
-        "dataEvento":  "2026-10-17",
-        "local":  "Let\u0027s Party - Rua Dr. Poty Nóbrega, 338 - Lagoa Nova, Natal - RN, 59056-180",
-        "materiais":  "Painel principal 1,30 x 2,65\n02 Und. Painel lateral 0,80 x 2,20\nPiso 4,65 x 0,70\nDisplay 65cm de altura",
-        "obs":  "- Festa sábado as 14h pode montar na quinta",
-        "status":  "Agendado",
-        "imagens":  [
-                        "imagens/foto-mv82ja3p-435.jpg"
-                    ],
-        "updatedAt":  "2026-10-14T12:16:37.301Z"
     }
 ]
