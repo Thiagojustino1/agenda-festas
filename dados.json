@@ -570,15 +570,15 @@
         "dataMontagem":  "2026-10-16",
         "horario":  "",
         "dataEvento":  "",
-        "local":  "",
+        "local":  "Yolla",
         "materiais":  "Painel 3,00 x 2,30 \nPiso 3,00 x 2,50\npiso redondo 3,00 x 3,00",
-        "obs":  "",
+        "obs":  "Montagem às 11h",
         "status":  "Agendado",
         "imagens":  [
                         "imagens/foto-mv6mm5dq-13cn.jpg",
                         "imagens/foto-mv6mm5jo-128g.jpg"
                     ],
-        "updatedAt":  "2026-10-13T11:57:24.533Z"
+        "updatedAt":  "2026-10-14T12:38:24.636Z"
     },
     {
         "id":  40,
