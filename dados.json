@@ -1323,14 +1323,14 @@
         "horario":  "",
         "dataEvento":  "",
         "local":  "Mulekada",
-        "materiais":  "3 und Estrutura de metalon 1,00 x 1,20",
+        "materiais":  "3 und Estrutura de metalon 1,00m largura parte superior\nparte embaixo com 0,80cm \ncom 1,20 de altura",
         "obs":  "",
         "status":  "Agendado",
         "imagens":  [
                         "imagens/foto-mv73qpav-1wt4.jpg",
                         "imagens/foto-mv8248cm-xtj.jpg"
                     ],
-        "updatedAt":  "2026-10-14T11:59:08.613Z"
+        "updatedAt":  "2026-10-14T12:00:10.517Z"
     },
     {
         "id":  86,
