@@ -1271,17 +1271,17 @@
         "id":  81,
         "cliente":  "Gustavo",
         "evento":  "",
-        "dataMontagem":  "2026-10-14",
+        "dataMontagem":  "2026-10-15",
         "horario":  "",
         "dataEvento":  "",
         "local":  "",
         "materiais":  "Painel 3,00 x 2,00",
         "obs":  "",
-        "status":  "Montado",
+        "status":  "Agendado",
         "imagens":  [
                         "imagens/foto-mv1doeql-j1y.jpg"
                     ],
-        "updatedAt":  "2026-10-15T11:08:28.844Z"
+        "updatedAt":  "2026-10-15T11:08:48.692Z"
     },
     {
         "id":  83,
