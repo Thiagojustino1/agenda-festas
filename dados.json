@@ -1534,14 +1534,14 @@
         "horario":  "",
         "dataEvento":  "",
         "local":  "",
-        "materiais":  "Painel 3,00 x2,40\nPiso 3,00 x2,20",
+        "materiais":  "Painel 3,00 x2,40\nPiso 3,00 x 2,20",
         "obs":  "",
         "status":  "Agendado",
         "imagens":  [
                         "imagens/foto-mvh4fuuy-1vnx.jpg",
                         "imagens/foto-mvh4fv2l-gzm.jpg"
                     ],
-        "updatedAt":  "2026-10-21T11:07:18.580Z"
+        "updatedAt":  "2026-10-22T14:20:35.571Z"
     },
     {
         "id":  99,
