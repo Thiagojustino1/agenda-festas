@@ -1533,7 +1533,7 @@
         "dataMontagem":  "2026-10-23",
         "horario":  "",
         "dataEvento":  "",
-        "local":  "",
+        "local":  "Recepção no Condomínio Wilson Cunha Rua Deputado Clovis Motta, 3094, Lagoa Nova",
         "materiais":  "Painel 3,00 x 2,40\nPiso 3,00 x 2,20",
         "obs":  "",
         "status":  "Agendado",
@@ -1541,7 +1541,7 @@
                         "imagens/foto-mvh4fuuy-1vnx.jpg",
                         "imagens/foto-mvh4fv2l-gzm.jpg"
                     ],
-        "updatedAt":  "2026-10-22T14:20:40.693Z"
+        "updatedAt":  "2026-10-23T18:06:20.886Z"
     },
     {
         "id":  99,
