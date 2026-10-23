@@ -1547,17 +1547,17 @@
         "id":  99,
         "cliente":  "Pedro Maia",
         "evento":  "",
-        "dataMontagem":  "2026-10-25",
+        "dataMontagem":  "2026-10-24",
         "horario":  "",
         "dataEvento":  "",
-        "local":  "",
+        "local":  "Renata Motta",
         "materiais":  "Montagem Pedro Maia\n\nPainel principal 5,40 x 2,40\nadesivo principal 5,40 x 2,60\nadesivo porta de entrada 1,52 x 2,40\nadesivo hall 1,74 x 4,82\nPainel com ganchos 3,72 x 2,38 \nPainel lateral 2,35 x 2,38 \nadesivo 3,72 x 2,38",
-        "obs":  "",
+        "obs":  "Montagem às 20:30h",
         "status":  "Agendado",
         "imagens":  [
                         "imagens/foto-mvjhgxny-1gq7.jpg"
                     ],
-        "updatedAt":  "2026-10-22T11:54:23.465Z"
+        "updatedAt":  "2026-10-23T18:40:29.180Z"
     },
     {
         "id":  100,
