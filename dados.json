@@ -1708,18 +1708,18 @@
     },
     {
         "id":  109,
-        "cliente":  "Adriana",
-        "evento":  "Os 3 porquinhos",
-        "dataMontagem":  "2026-10-30",
+        "cliente":  "Emanuelle",
+        "evento":  "Bernardo 3 anos",
+        "dataMontagem":  "2026-10-29",
         "horario":  "",
-        "dataEvento":  "",
-        "local":  "",
-        "materiais":  "painel 1,00 x 2,50\nPainel 1,00 x 2,30 \nPainel 1,00 x 2,40",
-        "obs":  "O painel terá esses recortes na parte superior",
+        "dataEvento":  "2026-11-02",
+        "local":  "Let\u0027s Party - Rua Dr. Poty Nóbrega, 338 - Lagoa Nova, Natal - RN, 59056-180",
+        "materiais":  "Painel central 1,30 x 2,65m\n02 Und. Painéis laterais 0,80 x 2,20m\nPiso 4,65 x 0,70m\nDisplay 45cm de altura",
+        "obs":  "",
         "status":  "Agendado",
         "imagens":  [
-                        "imagens/foto-mvs6dj2f-g3a.jpg"
+                        "imagens/foto-mvshhm8j-msj.jpg"
                     ],
-        "updatedAt":  "2026-10-28T14:50:24.990Z"
+        "updatedAt":  "2026-10-28T19:04:50.896Z"
     }
 ]
