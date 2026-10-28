@@ -1714,12 +1714,12 @@
         "horario":  "",
         "dataEvento":  "",
         "local":  "",
-        "materiais":  "Painel 2,93 x 2,72",
+        "materiais":  "painel 1,00 x 2,50\nPainel 1,00 x 2,30 \nPainel 1,00 x 2,40",
         "obs":  "O painel terá esses recortes na parte superior",
         "status":  "Agendado",
         "imagens":  [
                         "imagens/foto-mvs6dj2f-g3a.jpg"
                     ],
-        "updatedAt":  "2026-10-28T13:53:44.389Z"
+        "updatedAt":  "2026-10-28T14:50:24.990Z"
     }
 ]
