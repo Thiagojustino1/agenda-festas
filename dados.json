@@ -1721,5 +1721,21 @@
                         "imagens/foto-mvshhm8j-msj.jpg"
                     ],
         "updatedAt":  "2026-10-28T19:04:50.896Z"
+    },
+    {
+        "id":  110,
+        "cliente":  "Faby",
+        "evento":  "Antecipa Black friday",
+        "dataMontagem":  "2026-10-29",
+        "horario":  "",
+        "dataEvento":  "",
+        "local":  "Lolla kids na av alexandrino de Alencar em frente ao corpo de bombeiros",
+        "materiais":  "Aplicação de adesivo tamanho 1x1m",
+        "obs":  "",
+        "status":  "Agendado",
+        "imagens":  [
+                        "imagens/foto-mvshlele-9vc.jpg"
+                    ],
+        "updatedAt":  "2026-10-28T19:07:47.613Z"
     }
 ]
