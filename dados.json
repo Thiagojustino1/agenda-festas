@@ -1715,11 +1715,11 @@
         "dataEvento":  "",
         "local":  "",
         "materiais":  "Painel 2,93 x 2,72",
-        "obs":  "",
+        "obs":  "O painel terá esses recortes na parte superior",
         "status":  "Agendado",
         "imagens":  [
-
+                        "imagens/foto-mvs6dj2f-g3a.jpg"
                     ],
-        "updatedAt":  "2026-10-28T13:27:01.550Z"
+        "updatedAt":  "2026-10-28T13:53:44.389Z"
     }
 ]
