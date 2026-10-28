@@ -1710,7 +1710,7 @@
         "id":  109,
         "cliente":  "Adriana",
         "evento":  "Os 3 porquinhos",
-        "dataMontagem":  "",
+        "dataMontagem":  "2026-10-30",
         "horario":  "",
         "dataEvento":  "",
         "local":  "",
@@ -1720,6 +1720,6 @@
         "imagens":  [
 
                     ],
-        "updatedAt":  "2026-10-28T13:26:22.222Z"
+        "updatedAt":  "2026-10-28T13:27:01.550Z"
     }
 ]
