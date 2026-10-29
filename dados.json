@@ -1453,14 +1453,15 @@
         "dataMontagem":  "2026-11-12",
         "horario":  "09:00",
         "dataEvento":  "",
-        "local":  "",
-        "materiais":  "Painel 4,00 x 2,30",
-        "obs":  "Teatro Riachuelo ,a partir das 9h",
+        "local":  "Teatro Riachuelo Natal - Shopping Midway Mall (3º piso)",
+        "materiais":  "Painel 4,00 x 2,30m\nPainel 4,00 x 2,20m",
+        "obs":  "A partir das 9h\nPortão de Entrada pelo Estacionamento",
         "status":  "Agendado",
         "imagens":  [
-                        "imagens/foto-mvfn01gt-1lom.jpg"
+                        "imagens/foto-mvfn01gt-1lom.jpg",
+                        "imagens/foto-mvtiz3qg-61f.jpg"
                     ],
-        "updatedAt":  "2026-10-19T19:18:08.232Z"
+        "updatedAt":  "2026-10-29T12:34:12.517Z"
     },
     {
         "id":  94,
