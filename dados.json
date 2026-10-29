@@ -1757,17 +1757,17 @@
     {
         "id":  112,
         "cliente":  "Overkids",
-        "evento":  "",
+        "evento":  "Formandos Over",
         "dataMontagem":  "2026-10-29",
         "horario":  "",
         "dataEvento":  "",
         "local":  "colégio Over - rua José M. de Vasconcelos, 1968 - Capim Macio - Ponta negra",
-        "materiais":  "Painel 2,50 x 2,50",
+        "materiais":  "Painel 2,50 x 2,50m",
         "obs":  "",
         "status":  "Agendado",
         "imagens":  [
-
+                        "imagens/foto-mvthng3q-214f.jpg"
                     ],
-        "updatedAt":  "2026-10-29T11:34:50.586Z"
+        "updatedAt":  "2026-10-29T11:57:09.058Z"
     }
 ]
