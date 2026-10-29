@@ -1694,17 +1694,17 @@
         "cliente":  "Adriana",
         "evento":  "1º ELEMENTUS DAY",
         "dataMontagem":  "2026-10-30",
-        "horario":  "14:00",
+        "horario":  "14:30",
         "dataEvento":  "2026-10-30",
         "local":  "Bodytech tirol - Avenida Rodrigues Alves, 930 - Tirol, Natal - RN, CEP: 59020-200",
         "materiais":  "Painel 2,50L x 2,40A",
-        "obs":  "- Deixar com pé\n- Deixar as 14:00",
+        "obs":  "- Deixar com pé",
         "status":  "Agendado",
         "imagens":  [
                         "imagens/foto-mvs23j5d-9e3.jpg",
                         "imagens/foto-mvs23jhx-1uxz.jpg"
                     ],
-        "updatedAt":  "2026-10-28T11:55:58.643Z"
+        "updatedAt":  "2026-10-29T11:44:45.582Z"
     },
     {
         "id":  109,
