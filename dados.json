@@ -1748,13 +1748,13 @@
         "dataEvento":  "",
         "local":  "Avenida Humberto Campos - 3094 ; Cotovelo",
         "materiais":  "Painel 1,00 x 2,50 \nPainel 1,00 x 2,40 \nPainel 1,00 x 2,30 \npiso 2,93 x 2,50 \ndisplays",
-        "obs":  "piso sem instalação",
+        "obs":  "piso sem instalação - \nmontagem no final da tarde",
         "status":  "Agendado",
         "imagens":  [
                         "imagens/foto-mvsiv7hh-13w0.jpg",
                         "imagens/foto-mvuwi5uh-1aca.jpg"
                     ],
-        "updatedAt":  "2026-10-30T11:40:42.899Z"
+        "updatedAt":  "2026-10-30T12:23:24.509Z"
     },
     {
         "id":  112,
