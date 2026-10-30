@@ -1745,16 +1745,15 @@
         "evento":  "",
         "dataMontagem":  "2026-10-30",
         "horario":  "",
-        "dataEvento":  "",
+        "dataEvento":  "2026-10-31",
         "local":  "Avenida Humberto Campos - 3094 ; Cotovelo",
         "materiais":  "Painel 1,00 x 2,50 \nPainel 1,00 x 2,40 \nPainel 1,00 x 2,30 \npiso 2,93 x 2,50 \ndisplays",
-        "obs":  "piso sem instalação - \nmontagem no final da tarde",
+        "obs":  "",
         "status":  "Agendado",
         "imagens":  [
-                        "imagens/foto-mvsiv7hh-13w0.jpg",
-                        "imagens/foto-mvuwi5uh-1aca.jpg"
+                        "imagens/foto-mvsiv7hh-13w0.jpg"
                     ],
-        "updatedAt":  "2026-10-30T12:23:24.509Z"
+        "updatedAt":  "2026-10-30T13:12:27.815Z"
     },
     {
         "id":  112,
@@ -1771,21 +1770,5 @@
                         "imagens/foto-mvthng3q-214f.jpg"
                     ],
         "updatedAt":  "2026-10-29T19:47:28.375Z"
-    },
-    {
-        "id":  113,
-        "cliente":  "Pedro Maia",
-        "evento":  "aniversário",
-        "dataMontagem":  "2026-10-31",
-        "horario":  "",
-        "dataEvento":  "",
-        "local":  "",
-        "materiais":  "Painel 5,22 x 2,40m\nPainel 0,82 x 2,40m \nPainel 1,63 x 2,40m\nPiso 5,22 x 2,50m\nPainel 3,51 x 2,40\nPainel 1,46 x 2,40m  \npiso 3,51 x 1,46m \n8 adesivo 1,20 x 1,20m \nadesivo 1,50 x 1,50m",
-        "obs":  "painéis todos retangulares / Painel 3,51 x 2,40  - 12 ganchos",
-        "status":  "Agendado",
-        "imagens":  [
-                        "imagens/foto-mvuy25bp-w1k.jpg"
-                    ],
-        "updatedAt":  "2026-10-30T12:24:14.961Z"
     }
 ]
