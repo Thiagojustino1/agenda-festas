@@ -1824,7 +1824,7 @@
         "id":  116,
         "cliente":  "Emanuelle",
         "evento":  "",
-        "dataMontagem":  "",
+        "dataMontagem":  "2026-11-04",
         "horario":  "",
         "dataEvento":  "",
         "local":  "Loja de Emanuelle",
@@ -1834,6 +1834,6 @@
         "imagens":  [
                         "imagens/foto-mw14h8ve-1kn7.jpg"
                     ],
-        "updatedAt":  "2026-11-03T20:10:34.150Z"
+        "updatedAt":  "2026-11-03T20:12:33.715Z"
     }
 ]
