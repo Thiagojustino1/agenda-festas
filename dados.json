@@ -1824,17 +1824,17 @@
         "id":  116,
         "cliente":  "Emanuelle",
         "evento":  "",
-        "dataMontagem":  "2026-11-04",
+        "dataMontagem":  "",
         "horario":  "",
         "dataEvento":  "",
-        "local":  "Loja de Emanuelle",
+        "local":  "Tutti Decor -  Av. Romualdo Galvão, 318 - Tirol, Natal - RN, 59022-100",
         "materiais":  "Painel 2,00 x 2,30",
         "obs":  "",
         "status":  "Agendado",
         "imagens":  [
                         "imagens/foto-mw14h8ve-1kn7.jpg"
                     ],
-        "updatedAt":  "2026-11-03T20:12:33.715Z"
+        "updatedAt":  "2026-11-03T20:26:57.892Z"
     },
     {
         "id":  117,
