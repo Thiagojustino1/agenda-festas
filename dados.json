@@ -1821,22 +1821,6 @@
         "updatedAt":  "2026-11-03T20:12:46.315Z"
     },
     {
-        "id":  116,
-        "cliente":  "Emanuelle",
-        "evento":  "",
-        "dataMontagem":  "2026-11-04",
-        "horario":  "",
-        "dataEvento":  "",
-        "local":  "Tutti Decor -  Av. Romualdo Galvão, 318 - Tirol, Natal - RN, 59022-100",
-        "materiais":  "Painel 2,00 x 2,30",
-        "obs":  "",
-        "status":  "Agendado",
-        "imagens":  [
-                        "imagens/foto-mw14h8ve-1kn7.jpg"
-                    ],
-        "updatedAt":  "2026-11-03T20:27:11.052Z"
-    },
-    {
         "id":  117,
         "cliente":  "Adriana",
         "evento":  "Chá de lingerie",
