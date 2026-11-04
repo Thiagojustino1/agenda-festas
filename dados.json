@@ -1876,11 +1876,11 @@
     {
         "id":  119,
         "cliente":  "Paulinho",
-        "evento":  "",
+        "evento":  "Formatura ABC Salesiano",
         "dataMontagem":  "2026-11-07",
         "horario":  "",
         "dataEvento":  "",
-        "local":  "happy day",
+        "local":  "Happy day",
         "materiais":  "adesivo  7,20m x 3,80m\nadesivo 4,80m x 12m \nadesivo 2,60m x 4,80m",
         "obs":  "no primeiro horário de manhã",
         "status":  "Agendado",
@@ -1889,7 +1889,7 @@
                         "imagens/foto-mw25dudr-2gr.jpg",
                         "imagens/foto-mw25dw86-a80.jpg"
                     ],
-        "updatedAt":  "2026-11-04T13:23:44.255Z"
+        "updatedAt":  "2026-11-04T13:24:21.448Z"
     },
     {
         "id":  120,
