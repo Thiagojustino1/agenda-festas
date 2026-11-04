@@ -1926,6 +1926,8 @@
         "updatedAt":  "2026-11-04T17:10:15.108Z"
     },
     {
+        "createdAt":  "2026-11-04T17:22:00.587Z",
+        "id":  122,
         "cliente":  "Overkids",
         "evento":  "Formandos Over",
         "dataMontagem":  "2026-11-05",
@@ -1933,13 +1935,11 @@
         "dataEvento":  "",
         "local":  "Over - Norte Shopping Natal, Av. Dr. João Medeiros Filho, 2395 - 3º andar",
         "materiais":  "Painel 2,50 x 2,50m",
-        "obs":  "",
+        "obs":  "- Fazer um novo painel\n- Por hora, os outros 2 painéis não vão ser desmontados.",
         "status":  "Agendado",
         "imagens":  [
                         "imagens/foto-mw2dwbfl-r86.jpg"
                     ],
-        "id":  122,
-        "createdAt":  "2026-11-04T17:22:00.587Z",
-        "updatedAt":  "2026-11-04T17:22:00.587Z"
+        "updatedAt":  "2026-11-04T17:24:40.847Z"
     }
 ]
