@@ -1821,22 +1821,6 @@
         "updatedAt":  "2026-11-03T20:12:46.315Z"
     },
     {
-        "id":  117,
-        "cliente":  "Adriana",
-        "evento":  "Chá de lingerie",
-        "dataMontagem":  "2026-11-07",
-        "horario":  "",
-        "dataEvento":  "",
-        "local":  "Condomínio Residencial Bosque das Flores • Alameda dos Bosques, nº 795 • Bairro: Parque do Jiqui (região de Nova Parnamirim) CEP: 59153-902",
-        "materiais":  "Painel 2,50 x 2,50m",
-        "obs":  "- Desmontagem na segunda, dia 09.11",
-        "status":  "Agendado",
-        "imagens":  [
-
-                    ],
-        "updatedAt":  "2026-11-03T20:20:25.273Z"
-    },
-    {
         "id":  118,
         "cliente":  "Daiane",
         "evento":  "",
@@ -1851,21 +1835,5 @@
 
                     ],
         "updatedAt":  "2026-11-04T11:32:36.070Z"
-    },
-    {
-        "id":  119,
-        "cliente":  "Paulinho",
-        "evento":  "",
-        "dataMontagem":  "2026-11-07",
-        "horario":  "",
-        "dataEvento":  "",
-        "local":  "happy day",
-        "materiais":  "adesivo  7,20m x 3,80m\nadesivo 4,80m x 12m \nadesivo 2,60m x 4,80m",
-        "obs":  "primeiro horário no sábado",
-        "status":  "Agendado",
-        "imagens":  [
-
-                    ],
-        "updatedAt":  "2026-11-04T11:35:23.644Z"
     }
 ]
