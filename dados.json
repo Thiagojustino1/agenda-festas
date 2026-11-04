@@ -12,7 +12,8 @@
         "status":  "Montado",
         "imagens":  [
 
-                    ]
+                    ],
+        "updatedAt":  "2000-01-01T00:00:00.000Z"
     },
     {
         "id":  2,
@@ -26,7 +27,8 @@
         "status":  "Montado",
         "imagens":  [
 
-                    ]
+                    ],
+        "updatedAt":  "2000-01-01T00:00:00.000Z"
     },
     {
         "id":  3,
@@ -40,7 +42,8 @@
         "status":  "Montado",
         "imagens":  [
 
-                    ]
+                    ],
+        "updatedAt":  "2000-01-01T00:00:00.000Z"
     },
     {
         "id":  4,
@@ -54,7 +57,8 @@
         "status":  "Montado",
         "imagens":  [
 
-                    ]
+                    ],
+        "updatedAt":  "2000-01-01T00:00:00.000Z"
     },
     {
         "id":  5,
@@ -68,7 +72,8 @@
         "status":  "Montado",
         "imagens":  [
 
-                    ]
+                    ],
+        "updatedAt":  "2000-01-01T00:00:00.000Z"
     },
     {
         "id":  6,
@@ -82,7 +87,8 @@
         "status":  "Montado",
         "imagens":  [
 
-                    ]
+                    ],
+        "updatedAt":  "2000-01-01T00:00:00.000Z"
     },
     {
         "id":  7,
@@ -96,7 +102,8 @@
         "status":  "Montado",
         "imagens":  [
 
-                    ]
+                    ],
+        "updatedAt":  "2000-01-01T00:00:00.000Z"
     },
     {
         "id":  8,
@@ -110,7 +117,8 @@
         "status":  "Montado",
         "imagens":  [
 
-                    ]
+                    ],
+        "updatedAt":  "2000-01-01T00:00:00.000Z"
     },
     {
         "id":  9,
@@ -141,7 +149,8 @@
         "status":  "Montado",
         "imagens":  [
 
-                    ]
+                    ],
+        "updatedAt":  "2000-01-01T00:00:00.000Z"
     },
     {
         "id":  11,
@@ -172,7 +181,8 @@
         "status":  "Montado",
         "imagens":  [
 
-                    ]
+                    ],
+        "updatedAt":  "2000-01-01T00:00:00.000Z"
     },
     {
         "id":  13,
@@ -187,7 +197,8 @@
         "status":  "Montado",
         "imagens":  [
 
-                    ]
+                    ],
+        "updatedAt":  "2000-01-01T00:00:00.000Z"
     },
     {
         "id":  14,
@@ -202,7 +213,8 @@
         "status":  "Montado",
         "imagens":  [
 
-                    ]
+                    ],
+        "updatedAt":  "2000-01-01T00:00:00.000Z"
     },
     {
         "id":  15,
@@ -216,7 +228,8 @@
         "status":  "Montado",
         "imagens":  [
 
-                    ]
+                    ],
+        "updatedAt":  "2000-01-01T00:00:00.000Z"
     },
     {
         "id":  16,
@@ -231,7 +244,8 @@
         "status":  "Montado",
         "imagens":  [
 
-                    ]
+                    ],
+        "updatedAt":  "2000-01-01T00:00:00.000Z"
     },
     {
         "id":  17,
@@ -246,7 +260,8 @@
         "status":  "Montado",
         "imagens":  [
 
-                    ]
+                    ],
+        "updatedAt":  "2000-01-01T00:00:00.000Z"
     },
     {
         "id":  18,
@@ -261,7 +276,8 @@
         "status":  "Montado",
         "imagens":  [
 
-                    ]
+                    ],
+        "updatedAt":  "2000-01-01T00:00:00.000Z"
     },
     {
         "id":  19,
@@ -276,7 +292,8 @@
         "status":  "Montado",
         "imagens":  [
 
-                    ]
+                    ],
+        "updatedAt":  "2000-01-01T00:00:00.000Z"
     },
     {
         "id":  20,
@@ -291,7 +308,8 @@
         "status":  "Montado",
         "imagens":  [
 
-                    ]
+                    ],
+        "updatedAt":  "2000-01-01T00:00:00.000Z"
     },
     {
         "id":  21,
@@ -306,7 +324,8 @@
         "status":  "Montado",
         "imagens":  [
 
-                    ]
+                    ],
+        "updatedAt":  "2000-01-01T00:00:00.000Z"
     },
     {
         "id":  22,
@@ -321,7 +340,8 @@
         "status":  "Montado",
         "imagens":  [
 
-                    ]
+                    ],
+        "updatedAt":  "2000-01-01T00:00:00.000Z"
     },
     {
         "id":  23,
@@ -336,7 +356,8 @@
         "status":  "Montado",
         "imagens":  [
 
-                    ]
+                    ],
+        "updatedAt":  "2000-01-01T00:00:00.000Z"
     },
     {
         "id":  24,
@@ -351,7 +372,8 @@
         "status":  "Montado",
         "imagens":  [
 
-                    ]
+                    ],
+        "updatedAt":  "2000-01-01T00:00:00.000Z"
     },
     {
         "id":  25,
@@ -366,7 +388,8 @@
         "status":  "Montado",
         "imagens":  [
 
-                    ]
+                    ],
+        "updatedAt":  "2000-01-01T00:00:00.000Z"
     },
     {
         "id":  26,
@@ -381,7 +404,8 @@
         "status":  "Montado",
         "imagens":  [
 
-                    ]
+                    ],
+        "updatedAt":  "2000-01-01T00:00:00.000Z"
     },
     {
         "id":  27,
@@ -396,7 +420,8 @@
         "status":  "Montado",
         "imagens":  [
 
-                    ]
+                    ],
+        "updatedAt":  "2000-01-01T00:00:00.000Z"
     },
     {
         "id":  28,
@@ -411,7 +436,8 @@
         "status":  "Montado",
         "imagens":  [
 
-                    ]
+                    ],
+        "updatedAt":  "2000-01-01T00:00:00.000Z"
     },
     {
         "id":  29,
@@ -426,7 +452,8 @@
         "status":  "Montado",
         "imagens":  [
 
-                    ]
+                    ],
+        "updatedAt":  "2000-01-01T00:00:00.000Z"
     },
     {
         "id":  30,
@@ -441,7 +468,8 @@
         "status":  "Montado",
         "imagens":  [
 
-                    ]
+                    ],
+        "updatedAt":  "2000-01-01T00:00:00.000Z"
     },
     {
         "id":  31,
@@ -456,7 +484,8 @@
         "status":  "Montado",
         "imagens":  [
 
-                    ]
+                    ],
+        "updatedAt":  "2000-01-01T00:00:00.000Z"
     },
     {
         "id":  32,
@@ -471,7 +500,8 @@
         "status":  "Montado",
         "imagens":  [
 
-                    ]
+                    ],
+        "updatedAt":  "2000-01-01T00:00:00.000Z"
     },
     {
         "id":  33,
@@ -486,7 +516,8 @@
         "status":  "Montado",
         "imagens":  [
 
-                    ]
+                    ],
+        "updatedAt":  "2000-01-01T00:00:00.000Z"
     },
     {
         "id":  34,
@@ -501,7 +532,8 @@
         "status":  "Montado",
         "imagens":  [
 
-                    ]
+                    ],
+        "updatedAt":  "2000-01-01T00:00:00.000Z"
     },
     {
         "id":  35,
@@ -516,7 +548,8 @@
         "status":  "Montado",
         "imagens":  [
 
-                    ]
+                    ],
+        "updatedAt":  "2000-01-01T00:00:00.000Z"
     },
     {
         "id":  36,
@@ -531,7 +564,8 @@
         "status":  "Montado",
         "imagens":  [
 
-                    ]
+                    ],
+        "updatedAt":  "2000-01-01T00:00:00.000Z"
     },
     {
         "id":  37,
@@ -562,7 +596,8 @@
         "status":  "Montado",
         "imagens":  [
 
-                    ]
+                    ],
+        "updatedAt":  "2000-01-01T00:00:00.000Z"
     },
     {
         "id":  39,
@@ -613,7 +648,8 @@
         "imagens":  [
                         "imagens/foto-mtt0isjf-1g2k.jpg",
                         "imagens/foto-mtu46908-1eqa.jpg"
-                    ]
+                    ],
+        "updatedAt":  "2000-01-01T00:00:00.000Z"
     },
     {
         "id":  42,
@@ -669,7 +705,8 @@
         "status":  "Montado",
         "imagens":  [
                         "imagens/foto-mtuknin8-fag.jpg"
-                    ]
+                    ],
+        "updatedAt":  "2000-01-01T00:00:00.000Z"
     },
     {
         "id":  45,
