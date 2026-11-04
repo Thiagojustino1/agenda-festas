@@ -1243,11 +1243,20 @@ function migrarImagensLegadas() {
   rodapeDado('Movendo ' + total + ' foto(s) para a pasta <b>imagens/</b>...');
   var feito = 0;
   var tocados = [];
+  var falhas = 0;
+  var novas = [];
   pend.forEach(function (t) {
     p = p.then(function () {
       return subirImagem(t.src).then(function (path) {
-        if (path) t.it.imagens[t.i] = path;
+        t.it.imagens[t.i] = path;
+        novas.push(path);
         if (tocados.indexOf(t.it) === -1) tocados.push(t.it);
+        feito++;
+        if (feito % 5 === 0 || feito === total) {
+          rodapeDado('Movendo fotos... ' + feito + '/' + total);
+        }
+      }).catch(function () {
+        falhas++;
         feito++;
         if (feito % 5 === 0 || feito === total) {
           rodapeDado('Movendo fotos... ' + feito + '/' + total);
@@ -1256,6 +1265,14 @@ function migrarImagensLegadas() {
     });
   });
   p.then(function () {
+    if (falhas > 0) {
+      // Nada foi alterado no dados.json: remove o que subiu e tenta de novo.
+      novas.forEach(function (s) { apagarImagemServidor(s); });
+      rodapeDado('Não foi possível mover ' + falhas + ' foto(s) antiga(s). Nada foi alterado.');
+      toast('Não foi possível mover ' + falhas + ' foto(s) antiga(s). Nada foi alterado; tente de novo.', 6000);
+      recarregarSilencioso();
+      return;
+    }
     // Manda so os registros cujas fotos mudaram, com o campo imagens.
     var alterados = tocados.map(function (it) { return { id: it.id, imagens: it.imagens }; });
     gravarLocal(DADOS_TODOS);
@@ -1583,23 +1600,29 @@ function novoNomeImagem() {
   return 'foto-' + Date.now().toString(36) + '-' + Math.floor(Math.random() * 100000).toString(36) + '.jpg';
 }
 function subirImagem(dataUrl) {
-  return new Promise(function (resolve) {
-    var i = dataUrl.indexOf(',');
-    var b64 = i >= 0 ? dataUrl.slice(i + 1) : dataUrl;
-    var bin = atob(b64);
-    var bytes = new Uint8Array(bin.length);
-    for (var k = 0; k < bin.length; k++) bytes[k] = bin.charCodeAt(k);
-    var nome = novoNomeImagem();
-    fetch('imagens/' + nome, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/octet-stream' },
-      body: bytes
-    }).then(function (r) {
-      if (!r.ok) throw new Error('upload');
-      return r.text();
-    }).then(function (path) {
-      resolve(path || 'imagens/' + nome);
-    }).catch(function () { resolve(null); });
+  return new Promise(function (resolve, reject) {
+    try {
+      var i = dataUrl.indexOf(',');
+      var b64 = i >= 0 ? dataUrl.slice(i + 1) : dataUrl;
+      var bin = atob(b64);
+      var bytes = new Uint8Array(bin.length);
+      for (var k = 0; k < bin.length; k++) bytes[k] = bin.charCodeAt(k);
+      var nome = novoNomeImagem();
+      fetch('imagens/' + nome, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/octet-stream' },
+        body: bytes
+      }).then(function (r) {
+        if (!r.ok) throw new Error('upload');
+        return r.text();
+      }).then(function (path) {
+        resolve(path || 'imagens/' + nome);
+      }).catch(function () {
+        reject(new Error('falha_upload'));
+      });
+    } catch (e) {
+      reject(new Error('falha_upload'));
+    }
   });
 }
 function apagarImagemServidor(caminho) {
@@ -1608,20 +1631,31 @@ function apagarImagemServidor(caminho) {
 }
 function prepararImagensParaSalvar(lista) {
   if (!Array.isArray(lista)) lista = [];
-  if (!MODO_SERVIDOR) return Promise.resolve(lista.filter(Boolean));
-  var pendentes = [];
-  lista.forEach(function (s, idx) { if (ehDataURL(s)) pendentes.push(idx); });
-  if (pendentes.length === 0) return Promise.resolve(lista.filter(Boolean));
   var resultado = lista.slice();
+  if (!MODO_SERVIDOR) {
+    return Promise.resolve({ imagens: resultado.filter(Boolean), falhas: 0, novas: [] });
+  }
+  var pendentes = [];
+  resultado.forEach(function (s, idx) { if (ehDataURL(s)) pendentes.push(idx); });
+  if (pendentes.length === 0) {
+    return Promise.resolve({ imagens: resultado.filter(Boolean), falhas: 0, novas: [] });
+  }
+  var falhas = 0;
+  var novas = [];
   var p = Promise.resolve();
   pendentes.forEach(function (idx) {
     p = p.then(function () {
       return subirImagem(resultado[idx]).then(function (path) {
         resultado[idx] = path;
+        novas.push(path);
+      }).catch(function () {
+        falhas++;
       });
     });
   });
-  return p.then(function () { return resultado.filter(Boolean); });
+  return p.then(function () {
+    return { imagens: resultado.filter(Boolean), falhas: falhas, novas: novas };
+  });
 }
 
 function adicionarImagens(ev) {
@@ -1861,8 +1895,18 @@ function salvarFormulario() {
 
   var btnSalvar = document.querySelector('.btn-salvar');
   if (btnSalvar) btnSalvar.disabled = true;
-  prepararImagensParaSalvar(obj.imagens).then(function (imagensFinais) {
-    obj.imagens = imagensFinais;
+  prepararImagensParaSalvar(obj.imagens).then(function (prep) {
+    // Mantem no formulario as fotos que falharam (data URL) e troca as
+    // que subiram pelo caminho no servidor. Assim o usuario pode tentar
+    // salvar de novo sem perder nenhuma foto.
+    IMAGENS_EDITANDO = prep.imagens.slice();
+    renderImagens();
+    if (prep.falhas > 0) {
+      var erroFoto = new Error('fotos');
+      erroFoto.fotosFalharam = prep.falhas;
+      throw erroFoto;
+    }
+    obj.imagens = prep.imagens;
     return salvarItem(obj).then(function (salvo) {
       // So apaga fotos removidas depois que o registro foi salvo com sucesso.
       if (MODO_SERVIDOR && Array.isArray(btnOk)) {
@@ -1880,6 +1924,10 @@ function salvarFormulario() {
       return salvo;
     });
   }).catch(function (err) {
+    if (err && err.fotosFalharam) {
+      toast('Não foi possível enviar ' + err.fotosFalharam + ' foto(s). O agendamento NÃO foi salvo. As fotos continuam no formulário; verifique a conexão e tente de novo.', 6000);
+      return;
+    }
     if (err && err.conflito) {
       if (err.motivo === 'excluido') {
         toast('Esta montagem foi excluída por outra pessoa. Ela está no Histórico.');
@@ -2125,14 +2173,27 @@ function importar(ev) {
           });
         });
         var p = Promise.resolve();
+        var falhas = 0;
+        var novas = [];
         pend.forEach(function (t) {
           p = p.then(function () {
             return subirImagem(t.src).then(function (path) {
-              if (path) t.it.imagens[t.i] = path;
+              t.it.imagens[t.i] = path;
+              novas.push(path);
+            }).catch(function () {
+              falhas++;
             });
           });
         });
-        p.then(importou);
+        p.then(function () {
+          if (falhas > 0) {
+            // Nada foi importado: remove as fotos que subiram e avisa.
+            novas.forEach(function (s) { apagarImagemServidor(s); });
+            toast('Não foi possível enviar ' + falhas + ' foto(s) do arquivo. A importação NÃO foi feita. Tente de novo.', 6000);
+            return;
+          }
+          importou();
+        });
       } else {
         importou();
       }
@@ -2203,11 +2264,11 @@ function imprimirAtual() {
   if (EDITANDO_ID !== null) imprimirOrdem(EDITANDO_ID);
 }
 
-function toast(msg) {
+function toast(msg, duracao) {
   var t = $('toast');
   t.textContent = msg;
   t.classList.add('mostrar');
-  setTimeout(function () { t.classList.remove('mostrar'); }, 2200);
+  setTimeout(function () { t.classList.remove('mostrar'); }, duracao || 2200);
 }
 
 window.addEventListener('DOMContentLoaded', function () {
