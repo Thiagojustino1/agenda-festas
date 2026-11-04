@@ -465,6 +465,14 @@ function bn_fechar() {
   }
   .btn-imprimir:hover { color: var(--tinta); border-color: var(--laranja); }
   .btn-imprimir .ic { width: 15px; height: 15px; }
+  .btn-whatsapp {
+    flex: none; width: 32px; height: 32px; border-radius: 9px;
+    border: 1px solid #d2e6d2; background: #e8f5e8; color: #25d366;
+    cursor: pointer; display: inline-flex; align-items: center; justify-content: center; padding: 0;
+    transition: color .15s, border-color .15s, transform .1s;
+  }
+  .btn-whatsapp:hover { color: #128c7e; border-color: #25d366; transform: scale(1.08); }
+  .btn-whatsapp .ic { width: 17px; height: 17px; }
   .btn-editar {
     flex: none; width: 32px; height: 32px; border-radius: 9px;
     border: 1px solid var(--borda); background: var(--suave); color: var(--cinza);
@@ -507,6 +515,25 @@ function bn_fechar() {
     margin: 4px 0 12px;
   }
   .dt-contador { font-size: 13px; font-weight: 800; color: var(--cinza); min-width: 46px; text-align: center; }
+
+  /* historico de montagens excluidas */
+  .hist-aviso { margin: 8px 0 14px; font-size: 12.5px; line-height: 1.45; color: var(--cinza); }
+  .hist-vazio { padding: 26px 10px; text-align: center; color: var(--cinza); font-size: 14px; }
+  .hist-item {
+    display: flex; align-items: center; gap: 12px;
+    padding: 11px 12px; margin-bottom: 8px;
+    background: var(--suave); border: 1px solid var(--borda); border-radius: 12px;
+  }
+  .hist-info { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px; }
+  .hist-info b { font-size: 14.5px; color: var(--tinta); }
+  .hist-info span { font-size: 12.5px; color: var(--cinza); line-height: 1.35; }
+  .hist-info .hist-quando { font-size: 11.5px; color: var(--vermelho); font-weight: 700; margin-top: 2px; }
+  .btn-restaurar {
+    flex: none; padding: 9px 12px; border: 1px solid var(--mat-borda);
+    border-radius: 9px; background: var(--mat-bg); color: var(--mt-tx);
+    font-size: 12.5px; font-weight: 800; cursor: pointer;
+  }
+  .btn-restaurar:hover { filter: brightness(.96); }
 
   .imgs-prev { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 2px; }
   .imgs-prev.vazio {
@@ -632,6 +659,7 @@ function bn_fechar() {
     </div>
     <div class="acoes">
       <button class="botao-topo" id="btn-tema" onclick="alternarTema()" title="Alternar tema"></button>
+      <button class="botao-topo" id="btn-historico" onclick="abrirHistorico()">Histórico</button>
       <button class="botao-topo" id="btn-exportar" onclick="exportar()">Exportar</button>
       <button class="botao-topo" id="btn-importar" onclick="$('in-importar').click()">Importar</button>
     </div>
@@ -754,6 +782,22 @@ function bn_fechar() {
   </div>
 </div>
 
+<div id="modal-historico" class="fundo-modal oculto">
+  <div class="modal modal-detalhe">
+    <div class="cab-modal">
+      <h2>Montagens excluídas</h2>
+      <button class="btn-fechar" onclick="fecharHistorico()" title="Fechar">
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <p class="hist-aviso">As montagens excluídas ficam guardadas aqui (com fotos e dados) e podem ser restauradas a qualquer momento.</p>
+    <div id="hist-lista"></div>
+    <div class="botoes">
+      <button class="btn btn-cancelar" onclick="fecharHistorico()">Fechar</button>
+    </div>
+  </div>
+</div>
+
 <input id="in-importar" type="file" accept=".json,application/json" class="oculto" onchange="importar(event)">
 <input id="in-imagem" type="file" accept="image/*" multiple class="oculto" onchange="adicionarImagens(event)">
 
@@ -768,11 +812,14 @@ function bn_fechar() {
 
 <script>
 var DADOS = [];
+var DADOS_TODOS = [];
 var MESES = ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'];
 var MESES_AB = ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'];
 var STATUS = ['Agendado','Montado'];
 var filtroStatus = 'Agendado';
 var EDITANDO_ID = null;
+var EDITANDO_BASE = null;
+var ATUALIZANDO = false;
 var DETALHE_ID = null;
 var DETALHE_GRUPO = [];
 var DETALHE_INDEX = 0;
@@ -836,25 +883,93 @@ var ICONES = {
   caixa: '<svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8l-9-5-9 5v8l9 5 9-5z"/><path d="M3 8l9 5 9-5"/><path d="M12 13v8"/></svg>',
   impressora: '<svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>',
   lapis: '<svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.8 2.8 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5z"/></svg>',
-  relogio: '<svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>'
+  relogio: '<svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>',
+  whatsapp: '<svg class="ic" viewBox="0 0 24 24" fill="currentColor" stroke="none" aria-hidden="true"><path d="M17.5 14.4l-2.2-1c-.2-.1-.4-.1-.6.1l-.8.9c-.2.2-.4.2-.6.1-1.1-.5-2.3-1.2-3.2-2.1-.5-.5-.9-1-1.2-1.6-.1-.2 0-.4.1-.5l.7-.8c.2-.2.2-.4.1-.6l-1-2.2c-.2-.4-.6-.6-1-.5h-.6c-.2 0-.4.1-.6.2-.8.8-1.3 2-1.3 3.2 0 3.4 2.8 6.2 6.2 6.2 1.2 0 2.4-.5 3.2-1.3.1-.2.2-.4.2-.6v-.6c0-.4-.2-.8-.6-1zM12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.6 1.4 5.1L2 22l5-1.4c1.5.9 3.2 1.4 5 1.4 5.5 0 10-4.5 10-10S17.5 2 12 2z"/></svg>'
 };
 
 function $(id) { return document.getElementById(id); }
 
 // ---------- persistencia ----------
 function ler() {
-  try { return JSON.parse(localStorage.getItem(CHAVE_DADOS)) || []; }
-  catch (e) { return []; }
+  try {
+    var j = JSON.parse(localStorage.getItem(CHAVE_DADOS));
+    return Array.isArray(j) ? j : [];
+  } catch (e) { return []; }
 }
-function gravar(dados) {
-  try { localStorage.setItem(CHAVE_DADOS, JSON.stringify(dados)); } catch (e) {}
-  if (MODO_SERVIDOR) {
-    fetch('/dados', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(dados)
-    }).catch(function () {});
+function gravarLocal(todos) {
+  try { localStorage.setItem(CHAVE_DADOS, JSON.stringify(todos || [])); } catch (e) {}
+}
+function estaExcluido(it) {
+  return !!(it && it.deletedAt);
+}
+function maiorId(lista) {
+  var max = 0;
+  (lista || []).forEach(function (it) {
+    var n = parseInt(it && it.id, 10);
+    if (n > max) max = n;
+  });
+  return max;
+}
+function atualizarBotaoHistorico() {
+  var b = $('btn-historico');
+  if (!b) return;
+  var n = DADOS_TODOS.filter(estaExcluido).length;
+  b.textContent = n > 0 ? 'Histórico (' + n + ')' : 'Histórico';
+}
+function definirDados(todos) {
+  DADOS_TODOS = Array.isArray(todos) ? todos.slice() : [];
+  DADOS = ordenar(DADOS_TODOS.filter(function (it) { return it && !estaExcluido(it); }));
+  gravarLocal(DADOS_TODOS);
+  atualizarBotaoHistorico();
+}
+
+// Envia somente os registros alterados (nunca a lista inteira).
+// O servidor faz merge por id e nao apaga quem nao veio na lista.
+function gravarLote(itens) {
+  if (!Array.isArray(itens) || itens.length === 0) return Promise.resolve();
+  if (!MODO_SERVIDOR) { gravarLocal(DADOS_TODOS); return Promise.resolve(); }
+  return fetch('/dados/lote', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(itens)
+  }).then(function (r) {
+    if (!r.ok) throw new Error('lote');
+    return r.json();
+  });
+}
+
+// Recarrega do servidor sem disparar as rotinas automaticas de novo.
+function recarregarSilencioso() {
+  if (!MODO_SERVIDOR || ATUALIZANDO) return Promise.resolve();
+  ATUALIZANDO = true;
+  return fetch('/dados', { cache: 'no-store' })
+    .then(function (r) { if (!r.ok) throw new Error('offline'); return r.json(); })
+    .then(function (j) {
+      if (!Array.isArray(j)) return;
+      definirDados(j);
+      montarMesesDropdown();
+      montarChips();
+      renderizar();
+      var mh = $('modal-historico');
+      if (mh && !mh.classList.contains('oculto')) renderHistorico();
+      var md = $('modal-detalhe');
+      if (md && !md.classList.contains('oculto') && DETALHE_ID !== null) renderDetalhe();
+    })
+    .catch(function () {})
+    .then(function () { ATUALIZANDO = false; });
+}
+
+// Aplica o registro devolvido pelo servidor na memoria/localStorage,
+// sem esperar a proxima recarga.
+function aplicarItemLocal(item) {
+  if (!item || item.id === undefined || item.id === null) return;
+  var todos = DADOS_TODOS.slice();
+  var idx = -1;
+  for (var i = 0; i < todos.length; i++) {
+    if (String(todos[i].id) === String(item.id)) { idx = i; break; }
   }
+  if (idx >= 0) todos[idx] = item; else todos.push(item);
+  definirDados(todos);
 }
 
 function notificarMudanca(ehNovo, obj) {
@@ -870,6 +985,44 @@ function notificarMudanca(ehNovo, obj) {
       dataMontagem: obj.dataMontagem || ''
     })
   }).catch(function () {});
+}
+
+var URL_SITE_LEITURA = 'https://Thiagojustino1.github.io/agenda-festas/agenda.html?modo=leitura';
+
+function compartilharFestaNoWhatsApp(id) {
+  var it = DADOS.find(function (d) { return d.id == id; });
+  if (!it) return;
+  var linhas = ['Nova montagem na agenda!'];
+  if (it.cliente) linhas.push('Cliente: ' + it.cliente);
+  if (it.evento) linhas.push('Evento: ' + it.evento);
+  if (it.dataMontagem) linhas.push('Montagem: ' + fmtData(it.dataMontagem) + (it.horario ? ' as ' + it.horario : ''));
+  if (it.dataEvento && it.dataEvento !== it.dataMontagem) linhas.push('Festa: ' + fmtData(it.dataEvento));
+  if (it.local) linhas.push('Local: ' + it.local);
+  linhas.push('Confira no app: ' + URL_SITE_LEITURA);
+  var msg = linhas.join('\n');
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(msg).then(function () {
+      toast('Mensagem copiada! Cole no WhatsApp.');
+    }).catch(function () { copiarTextoFallback(msg); });
+  } else {
+    copiarTextoFallback(msg);
+  }
+}
+
+function copiarTextoFallback(txt) {
+  var ta = document.createElement('textarea');
+  ta.value = txt;
+  ta.style.position = 'fixed';
+  ta.style.opacity = '0';
+  document.body.appendChild(ta);
+  ta.select();
+  try {
+    document.execCommand('copy');
+    toast('Mensagem copiada! Cole no WhatsApp.');
+  } catch (e) {
+    toast('Nao foi possivel copiar - selecione e copie manualmente.');
+  }
+  document.body.removeChild(ta);
 }
 
 // ---------- utilidades ----------
@@ -947,7 +1100,7 @@ function mudarModo(modo) {
 
 // ---------- tela ----------
 function carregar() {
-  if (!MODO_SERVIDOR) DADOS = ordenar(ler());
+  if (!MODO_SERVIDOR) definirDados(ler());
   marcarMontadosAutomaticamente();
   limparImagensConcluidas();
   montarMesesDropdown();
@@ -957,27 +1110,33 @@ function carregar() {
 
 function marcarMontadosAutomaticamente() {
   var hoje = hojeISO();
-  var mudou = 0;
+  var alterados = [];
   DADOS.forEach(function (it) {
     if (it.status !== 'Agendado') return;
     var ref = it.dataMontagem || it.dataEvento || '';
     if (ref && ref < hoje) {
       it.status = 'Montado';
-      mudou++;
+      // Manda so o campo que mudou: nao sobrescreve o resto do registro
+      // que outra pessoa possa ter editado ao mesmo tempo.
+      alterados.push({ id: it.id, status: 'Montado' });
     }
   });
-  if (mudou) {
-    gravar(DADOS);
-    toast(mudou + ' agendamento(s) marcado(s) como Montado automaticamente');
+  if (alterados.length) {
+    if (MODO_SERVIDOR) {
+      gravarLote(alterados).then(recarregarSilencioso).catch(function () {});
+    } else {
+      gravarLocal(DADOS_TODOS);
+    }
+    toast(alterados.length + ' agendamento(s) marcado(s) como Montado automaticamente');
   }
 }
 
-var DIAS_MANTER_IMAGENS = 15;
+var DIAS_MANTER_IMAGENS = 90;
 
 function limparImagensConcluidas() {
   var limite = new Date();
   limite.setDate(limite.getDate() - DIAS_MANTER_IMAGENS);
-  var mudou = false;
+  var alterados = [];
   DADOS.forEach(function (it) {
     if ((it.status === 'Montado' || it.status === 'Cancelado') && it.imagens && it.imagens.length) {
       var ref = it.dataEvento || it.dataMontagem || '';
@@ -995,10 +1154,14 @@ function limparImagensConcluidas() {
         it.imagens.forEach(function (s) { if (ehCaminhoImagem(s)) apagarImagemServidor(s); });
       }
       it.imagens = [];
-      mudou = true;
+      // So o campo imagens; nao mexe no restante do registro.
+      alterados.push({ id: it.id, imagens: [] });
     }
   });
-  if (mudou) gravar(DADOS);
+  if (alterados.length) {
+    if (MODO_SERVIDOR) gravarLote(alterados).catch(function () {});
+    else gravarLocal(DADOS_TODOS);
+  }
 }
 
 function rodapeDado(msg) {
@@ -1014,7 +1177,7 @@ function carregarLeitura() {
     .then(function (resp) { if (!resp.ok) throw new Error('erro'); return resp.json(); })
     .then(function (j) {
       if (!Array.isArray(j)) throw new Error('erro');
-      DADOS = ordenar(j);
+      definirDados(j);
       rodapeDado('Atualizado &agrave;s ' + new Date().toLocaleTimeString('pt-BR'));
       montarMesesDropdown();
       montarChips();
@@ -1038,17 +1201,12 @@ function carregarInicial() {
       MODO_SERVIDOR = true;
       var locais = ler();
       if (j.length > 0) {
-        DADOS = ordenar(j);
-        try { localStorage.setItem(CHAVE_DADOS, JSON.stringify(DADOS)); } catch (e) {}
+        definirDados(j);
       } else if (locais.length > 0) {
-        DADOS = ordenar(locais);
-        fetch('/dados', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(DADOS)
-        }).catch(function () {});
+        definirDados(locais);
+        gravarLote(locais).catch(function () {});
       } else {
-        DADOS = [];
+        definirDados([]);
       }
       rodapeDado('Arquivo <b>dados.json</b> desta pasta &mdash; app port&aacute;til');
       carregar();
@@ -1084,10 +1242,12 @@ function migrarImagensLegadas() {
   var total = pend.length;
   rodapeDado('Movendo ' + total + ' foto(s) para a pasta <b>imagens/</b>...');
   var feito = 0;
+  var tocados = [];
   pend.forEach(function (t) {
     p = p.then(function () {
       return subirImagem(t.src).then(function (path) {
         if (path) t.it.imagens[t.i] = path;
+        if (tocados.indexOf(t.it) === -1) tocados.push(t.it);
         feito++;
         if (feito % 5 === 0 || feito === total) {
           rodapeDado('Movendo fotos... ' + feito + '/' + total);
@@ -1096,10 +1256,12 @@ function migrarImagensLegadas() {
     });
   });
   p.then(function () {
-    gravar(DADOS);
+    // Manda so os registros cujas fotos mudaram, com o campo imagens.
+    var alterados = tocados.map(function (it) { return { id: it.id, imagens: it.imagens }; });
+    gravarLocal(DADOS_TODOS);
+    gravarLote(alterados).then(recarregarSilencioso).catch(function () {});
     rodapeDado('Fotos movidas para <b>imagens/</b> &mdash; dados.json agora &eacute; leve');
     toast('Fotos antigas movidas para a pasta imagens/');
-    try { localStorage.setItem(CHAVE_DADOS, JSON.stringify(DADOS)); } catch (e) {}
   });
 }
 
@@ -1139,15 +1301,6 @@ function montarChips() {
     c.onclick = function () { filtroStatus = s; montarChips(); renderizar(); };
     area.appendChild(c);
   });
-}
-
-function debounce(fn, ms) {
-  var t;
-  return function () {
-    var a = arguments, c = this;
-    clearTimeout(t);
-    t = setTimeout(function () { fn.apply(c, a); }, ms || 250);
-  };
 }
 
 function filtrar() {
@@ -1303,6 +1456,7 @@ function cartaoHTML(it, hoje, amanha) {
         '<div class="topo-dir">' +
           '<span class="status">' + escapar(it.status || 'Agendado') + '</span>' +
           '<button class="btn-imprimir" onclick="event.stopPropagation();imprimirOrdem(' + it.id + ')" title="Imprimir ordem de montagem">' + ICONES.impressora + '</button>' +
+          (!MODO_LEITURA && it.status === 'Agendado' ? '<button class="btn-whatsapp" onclick="event.stopPropagation();compartilharFestaNoWhatsApp(' + it.id + ')" title="Compartilhar no WhatsApp">' + ICONES.whatsapp + '</button>' : '') +
           (!MODO_LEITURA ? '<button class="btn-editar" onclick="event.stopPropagation();abrirFormulario(' + it.id + ')" title="Editar agendamento">' + ICONES.lapis + '</button>' : '') +
         '</div>' +
       '</div>' +
@@ -1323,8 +1477,6 @@ function cartaoHTML(it, hoje, amanha) {
       (function (src) {
         var im = document.createElement('img');
         im.src = src;
-        im.loading = 'lazy';
-        im.decoding = 'async';
         im.alt = '';
         im.onclick = function (e) { e.stopPropagation(); abrirLuz(src); };
         wrap.appendChild(im);
@@ -1373,6 +1525,7 @@ function abrirFormulario(id, dataPre) {
   if (EDITANDO_ID !== null) {
     it = DADOS.find(function (d) { return d.id == EDITANDO_ID; });
   }
+  EDITANDO_BASE = it ? (it.updatedAt || null) : null;
   $('titulo-modal').textContent = it ? 'Editar agendamento' : 'Novo agendamento';
   $('f-cliente').value = it ? it.cliente : '';
   $('f-evento').value = it ? it.evento : '';
@@ -1394,6 +1547,7 @@ function abrirFormulario(id, dataPre) {
 function fecharFormulario() {
   $('modal').classList.add('oculto');
   EDITANDO_ID = null;
+  EDITANDO_BASE = null;
   IMAGENS_EDITANDO = [];
 }
 
@@ -1593,7 +1747,7 @@ function renderDetalhe() {
   var imgsDet = (it.imagens || []).filter(Boolean);
   if (imgsDet.length) {
     corpo += '<div class="dt-secao">Imagem / Layout</div>';
-    corpo += '<div class="dt-imgs">' + imgsDet.map(function (s) { return '<img class="dt-img" src="' + s + '" alt="" loading="lazy" decoding="async">'; }).join('') + '</div>';
+    corpo += '<div class="dt-imgs">' + imgsDet.map(function (s) { return '<img class="dt-img" src="' + s + '" alt="">'; }).join('') + '</div>';
   }
 
   $('dt-titulo').textContent = it.cliente || 'Sem nome';
@@ -1635,11 +1789,51 @@ function imprimirDeDetalhe() {
   if (DETALHE_ID !== null) imprimirOrdem(DETALHE_ID);
 }
 
+function salvarItem(obj) {
+  if (!MODO_SERVIDOR) {
+    var todos = DADOS_TODOS.slice();
+    var agora = new Date().toISOString();
+    if (obj.id === null || obj.id === undefined) {
+      obj.id = maiorId(todos) + 1;
+      obj.createdAt = agora;
+    }
+    obj.updatedAt = agora;
+    delete obj.baseUpdatedAt;
+    var idx = -1;
+    for (var i = 0; i < todos.length; i++) {
+      if (String(todos[i].id) === String(obj.id)) { idx = i; break; }
+    }
+    if (idx >= 0) todos[idx] = obj; else todos.push(obj);
+    definirDados(todos);
+    return Promise.resolve(obj);
+  }
+  return fetch('/dados/item', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(obj)
+  }).then(function (r) {
+    return r.json().catch(function () { return {}; }).then(function (j) {
+      if (r.status === 409) {
+        var e = new Error('conflito');
+        e.conflito = true;
+        e.atual = j.atual;
+        e.motivo = j.erro;
+        throw e;
+      }
+      if (!r.ok) {
+        var e2 = new Error('falha');
+        e2.status = r.status;
+        throw e2;
+      }
+      return j;
+    });
+  });
+}
+
 function salvarFormulario() {
   var cliente = $('f-cliente').value.trim();
   if (!cliente) { toast('Informe o nome do cliente'); $('f-cliente').focus(); return; }
 
-  var dados = ler();
   var obj = {
     id: EDITANDO_ID,
     cliente: cliente,
@@ -1651,13 +1845,17 @@ function salvarFormulario() {
     materiais: $('f-materiais').value.trim(),
     obs: $('f-obs').value.trim(),
     status: $('f-status').value,
-    imagens: IMAGENS_EDITANDO.slice()
+    imagens: IMAGENS_EDITANDO.slice(),
+    baseUpdatedAt: EDITANDO_BASE
   };
-  var ehNovo = (obj.id === null);
+  var ehNovo = (obj.id === null || obj.id === undefined);
 
   var btnOk = null;
-  if (obj.id !== null) {
-    var antigo = dados.find(function (d) { return d.id == obj.id; });
+  if (!ehNovo) {
+    var antigo = null;
+    for (var i = 0; i < DADOS_TODOS.length; i++) {
+      if (String(DADOS_TODOS[i].id) === String(obj.id)) { antigo = DADOS_TODOS[i]; break; }
+    }
     if (antigo && antigo.imagens) btnOk = antigo.imagens;
   }
 
@@ -1665,51 +1863,177 @@ function salvarFormulario() {
   if (btnSalvar) btnSalvar.disabled = true;
   prepararImagensParaSalvar(obj.imagens).then(function (imagensFinais) {
     obj.imagens = imagensFinais;
-    if (obj.id === null) {
-      var maxId = 0;
-      dados.forEach(function (d) { if (d.id > maxId) maxId = d.id; });
-      obj.id = maxId + 1;
-      dados.push(obj);
-    } else {
-      var idx = dados.findIndex(function (d) { return d.id == obj.id; });
-      if (idx >= 0) dados[idx] = obj;
+    return salvarItem(obj).then(function (salvo) {
+      // So apaga fotos removidas depois que o registro foi salvo com sucesso.
+      if (MODO_SERVIDOR && Array.isArray(btnOk)) {
+        var novos = {};
+        (salvo.imagens || []).forEach(function (s) { if (ehCaminhoImagem(s)) novos[s] = true; });
+        btnOk.forEach(function (s) {
+          if (ehCaminhoImagem(s) && !novos[s]) apagarImagemServidor(s);
+        });
+      }
+      aplicarItemLocal(salvo);
+      notificarMudanca(ehNovo, salvo);
+      fecharFormulario();
+      toast('Salvo!');
+      recarregarSilencioso();
+      return salvo;
+    });
+  }).catch(function (err) {
+    if (err && err.conflito) {
+      if (err.motivo === 'excluido') {
+        toast('Esta montagem foi excluída por outra pessoa. Ela está no Histórico.');
+        fecharFormulario();
+      } else {
+        var atual = err.atual || {};
+        // Atualiza a base para a versao atual: se a pessoa conferir e salvar
+        // de novo, a gravacao passa a ser intencional.
+        EDITANDO_BASE = atual.updatedAt || null;
+        toast('Esta montagem foi alterada por outra pessoa. Os dados foram atualizados; confira e salve de novo.');
+      }
+      recarregarSilencioso();
+      return;
     }
-
-    if (MODO_SERVIDOR && Array.isArray(btnOk)) {
-      var novos = {};
-      (obj.imagens || []).forEach(function (s) { if (ehCaminhoImagem(s)) novos[s] = true; });
-      btnOk.forEach(function (s) {
-        if (ehCaminhoImagem(s) && !novos[s]) apagarImagemServidor(s);
-      });
-    }
-
-    gravar(dados);
-    notificarMudanca(ehNovo, obj);
-    DADOS = ordenar(dados);
-    fecharFormulario();
-    toast('Salvo!');
-    carregar();
+    toast('Não foi possível salvar. Verifique a conexão e tente novamente.');
+  }).then(function () {
     if (btnSalvar) btnSalvar.disabled = false;
-  }).catch(function () {
-    if (btnSalvar) btnSalvar.disabled = false;
-    toast('Não foi possível salvar as imagens');
   });
 }
 
 function excluirAtual() {
   if (EDITANDO_ID === null) return;
-  if (!confirm('Excluir este agendamento?')) return;
-  var dados = ler();
-  var alvo = dados.find(function (d) { return d.id == EDITANDO_ID; });
-  if (MODO_SERVIDOR && alvo && Array.isArray(alvo.imagens)) {
-    alvo.imagens.forEach(function (s) { if (ehCaminhoImagem(s)) apagarImagemServidor(s); });
+  if (!confirm('Excluir este agendamento? Ele vai para o Histórico e poderá ser restaurado.')) return;
+
+  var alvo = null;
+  for (var i = 0; i < DADOS_TODOS.length; i++) {
+    if (String(DADOS_TODOS[i].id) === String(EDITANDO_ID)) { alvo = DADOS_TODOS[i]; break; }
   }
-  var restantes = dados.filter(function (d) { return d.id != EDITANDO_ID; });
-  gravar(restantes);
-  DADOS = restantes;
-  fecharFormulario();
-  toast('Excluído');
-  carregar();
+  if (!alvo) {
+    toast('Agendamento não encontrado. Atualize a lista.');
+    fecharFormulario();
+    recarregarSilencioso();
+    return;
+  }
+
+  if (!MODO_SERVIDOR) {
+    alvo.deletedAt = new Date().toISOString();
+    alvo.updatedAt = alvo.deletedAt;
+    definirDados(DADOS_TODOS);
+    fecharFormulario();
+    toast('Excluído. Está no Histórico.');
+    renderizar();
+    return;
+  }
+
+  fetch('/dados/excluir', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ id: alvo.id, baseUpdatedAt: alvo.updatedAt || null })
+  }).then(function (r) {
+    return r.json().catch(function () { return {}; }).then(function (j) {
+      if (r.status === 409) {
+        var e = new Error('conflito');
+        e.conflito = true;
+        e.atual = j.atual;
+        throw e;
+      }
+      if (!r.ok) throw new Error('falha');
+      return j;
+    });
+  }).then(function (salvo) {
+    aplicarItemLocal(salvo);
+    fecharFormulario();
+    toast('Excluído. Está no Histórico.');
+    recarregarSilencioso();
+  }).catch(function (err) {
+    if (err && err.conflito) {
+      toast('Esta montagem foi alterada por outra pessoa. Confira e tente de novo.');
+      recarregarSilencioso();
+    } else {
+      toast('Não foi possível excluir. Verifique a conexão.');
+    }
+  });
+}
+
+// ---------- historico de montagens excluidas ----------
+function fmtDataHora(iso) {
+  if (!iso) return '—';
+  var d = new Date(iso);
+  if (isNaN(d.getTime())) return iso;
+  return d.toLocaleString('pt-BR');
+}
+
+function abrirHistorico() {
+  if (MODO_LEITURA) return;
+  renderHistorico();
+  $('modal-historico').classList.remove('oculto');
+}
+
+function fecharHistorico() {
+  $('modal-historico').classList.add('oculto');
+}
+
+function renderHistorico() {
+  var area = $('hist-lista');
+  if (!area) return;
+  var excluidos = DADOS_TODOS.filter(estaExcluido).sort(function (a, b) {
+    return String(b.deletedAt || '').localeCompare(String(a.deletedAt || ''));
+  });
+  if (excluidos.length === 0) {
+    area.innerHTML = '<div class="hist-vazio">Nenhuma montagem excluída.</div>';
+    return;
+  }
+  var html = '';
+  excluidos.forEach(function (it) {
+    var quando = it.dataMontagem
+      ? fmtData(it.dataMontagem) + (it.horario ? ' às ' + escapar(it.horario) : '')
+      : 'sem data';
+    html += '<div class="hist-item">';
+    html += '<div class="hist-info">';
+    html += '<b>' + escapar(it.cliente || 'Sem nome') + '</b>';
+    if (it.evento) html += '<span>' + escapar(it.evento) + '</span>';
+    html += '<span>Montagem: ' + quando + '</span>';
+    html += '<span class="hist-quando">Excluída em ' + escapar(fmtDataHora(it.deletedAt)) + '</span>';
+    html += '</div>';
+    html += '<button class="btn-restaurar" onclick="restaurarMontagem(' + it.id + ')">Restaurar</button>';
+    html += '</div>';
+  });
+  area.innerHTML = html;
+}
+
+function restaurarMontagem(id) {
+  if (!confirm('Restaurar esta montagem para a agenda?')) return;
+
+  if (!MODO_SERVIDOR) {
+    for (var i = 0; i < DADOS_TODOS.length; i++) {
+      if (String(DADOS_TODOS[i].id) === String(id)) {
+        delete DADOS_TODOS[i].deletedAt;
+        DADOS_TODOS[i].updatedAt = new Date().toISOString();
+        break;
+      }
+    }
+    definirDados(DADOS_TODOS);
+    renderHistorico();
+    renderizar();
+    toast('Montagem restaurada!');
+    return;
+  }
+
+  fetch('/dados/restaurar', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ id: id })
+  }).then(function (r) {
+    if (!r.ok) throw new Error('falha');
+    return r.json();
+  }).then(function (salvo) {
+    aplicarItemLocal(salvo);
+    renderHistorico();
+    toast('Montagem restaurada!');
+    recarregarSilencioso();
+  }).catch(function () {
+    toast('Não foi possível restaurar. Verifique a conexão.');
+  });
 }
 
 // ---------- exportar / importar ----------
@@ -1726,7 +2050,7 @@ function baixarJSON(objeto) {
 }
 
 function exportar() {
-  var fonte = MODO_SERVIDOR ? DADOS : ler();
+  var fonte = DADOS;
   var copia = JSON.parse(JSON.stringify(fonte));
   var tarefas = [];
   copia.forEach(function (it) {
@@ -1763,7 +2087,7 @@ function importar(ev) {
     try {
       var dados = JSON.parse(leitor.result);
       if (!Array.isArray(dados)) { toast('Arquivo inválido'); return null; }
-      if (!confirm('Substituir os dados atuais pelos do arquivo?')) return null;
+      if (!confirm('Substituir os dados atuais pelos do arquivo?\n\nOs registros que não estiverem no arquivo vão para o Histórico (não são apagados de verdade).')) return null;
       var encTotal = 0;
       dados.forEach(function (it) {
         if (!Array.isArray(it.imagens)) return;
@@ -1772,10 +2096,25 @@ function importar(ev) {
         });
       });
       var importou = function () {
-        DADOS = ordenar(dados);
-        gravar(DADOS);
-        toast(encTotal > 0 ? 'Dados importados (fotos subidas ao servidor)' : 'Dados importados');
-        carregar();
+        if (MODO_SERVIDOR) {
+          fetch('/dados/importar', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(dados)
+          }).then(function (r) {
+            if (!r.ok) throw new Error('importar');
+            return r.json();
+          }).then(function () {
+            toast(encTotal > 0 ? 'Dados importados (fotos subidas ao servidor)' : 'Dados importados');
+            recarregarSilencioso();
+          }).catch(function () {
+            toast('Não foi possível importar. Os dados atuais foram mantidos.');
+          });
+        } else {
+          definirDados(dados);
+          toast(encTotal > 0 ? 'Dados importados' : 'Dados importados');
+          carregar();
+        }
       };
       if (MODO_SERVIDOR && encTotal > 0) {
         var pend = [];
@@ -1842,7 +2181,7 @@ function montarOrdem(it) {
   var imgsOrd = (it.imagens || []).filter(Boolean);
   if (imgsOrd.length) {
     html += '<div class="ordem-secao">Imagem / Layout</div>';
-    html += '<div class="ordem-imgs">' + imgsOrd.map(function (s) { return '<img class="ordem-img" src="' + s + '" loading="lazy" decoding="async">'; }).join('') + '</div>';
+    html += '<div class="ordem-imgs">' + imgsOrd.map(function (s) { return '<img class="ordem-img" src="' + s + '">'; }).join('') + '</div>';
   }
 
   html += '<div class="ordem-rodape"><div class="linha">Montador</div><div class="linha">Conferido por</div><div class="linha">Data</div></div>';
@@ -1878,7 +2217,7 @@ window.addEventListener('DOMContentLoaded', function () {
     }
   } catch (e) {}
 
-  $('busca').addEventListener('input', debounce(renderizar, 250));
+  $('busca').addEventListener('input', renderizar);
   $('filtro-mes').addEventListener('change', renderizar);
   $('f-status').addEventListener('change', function () {
     if (($('f-status').value === 'Montado' || $('f-status').value === 'Cancelado') && IMAGENS_EDITANDO.length) {
@@ -1902,6 +2241,7 @@ window.addEventListener('DOMContentLoaded', function () {
   document.addEventListener('keydown', function (ev) {
     if (ev.key !== 'Escape') return;
     if (!$('luz').classList.contains('oculto')) { fecharLuz(); return; }
+    if (!$('modal-historico').classList.contains('oculto')) { fecharHistorico(); return; }
     if (!$('modal-detalhe').classList.contains('oculto')) { fecharDetalhes(); return; }
     fecharFormulario();
   });
@@ -1928,6 +2268,7 @@ window.addEventListener('DOMContentLoaded', function () {
       $('btn-add').classList.add('oculto');
       $('btn-exportar').classList.add('oculto');
       $('btn-importar').classList.add('oculto');
+      $('btn-historico').classList.add('oculto');
       $('btn-atualizar').classList.remove('oculto');
       carregarLeitura();
       setInterval(carregarLeitura, 30000);
@@ -1940,6 +2281,13 @@ window.addEventListener('DOMContentLoaded', function () {
       return;
     }
     carregarInicial();
+    // Mantem a tela sincronizada com o servidor (duas pessoas editando).
+    setInterval(function () {
+      if (document.visibilityState === 'visible') recarregarSilencioso();
+    }, 20000);
+    document.addEventListener('visibilitychange', function () {
+      if (document.visibilityState === 'visible') recarregarSilencioso();
+    });
   });
 });
 </script>
