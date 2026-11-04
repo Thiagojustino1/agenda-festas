@@ -1856,7 +1856,7 @@
         "id":  119,
         "cliente":  "Paulinho",
         "evento":  "",
-        "dataMontagem":  "",
+        "dataMontagem":  "2026-11-07",
         "horario":  "",
         "dataEvento":  "",
         "local":  "happy day",
@@ -1866,6 +1866,6 @@
         "imagens":  [
 
                     ],
-        "updatedAt":  "2026-11-04T11:34:59.524Z"
+        "updatedAt":  "2026-11-04T11:35:23.644Z"
     }
 ]
