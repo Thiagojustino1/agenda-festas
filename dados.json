@@ -1961,6 +1961,8 @@
         "updatedAt":  "2026-11-05T12:29:44.091Z"
     },
     {
+        "createdAt":  "2026-11-05T14:21:49.715Z",
+        "id":  124,
         "cliente":  "Z2 Eventos",
         "evento":  "Direito UFRN",
         "dataMontagem":  "2026-11-05",
@@ -1969,12 +1971,10 @@
         "local":  "La Mouette Receptions - R. Jaguarari, 2630 - Candelária, Natal - RN",
         "materiais":  "Painel 2,00 x 2,20m",
         "obs":  "",
-        "status":  "Agendado",
+        "status":  "Montado",
         "imagens":  [
                         "imagens/foto-mw3mwg72-9xo.jpg"
                     ],
-        "id":  124,
-        "createdAt":  "2026-11-05T14:21:49.715Z",
-        "updatedAt":  "2026-11-05T14:21:49.715Z"
+        "updatedAt":  "2026-11-05T18:05:35.454Z"
     }
 ]
