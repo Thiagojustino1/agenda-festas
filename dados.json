@@ -1995,6 +1995,8 @@
         "updatedAt":  "2026-11-06T11:49:19.400Z"
     },
     {
+        "createdAt":  "2026-11-06T12:36:31.672Z",
+        "id":  126,
         "cliente":  "Daiane",
         "evento":  "",
         "dataMontagem":  "2026-11-12",
@@ -2005,10 +2007,8 @@
         "obs":  "",
         "status":  "Agendado",
         "imagens":  [
-
+                        "imagens/foto-mw4yldf5-swp.jpg"
                     ],
-        "id":  126,
-        "createdAt":  "2026-11-06T12:36:31.672Z",
-        "updatedAt":  "2026-11-06T12:36:31.672Z"
+        "updatedAt":  "2026-11-06T12:36:53.840Z"
     }
 ]
