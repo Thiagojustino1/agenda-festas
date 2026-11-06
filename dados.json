@@ -1993,5 +1993,22 @@
                         "imagens/foto-mw4ww0f5-vmi.jpg"
                     ],
         "updatedAt":  "2026-11-06T11:49:19.400Z"
+    },
+    {
+        "cliente":  "Daiane",
+        "evento":  "",
+        "dataMontagem":  "2026-11-12",
+        "horario":  "",
+        "dataEvento":  "",
+        "local":  "Sal e brasa",
+        "materiais":  "Painel 3x2,80",
+        "obs":  "",
+        "status":  "Agendado",
+        "imagens":  [
+
+                    ],
+        "id":  126,
+        "createdAt":  "2026-11-06T12:36:31.672Z",
+        "updatedAt":  "2026-11-06T12:36:31.672Z"
     }
 ]
