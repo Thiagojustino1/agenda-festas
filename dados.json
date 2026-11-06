@@ -1953,13 +1953,13 @@
         "dataEvento":  "",
         "local":  "",
         "materiais":  "Painel 3,32 x 3,48 \nPainel 3,60 x 3,48",
-        "obs":  "Painel de branco 3,60 x 3,48 terá 4 prateleira ( 2 de cada lado ) seguindo as medidas da imagem, bancada e fogão",
+        "obs":  "Painel branco 3,60 x 3,48 terá 4 prateleiras ( 2 de cada lado ) seguindo as medidas da imagem, bancada e fogão",
         "status":  "Agendado",
         "imagens":  [
                         "imagens/foto-mw53bohp-3n7.jpg",
                         "imagens/foto-mw53boln-ymy.jpg"
                     ],
-        "updatedAt":  "2026-11-06T14:49:19.883Z"
+        "updatedAt":  "2026-11-06T14:51:41.135Z"
     },
     {
         "createdAt":  "2026-11-05T14:21:49.715Z",
