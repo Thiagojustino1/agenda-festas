@@ -2031,6 +2031,8 @@
         "updatedAt":  "2026-11-07T12:10:15.347Z"
     },
     {
+        "createdAt":  "2026-11-09T19:22:09.359Z",
+        "id":  128,
         "cliente":  "Se nutre",
         "evento":  "",
         "dataMontagem":  "2026-11-10",
@@ -2041,10 +2043,8 @@
         "obs":  "",
         "status":  "Agendado",
         "imagens":  [
-
+                        "imagens/foto-mw9neodv-8vd.jpg"
                     ],
-        "id":  128,
-        "createdAt":  "2026-11-09T19:22:09.359Z",
-        "updatedAt":  "2026-11-09T19:22:09.359Z"
+        "updatedAt":  "2026-11-09T19:22:36.695Z"
     }
 ]
