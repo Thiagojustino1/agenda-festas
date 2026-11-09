@@ -1874,7 +1874,6 @@
         "updatedAt":  "2026-11-05T18:38:38.232Z"
     },
     {
-        "id":  119,
         "cliente":  "Paulinho",
         "evento":  "Formatura ABC Salesiano",
         "dataMontagem":  "2026-11-07",
@@ -1883,14 +1882,15 @@
         "local":  "Happy day",
         "materiais":  "adesivo  7,20m x 3,80m\nadesivo 4,80m x 12m \nadesivo 2,60m x 4,80m",
         "obs":  "no primeiro horário de manhã",
-        "status":  "Agendado",
         "imagens":  [
                         "imagens/foto-mw25dsgh-104y.jpg",
                         "imagens/foto-mw25dudr-2gr.jpg",
                         "imagens/foto-mw25dw86-a80.jpg",
                         "imagens/foto-mw2e6jff-lly.jpg"
                     ],
-        "updatedAt":  "2026-11-04T17:29:57.077Z"
+        "id":  119,
+        "status":  "Montado",
+        "updatedAt":  "2026-11-09T11:20:13.211Z"
     },
     {
         "cliente":  "Elegance",
@@ -1980,7 +1980,6 @@
     },
     {
         "createdAt":  "2026-11-06T11:49:11.514Z",
-        "id":  125,
         "cliente":  "Emanuelle",
         "evento":  "Luísa 3 anos",
         "dataMontagem":  "2026-11-07",
@@ -1989,11 +1988,12 @@
         "local":  "Let\u0027s Party - Rua Dr. Poty Nóbrega, 338 - Lagoa Nova, Natal - RN, 59056-180",
         "materiais":  "Painel 0,80x2,00m\nPainel 2,20x2,20m\nMesa de 1,50m\nDisplay bailarina 70cm\n02 displays livros 40cm",
         "obs":  "",
-        "status":  "Agendado",
         "imagens":  [
                         "imagens/foto-mw4ww0f5-vmi.jpg"
                     ],
-        "updatedAt":  "2026-11-06T11:49:19.400Z"
+        "id":  125,
+        "status":  "Montado",
+        "updatedAt":  "2026-11-09T11:20:13.211Z"
     },
     {
         "createdAt":  "2026-11-06T12:36:31.672Z",
