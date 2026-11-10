@@ -1945,7 +1945,6 @@
     },
     {
         "createdAt":  "2026-11-05T12:29:44.091Z",
-        "id":  123,
         "cliente":  "Bianca",
         "evento":  "Evento",
         "dataMontagem":  "2026-11-09",
@@ -1954,12 +1953,13 @@
         "local":  "",
         "materiais":  "Painel 3,32 x 3,48 \nPainel 3,60 x 3,48",
         "obs":  "Painel branco 3,60 x 3,48 terá 4 prateleiras ( 2 de cada lado ) seguindo as medidas da imagem, bancada e fogão",
-        "status":  "Agendado",
         "imagens":  [
                         "imagens/foto-mw53boln-ymy.jpg",
                         "imagens/foto-mw5avwzs-1m1u.jpg"
                     ],
-        "updatedAt":  "2026-11-06T18:21:01.523Z"
+        "id":  123,
+        "status":  "Montado",
+        "updatedAt":  "2026-11-10T11:47:26.801Z"
     },
     {
         "createdAt":  "2026-11-05T14:21:49.715Z",
@@ -2021,14 +2021,14 @@
         "local":  "Let\u0027s Party - Rua Dr. Poty Nóbrega, 338 - Lagoa Nova, Natal - RN, 59056-180",
         "materiais":  "Painel loja 3,65 x 2,65m\nPainel principal 4,65 x 2,65m\nPainel lateral 2,90 x 2,65m\nPiso 4,65 x 2,90m",
         "obs":  "",
-        "status":  "Agendado",
         "imagens":  [
                         "imagens/foto-mw6d2yfq-15v6.jpg",
                         "imagens/foto-mw6d2ym6-1ksl.jpg"
                     ],
-        "id":  127,
         "createdAt":  "2026-11-07T12:10:15.347Z",
-        "updatedAt":  "2026-11-07T12:10:15.347Z"
+        "id":  127,
+        "status":  "Montado",
+        "updatedAt":  "2026-11-10T11:47:26.801Z"
     },
     {
         "createdAt":  "2026-11-09T19:22:09.359Z",
