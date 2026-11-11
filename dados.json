@@ -2135,20 +2135,20 @@
         "updatedAt":  "2026-11-11T17:28:25.412Z"
     },
     {
+        "createdAt":  "2026-11-11T17:42:01.282Z",
+        "id":  134,
         "cliente":  "Pedro Maia",
         "evento":  "",
         "dataMontagem":  "2026-11-14",
         "horario":  "",
         "dataEvento":  "",
         "local":  "",
-        "materiais":  "Painel 7.00 x 2.95 \nPainel 3.00 x 2.95 \nLona de piso: 7.00 x 2.80 \nadesivo 3.00 L x 2.20\n5 adesivos tampo mesa 1.50 x 1,50 \n10 adesivos mesas 90x90",
+        "materiais":  "Painel 7.00 x 2.95 \nPainel 3.00 x 2.95 \n2 und 1,40m x2,40m \nLona de piso: 7.00 x 2.80 \nadesivo 3.00 L x 2.20\n5 adesivos tampo mesa 1.50 x 1,50 \n10 adesivos mesas 90x90",
         "obs":  "",
         "status":  "Agendado",
         "imagens":  [
 
                     ],
-        "id":  134,
-        "createdAt":  "2026-11-11T17:42:01.282Z",
-        "updatedAt":  "2026-11-11T17:42:01.282Z"
+        "updatedAt":  "2026-11-11T17:43:12.638Z"
     }
 ]
