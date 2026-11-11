@@ -2090,7 +2090,7 @@
         "horario":  "",
         "dataEvento":  "2026-11-13",
         "local":  "Let\u0027s Party - Rua Dr. Poty Nóbrega, 338 - Lagoa Nova, Natal - RN, 59056-180",
-        "materiais":  "02 Und. Painel 0,80 x 2,20m\nPainel mimos 3,65 x 2,65m\nPainel principal 1,30 x 2,65m\nAdesivos recortados",
+        "materiais":  "02 Und. Painel 0,80 x 2,20m\nPainel mimos 3,65 x 2,65m ( com prateleiras ) \nPainel principal 1,30 x 2,65m\nAdesivos recortados",
         "obs":  "",
         "status":  "Agendado",
         "imagens":  [
@@ -2098,7 +2098,7 @@
                         "imagens/foto-mwc6lrgn-1uke.jpg",
                         "imagens/foto-mwc6lroi-162n.jpg"
                     ],
-        "updatedAt":  "2026-11-11T14:04:36.248Z"
+        "updatedAt":  "2026-11-11T18:53:42.784Z"
     },
     {
         "createdAt":  "2026-11-11T14:51:51.980Z",
