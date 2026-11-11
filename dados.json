@@ -2101,20 +2101,20 @@
         "updatedAt":  "2026-11-11T14:04:36.248Z"
     },
     {
+        "createdAt":  "2026-11-11T14:51:51.980Z",
+        "id":  132,
         "cliente":  "Pedro Maia",
         "evento":  "",
         "dataMontagem":  "2026-11-14",
         "horario":  "",
         "dataEvento":  "",
-        "local":  "",
+        "local":  "Cond. professora Noilde Ramalho",
         "materiais":  "Painel 1,20 x 2,30 \n2 und painel 1,15 x  2,20 \npiso 3,50 x  2,40",
-        "obs":  "",
+        "obs":  "Salão de festas\nMontagem na sexta de tarde\nRecolher segunda manha",
         "status":  "Agendado",
         "imagens":  [
-
+                        "imagens/foto-mwcdkbf8-oq0.jpg"
                     ],
-        "id":  132,
-        "createdAt":  "2026-11-11T14:51:51.980Z",
-        "updatedAt":  "2026-11-11T14:51:51.980Z"
+        "updatedAt":  "2026-11-11T17:10:22.241Z"
     }
 ]
