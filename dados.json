@@ -2065,20 +2065,20 @@
         "updatedAt":  "2026-11-11T11:40:11.018Z"
     },
     {
+        "createdAt":  "2026-11-11T13:01:17.599Z",
+        "id":  130,
         "cliente":  "Marcela",
         "evento":  "",
         "dataMontagem":  "2026-11-14",
         "horario":  "",
         "dataEvento":  "",
         "local":  "Versalles",
-        "materiais":  "Festa Ursinho\n\n\nPainel principal 4,50x2,43\nPainel lateral 4,10x2,43\nLateral 2.40x2.43\n\n\nHALL DE ENTRADA\n\nPAINÉIS\n\n* Painel lateral dos ganhos: 7,20 × 2,80 m\n* Painel das prateleiras: 4,50 × 2,80 m\n* 2 painéis duplos: 3,20 × 2,80 m\n\nADESIVOS\n\n* Entrada: 6,30 × 4,00 m\n* Encaixe: 7,70 × 4,60 m\n\nCARRINHOS\n\n* Pipoca e Algodão Doce: 2,20 × 0,80 m\n* Crepe: 1,20 × 0,75 m\n\nBAR\n\n* Barraquinha – medidas de sempre.\n\nMESA DE PERSONALIZAÇÃO DA GARRAFA\n\n* Medidas de sempre.",
+        "materiais":  "Festa Ursinho\n\n\nPainel principal 4,50x2,43\nPainel lateral 4,10x2,43\nLateral 2.40x2.43\n2 colunas 0,40 x 2,43 \n\nHALL DE ENTRADA\n\nPAINÉIS\n\n* Painel lateral dos ganhos: 7,20 × 2,80 m\n* Painel das prateleiras: 4,50 × 2,80 m\n* 2 painéis duplos: 3,20 × 2,80 m\n\nADESIVOS\n\n* Entrada: 6,30 × 4,00 m\n* Encaixe: 7,70 × 4,60 m\n\nCARRINHOS\n\n* Pipoca e Algodão Doce: 2,20 × 0,80 m\n* Crepe: 1,20 × 0,75 m\n\nBAR\n\n* Barraquinha – medidas de sempre.\n\nMESA DE PERSONALIZAÇÃO DA GARRAFA\n\n* Medidas de sempre.",
         "obs":  "",
         "status":  "Agendado",
         "imagens":  [
 
                     ],
-        "id":  130,
-        "createdAt":  "2026-11-11T13:01:17.599Z",
-        "updatedAt":  "2026-11-11T13:01:17.599Z"
+        "updatedAt":  "2026-11-11T13:02:53.757Z"
     }
 ]
