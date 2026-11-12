@@ -2120,6 +2120,8 @@
         "updatedAt":  "2026-11-11T18:42:56.935Z"
     },
     {
+        "createdAt":  "2026-11-11T17:28:25.412Z",
+        "id":  133,
         "cliente":  "Natália Barbalho",
         "evento":  "aniversário",
         "dataMontagem":  "2026-11-12",
@@ -2128,13 +2130,11 @@
         "local":  "makeshake",
         "materiais":  "painel 1,20 x 2,20 \nPainel 1,35 x 2,20 \nPainel 1,70 x 2,20",
         "obs":  "",
-        "status":  "Agendado",
+        "status":  "Montado",
         "imagens":  [
                         "imagens/foto-mwce7j3u-x5g.jpg"
                     ],
-        "id":  133,
-        "createdAt":  "2026-11-11T17:28:25.412Z",
-        "updatedAt":  "2026-11-11T17:28:25.412Z"
+        "updatedAt":  "2026-11-12T13:13:27.743Z"
     },
     {
         "createdAt":  "2026-11-11T17:42:01.282Z",
