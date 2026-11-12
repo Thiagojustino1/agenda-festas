@@ -1426,14 +1426,16 @@
         "horario":  "",
         "dataEvento":  "2026-11-14",
         "local":  "Av gov Silvio Pedrosa 316  Areia preta  Condomínio enseada dos Corais - Salão de festas",
-        "materiais":  "02 Painéis tamanho 1,00 x 2,25m",
+        "materiais":  "02 Painéis tamanho 1,00 x 2,25m\nAdesivos recortado em espelho de 1,50 x 2,00m",
         "obs":  "Desmontagem na Segunda (16)",
         "status":  "Agendado",
         "imagens":  [
                         "imagens/foto-mv8jpc4u-gz3.jpg",
-                        "imagens/foto-mv8jpcbf-uvs.jpg"
+                        "imagens/foto-mv8jpcbf-uvs.jpg",
+                        "imagens/foto-mwdiucp1-1xic.jpg",
+                        "imagens/foto-mwdiucrr-18sk.jpg"
                     ],
-        "updatedAt":  "2026-10-14T20:11:26.765Z"
+        "updatedAt":  "2026-11-12T12:25:54.732Z"
     },
     {
         "id":  90,
