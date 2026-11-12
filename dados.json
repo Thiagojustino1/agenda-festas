@@ -2171,5 +2171,22 @@
         "id":  135,
         "createdAt":  "2026-11-12T11:19:11.176Z",
         "updatedAt":  "2026-11-12T11:19:11.176Z"
+    },
+    {
+        "cliente":  "Pedro Maia",
+        "evento":  "",
+        "dataMontagem":  "2026-11-14",
+        "horario":  "",
+        "dataEvento":  "",
+        "local":  "Yolla",
+        "materiais":  "3.50 m x 2.60m",
+        "obs":  "às 16:30h",
+        "status":  "Agendado",
+        "imagens":  [
+                        "imagens/foto-mwdufawl-17ep.jpg"
+                    ],
+        "id":  136,
+        "createdAt":  "2026-11-12T17:50:08.106Z",
+        "updatedAt":  "2026-11-12T17:50:08.106Z"
     }
 ]
