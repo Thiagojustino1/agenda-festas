@@ -2150,5 +2150,22 @@
 
                     ],
         "updatedAt":  "2026-11-11T17:44:23.288Z"
+    },
+    {
+        "cliente":  "Emanuelle",
+        "evento":  "Helena Roose",
+        "dataMontagem":  "2026-11-14",
+        "horario":  "",
+        "dataEvento":  "2026-11-14",
+        "local":  "Let\u0027s Party - Rua Dr. Poty Nóbrega, 338 - Lagoa Nova, Natal - RN, 59056-180",
+        "materiais":  "Painel central 1,30 x 2,65m\n02 Und. Painéis laterais 0,80 x 2,20m\nPiso 4,65 x 0,70m",
+        "obs":  "",
+        "status":  "Agendado",
+        "imagens":  [
+                        "imagens/foto-mwdggjjx-1894.jpg"
+                    ],
+        "id":  135,
+        "createdAt":  "2026-11-12T11:19:11.176Z",
+        "updatedAt":  "2026-11-12T11:19:11.176Z"
     }
 ]
