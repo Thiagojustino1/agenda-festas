@@ -2207,6 +2207,8 @@
         "updatedAt":  "2026-11-12T19:11:50.867Z"
     },
     {
+        "createdAt":  "2026-11-12T19:53:42.639Z",
+        "id":  138,
         "cliente":  "Nana Falcão",
         "evento":  "",
         "dataMontagem":  "2026-11-13",
@@ -2215,12 +2217,27 @@
         "local":  "Midway",
         "materiais":  "Painel 2,00 x 2,00m",
         "obs":  "",
-        "status":  "Agendado",
+        "status":  "Montado",
         "imagens":  [
                         "imagens/foto-mwdyu84m-1ef5.jpg"
                     ],
-        "id":  138,
-        "createdAt":  "2026-11-12T19:53:42.639Z",
-        "updatedAt":  "2026-11-12T19:53:42.639Z"
+        "updatedAt":  "2026-11-13T17:07:00.852Z"
+    },
+    {
+        "cliente":  "Claudia",
+        "evento":  "",
+        "dataMontagem":  "2026-11-17",
+        "horario":  "",
+        "dataEvento":  "2026-11-16",
+        "local":  "",
+        "materiais":  "Painel 2,00 x 2,00",
+        "obs":  "",
+        "status":  "Agendado",
+        "imagens":  [
+
+                    ],
+        "id":  139,
+        "createdAt":  "2026-11-13T14:22:57.048Z",
+        "updatedAt":  "2026-11-13T14:22:57.048Z"
     }
 ]
