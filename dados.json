@@ -2147,13 +2147,17 @@
         "horario":  "",
         "dataEvento":  "",
         "local":  "",
-        "materiais":  "Painel 7.00 x 2.95 \nPainel 3.00 x 2.95 ( com 6 und prateleiras )\n2 und 1,40m x2,40m \nLona de piso: 7.00 x 2.80 \nadesivo 3.00 L x 2.20\n5 adesivos tampo mesa 1.50 x 1,50 \n10 adesivos mesas 90x90",
+        "materiais":  "Painel 7.00 x 2.95 \nPainel 3.00 x 2.95 ( com 6 und prateleiras )\n2 und 1,40m x2,40m \nLona de piso: 7.00 x 2.80 \nadesivo 3.00 L x 2.20\n5 adesivos tampo mesa 1.50 x 1,50 \n10 adesivos mesas 90x90\ncavalete",
         "obs":  "",
         "status":  "Agendado",
         "imagens":  [
-
+                        "imagens/foto-mwfbd7dh-18xh.jpg",
+                        "imagens/foto-mwfbd7sr-4im.jpg",
+                        "imagens/foto-mwfbd814-1z55.jpg",
+                        "imagens/foto-mwfbd86q-5wt.jpg",
+                        "imagens/foto-mwfbd89z-nga.jpg"
                     ],
-        "updatedAt":  "2026-11-11T17:44:23.288Z"
+        "updatedAt":  "2026-11-13T18:32:10.675Z"
     },
     {
         "cliente":  "Emanuelle",
