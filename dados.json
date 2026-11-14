@@ -1419,7 +1419,6 @@
         "updatedAt":  "2026-10-14T13:47:38.101Z"
     },
     {
-        "id":  89,
         "cliente":  "Alciene (Clínica de oncologia)",
         "evento":  "Time Comn",
         "dataMontagem":  "2026-11-13",
@@ -1428,14 +1427,15 @@
         "local":  "Av gov Silvio Pedrosa 316  Areia preta  Condomínio enseada dos Corais - Salão de festas",
         "materiais":  "02 Painéis tamanho 1,00 x 2,25m\nAdesivos recortado em espelho de 1,50 x 2,00m",
         "obs":  "Desmontagem na Segunda (16)",
-        "status":  "Agendado",
         "imagens":  [
                         "imagens/foto-mv8jpc4u-gz3.jpg",
                         "imagens/foto-mv8jpcbf-uvs.jpg",
                         "imagens/foto-mwdiucp1-1xic.jpg",
                         "imagens/foto-mwdiucrr-18sk.jpg"
                     ],
-        "updatedAt":  "2026-11-12T12:25:54.732Z"
+        "id":  89,
+        "status":  "Montado",
+        "updatedAt":  "2026-11-14T15:42:50.404Z"
     },
     {
         "id":  90,
@@ -2087,7 +2087,6 @@
     },
     {
         "createdAt":  "2026-11-11T13:55:32.941Z",
-        "id":  131,
         "cliente":  "Emanuelle",
         "evento":  "Marina",
         "dataMontagem":  "2026-11-13",
@@ -2096,17 +2095,17 @@
         "local":  "Let\u0027s Party - Rua Dr. Poty Nóbrega, 338 - Lagoa Nova, Natal - RN, 59056-180",
         "materiais":  "02 Und. Painel 0,80 x 2,20m\nPainel mimos 3,65 x 2,65m ( com prateleiras ) \nPainel principal 1,30 x 2,65m\nAdesivos recortados",
         "obs":  "",
-        "status":  "Agendado",
         "imagens":  [
                         "imagens/foto-mwc6lr3l-40y.jpg",
                         "imagens/foto-mwc6lrgn-1uke.jpg",
                         "imagens/foto-mwc6lroi-162n.jpg"
                     ],
-        "updatedAt":  "2026-11-11T18:53:42.784Z"
+        "id":  131,
+        "status":  "Montado",
+        "updatedAt":  "2026-11-14T15:42:50.404Z"
     },
     {
         "createdAt":  "2026-11-11T14:51:51.980Z",
-        "id":  132,
         "cliente":  "Pedro Maia",
         "evento":  "",
         "dataMontagem":  "2026-11-13",
@@ -2115,11 +2114,12 @@
         "local":  "Cond. professora Noilde Ramalho - N°1301",
         "materiais":  "Painel 1,20 x 2,30 \n2 und painel 1,15 x  2,20 \npiso 3,50 x  2,40",
         "obs":  "Salão de festas\nMontagem na sexta de tarde\nRecolher segunda manha",
-        "status":  "Agendado",
         "imagens":  [
                         "imagens/foto-mwcdkbf8-oq0.jpg"
                     ],
-        "updatedAt":  "2026-11-11T18:42:56.935Z"
+        "id":  132,
+        "status":  "Montado",
+        "updatedAt":  "2026-11-14T15:42:50.404Z"
     },
     {
         "createdAt":  "2026-11-11T17:28:25.412Z",
