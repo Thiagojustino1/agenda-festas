@@ -2068,7 +2068,6 @@
     },
     {
         "createdAt":  "2026-11-11T13:01:17.599Z",
-        "id":  130,
         "cliente":  "Marcela",
         "evento":  "",
         "dataMontagem":  "2026-11-14",
@@ -2077,13 +2076,14 @@
         "local":  "Versalles",
         "materiais":  "Festa Ursinho\n\n\nPainel principal 4,50x2,43\nPainel lateral 4,10x2,43\nLateral 2.40x2.43\n2 colunas 0,40 x 2,43 \npainel 1,50 x 1,80\nadesivo 4,60 x 4,10\nHALL DE ENTRADA\n\nPAINÉIS\n\n* Painel lateral dos ganhos: 7,20 × 2,80 m - 24 ganchos\n* Painel das prateleiras: 4,50 × 2,80 m\n* 2 painéis duplos: 3,20 × 2,80 m\n\nADESIVOS\n\n* Entrada: 6,30 × 4,00 m\n* Encaixe: 7,70 × 4,60 m\n\nCARRINHOS\n\n* Pipoca e Algodão Doce: 2,20 × 0,80 m\n* Crepe: 1,20 × 0,75 m\n\nBAR\n\n* Barraquinha – medidas de sempre.\n\nMESA DE PERSONALIZAÇÃO DA GARRAFA\n\n* Medidas de sempre.",
         "obs":  "Pode ser no sábado no salão Trianon e Jardim das águas a partir das 10h00 até às 12h00\n\nFechamos para almoço das 12h00 às 13h00 neste horário, não ocorre montagem. \n\nNa parte da tarde, montagem a partir das 13h00 até às 16h30\n\n*Desmontagens ao término do evento.",
-        "status":  "Agendado",
         "imagens":  [
                         "imagens/foto-mwc4r0ze-n7y.jpg",
                         "imagens/foto-mwdtcuz6-1bt7.jpg",
                         "imagens/foto-mwdtcv5i-nl6.jpg"
                     ],
-        "updatedAt":  "2026-11-12T19:55:20.325Z"
+        "id":  130,
+        "status":  "Montado",
+        "updatedAt":  "2026-11-16T10:22:16.614Z"
     },
     {
         "createdAt":  "2026-11-11T13:55:32.941Z",
@@ -2140,7 +2140,6 @@
     },
     {
         "createdAt":  "2026-11-11T17:42:01.282Z",
-        "id":  134,
         "cliente":  "Pedro Maia",
         "evento":  "",
         "dataMontagem":  "2026-11-14",
@@ -2149,7 +2148,6 @@
         "local":  "",
         "materiais":  "Painel 7.00 x 2.95 \nPainel 3.00 x 2.95 ( com 6 und prateleiras )\n2 und 1,40m x2,40m \nLona de piso: 7.00 x 2.80 \nadesivo 3.00 L x 2.20\n5 adesivos tampo mesa 1.50 x 1,50 \n10 adesivos mesas 90x90\ncavalete",
         "obs":  "",
-        "status":  "Agendado",
         "imagens":  [
                         "imagens/foto-mwfbd7dh-18xh.jpg",
                         "imagens/foto-mwfbd7sr-4im.jpg",
@@ -2157,7 +2155,9 @@
                         "imagens/foto-mwfbd86q-5wt.jpg",
                         "imagens/foto-mwfbd89z-nga.jpg"
                     ],
-        "updatedAt":  "2026-11-13T18:32:10.675Z"
+        "id":  134,
+        "status":  "Montado",
+        "updatedAt":  "2026-11-16T10:22:16.614Z"
     },
     {
         "cliente":  "Emanuelle",
@@ -2168,13 +2168,13 @@
         "local":  "Let\u0027s Party - Rua Dr. Poty Nóbrega, 338 - Lagoa Nova, Natal - RN, 59056-180",
         "materiais":  "Painel central 1,30 x 2,65m\n02 Und. Painéis laterais 0,80 x 2,20m\nPiso 4,65 x 0,70m",
         "obs":  "",
-        "status":  "Agendado",
         "imagens":  [
                         "imagens/foto-mwdggjjx-1894.jpg"
                     ],
-        "id":  135,
         "createdAt":  "2026-11-12T11:19:11.176Z",
-        "updatedAt":  "2026-11-12T11:19:11.176Z"
+        "id":  135,
+        "status":  "Montado",
+        "updatedAt":  "2026-11-16T10:22:16.614Z"
     },
     {
         "cliente":  "Pedro Maia",
@@ -2185,13 +2185,13 @@
         "local":  "Yolla",
         "materiais":  "3.50 m x 2.60m",
         "obs":  "às 16:30h",
-        "status":  "Agendado",
         "imagens":  [
                         "imagens/foto-mwdufawl-17ep.jpg"
                     ],
-        "id":  136,
         "createdAt":  "2026-11-12T17:50:08.106Z",
-        "updatedAt":  "2026-11-12T17:50:08.106Z"
+        "id":  136,
+        "status":  "Montado",
+        "updatedAt":  "2026-11-16T10:22:16.614Z"
     },
     {
         "createdAt":  "2026-11-12T18:34:07.606Z",
