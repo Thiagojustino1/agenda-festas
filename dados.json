@@ -2228,21 +2228,21 @@
         "updatedAt":  "2026-11-13T17:07:00.852Z"
     },
     {
+        "createdAt":  "2026-11-13T14:22:57.048Z",
+        "id":  139,
         "cliente":  "Claudia",
         "evento":  "",
         "dataMontagem":  "2026-11-17",
         "horario":  "",
         "dataEvento":  "2026-11-16",
         "local":  "",
-        "materiais":  "Painel 2,00 x 2,00",
+        "materiais":  "Painel 2,00 x 2,00\npiso 2,00 x 2,00",
         "obs":  "",
         "status":  "Agendado",
         "imagens":  [
-
+                        "imagens/foto-mwj48v1l-vhr.jpg"
                     ],
-        "id":  139,
-        "createdAt":  "2026-11-13T14:22:57.048Z",
-        "updatedAt":  "2026-11-13T14:22:57.048Z"
+        "updatedAt":  "2026-11-16T10:23:54.337Z"
     },
     {
         "cliente":  "Isabelle Lins",
