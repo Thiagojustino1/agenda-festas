@@ -2262,7 +2262,9 @@
         "updatedAt":  "2026-11-13T19:20:02.275Z"
     },
     {
-        "cliente":  "Ema",
+        "createdAt":  "2026-11-16T11:40:11.421Z",
+        "id":  141,
+        "cliente":  "Emanuelle",
         "evento":  "lest party",
         "dataMontagem":  "2026-11-17",
         "horario":  "",
@@ -2274,8 +2276,6 @@
         "imagens":  [
                         "imagens/foto-mwj6yyiv-kjf.jpg"
                     ],
-        "id":  141,
-        "createdAt":  "2026-11-16T11:40:11.421Z",
-        "updatedAt":  "2026-11-16T11:40:11.421Z"
+        "updatedAt":  "2026-11-16T11:40:24.001Z"
     }
 ]
