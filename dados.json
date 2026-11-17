@@ -2245,10 +2245,12 @@
         "updatedAt":  "2026-11-17T11:36:02.734Z"
     },
     {
+        "createdAt":  "2026-11-13T19:20:02.275Z",
+        "id":  140,
         "cliente":  "Isabelle Lins",
         "evento":  "",
         "dataMontagem":  "2026-11-19",
-        "horario":  "",
+        "horario":  "10:00",
         "dataEvento":  "",
         "local":  "Yolla",
         "materiais":  "Painel 3,00 x 2,30",
@@ -2257,9 +2259,7 @@
         "imagens":  [
 
                     ],
-        "id":  140,
-        "createdAt":  "2026-11-13T19:20:02.275Z",
-        "updatedAt":  "2026-11-13T19:20:02.275Z"
+        "updatedAt":  "2026-11-17T19:41:11.159Z"
     },
     {
         "createdAt":  "2026-11-16T11:40:11.421Z",
