@@ -2304,7 +2304,7 @@
         "horario":  "",
         "dataEvento":  "",
         "local":  "",
-        "materiais":  "4 fotos em lona 1,24cm largura x1,77cm altura",
+        "materiais":  "4 fotos em lona 1,24cm largura x1,77cm altura \n( com aplicação no vidro )",
         "obs":  "As artes vão ser assim, essa parte da frente com essa foto e bem-vindos, e a parte detrás como essa",
         "status":  "Agendado",
         "imagens":  [
@@ -2312,6 +2312,6 @@
                         "imagens/foto-mwkrqim3-8n.jpg",
                         "imagens/foto-mwkrqiqx-1xy5.jpg"
                     ],
-        "updatedAt":  "2026-11-17T14:09:15.650Z"
+        "updatedAt":  "2026-11-17T14:28:41.335Z"
     }
 ]
