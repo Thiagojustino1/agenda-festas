@@ -2294,5 +2294,22 @@
         "id":  142,
         "createdAt":  "2026-11-16T11:41:00.968Z",
         "updatedAt":  "2026-11-16T11:41:00.968Z"
+    },
+    {
+        "cliente":  "Dani",
+        "evento":  "casamento",
+        "dataMontagem":  "2026-11-21",
+        "horario":  "",
+        "dataEvento":  "",
+        "local":  "",
+        "materiais":  "4 fotos em lona 1,24cm largura x1,77cm altura",
+        "obs":  "",
+        "status":  "Agendado",
+        "imagens":  [
+
+                    ],
+        "id":  143,
+        "createdAt":  "2026-11-17T14:06:55.673Z",
+        "updatedAt":  "2026-11-17T14:06:55.673Z"
     }
 ]
