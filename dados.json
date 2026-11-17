@@ -2296,6 +2296,8 @@
         "updatedAt":  "2026-11-16T11:41:00.968Z"
     },
     {
+        "createdAt":  "2026-11-17T14:06:55.673Z",
+        "id":  143,
         "cliente":  "Dani",
         "evento":  "casamento",
         "dataMontagem":  "2026-11-21",
@@ -2303,13 +2305,13 @@
         "dataEvento":  "",
         "local":  "",
         "materiais":  "4 fotos em lona 1,24cm largura x1,77cm altura",
-        "obs":  "",
+        "obs":  "As artes vão ser assim, essa parte da frente com essa foto e bem-vindos, e a parte detrás como essa",
         "status":  "Agendado",
         "imagens":  [
-
+                        "imagens/foto-mwkrqifo-1u6p.jpg",
+                        "imagens/foto-mwkrqim3-8n.jpg",
+                        "imagens/foto-mwkrqiqx-1xy5.jpg"
                     ],
-        "id":  143,
-        "createdAt":  "2026-11-17T14:06:55.673Z",
-        "updatedAt":  "2026-11-17T14:06:55.673Z"
+        "updatedAt":  "2026-11-17T14:09:15.650Z"
     }
 ]
