@@ -2350,11 +2350,13 @@
         "updatedAt":  "2026-11-18T13:52:30.674Z"
     },
     {
+        "createdAt":  "2026-11-18T14:10:26.466Z",
+        "id":  146,
         "cliente":  "Emanuelle",
         "evento":  "lest party",
         "dataMontagem":  "2026-11-19",
         "horario":  "",
-        "dataEvento":  "",
+        "dataEvento":  "2026-11-21",
         "local":  "Let´s Party",
         "materiais":  "",
         "obs":  "",
@@ -2362,8 +2364,6 @@
         "imagens":  [
                         "imagens/foto-mwm77vwc-15m0.jpg"
                     ],
-        "id":  146,
-        "createdAt":  "2026-11-18T14:10:26.466Z",
-        "updatedAt":  "2026-11-18T14:10:26.466Z"
+        "updatedAt":  "2026-11-18T14:19:51.399Z"
     }
 ]
