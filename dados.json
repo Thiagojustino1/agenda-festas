@@ -2367,20 +2367,20 @@
         "updatedAt":  "2026-11-18T14:57:52.610Z"
     },
     {
+        "createdAt":  "2026-11-18T14:46:33.799Z",
+        "id":  147,
         "cliente":  "Daiane",
         "evento":  "",
         "dataMontagem":  "2026-11-21",
         "horario":  "",
         "dataEvento":  "",
         "local":  "",
-        "materiais":  "Painel 2,20 x  2,20 \nPainel 1,00 x 2,30 \nPainel 0,50 x 2,10\npiso 3,50 x 3,50",
+        "materiais":  "Painel 2,20 x  2,20 \nPainel 1,00 x 2,30 \nPainel 0,50 x 2,10\n2 und cubo 0,60 x 0,60\ncubo 0,80 x 0,80 \npiso 3,50 x 3,50",
         "obs":  "",
         "status":  "Agendado",
         "imagens":  [
                         "imagens/foto-mwm8icec-21ks.jpg"
                     ],
-        "id":  147,
-        "createdAt":  "2026-11-18T14:46:33.799Z",
-        "updatedAt":  "2026-11-18T14:46:33.799Z"
+        "updatedAt":  "2026-11-18T20:38:30.515Z"
     }
 ]
