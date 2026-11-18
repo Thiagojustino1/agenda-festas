@@ -2331,5 +2331,22 @@
         "id":  144,
         "createdAt":  "2026-11-18T11:18:33.180Z",
         "updatedAt":  "2026-11-18T11:18:33.180Z"
+    },
+    {
+        "cliente":  "Patrícia",
+        "evento":  "",
+        "dataMontagem":  "2026-11-23",
+        "horario":  "",
+        "dataEvento":  "2026-11-23",
+        "local":  "Cliente vem retirar na loja",
+        "materiais":  "Painel 1,50 x 2,20m",
+        "obs":  "- Cliente vem retirar na loja",
+        "status":  "Agendado",
+        "imagens":  [
+                        "imagens/foto-mwm6ktyk-pxx.jpg"
+                    ],
+        "id":  145,
+        "createdAt":  "2026-11-18T13:52:30.674Z",
+        "updatedAt":  "2026-11-18T13:52:30.674Z"
     }
 ]
