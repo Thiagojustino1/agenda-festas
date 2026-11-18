@@ -2263,7 +2263,6 @@
     },
     {
         "createdAt":  "2026-11-16T11:40:11.421Z",
-        "id":  141,
         "cliente":  "Emanuelle",
         "evento":  "lest party",
         "dataMontagem":  "2026-11-17",
@@ -2272,11 +2271,12 @@
         "local":  "Let´s Party",
         "materiais":  "Painel 1,30  x 2,65 \n2 und Painel 0,80 x 2,20 \npiso 4,65 x 0,70",
         "obs":  "",
-        "status":  "Agendado",
         "imagens":  [
                         "imagens/foto-mwj6yyiv-kjf.jpg"
                     ],
-        "updatedAt":  "2026-11-16T11:40:24.001Z"
+        "id":  141,
+        "status":  "Montado",
+        "updatedAt":  "2026-11-18T11:17:09.903Z"
     },
     {
         "cliente":  "Emanuelle",
