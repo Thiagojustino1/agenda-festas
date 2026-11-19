@@ -2379,9 +2379,10 @@
         "obs":  "",
         "status":  "Agendado",
         "imagens":  [
-                        "imagens/foto-mwnmb64z-10be.jpg"
+                        "imagens/foto-mwnmb64z-10be.jpg",
+                        "imagens/foto-mwnmk83i-12r7.jpg"
                     ],
-        "updatedAt":  "2026-11-19T14:00:39.862Z"
+        "updatedAt":  "2026-11-19T14:07:42.267Z"
     },
     {
         "cliente":  "Claudia",
