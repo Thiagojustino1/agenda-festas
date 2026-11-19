@@ -2287,13 +2287,13 @@
         "local":  "Let´s Party",
         "materiais":  "Painel 1,30  x 2,65 \n2 und Painel 0,80 x 2,20 \npiso 4,65 x 0,70",
         "obs":  "",
-        "status":  "Agendado",
         "imagens":  [
                         "imagens/foto-mwj700zr-1vx3.jpg"
                     ],
-        "id":  142,
         "createdAt":  "2026-11-16T11:41:00.968Z",
-        "updatedAt":  "2026-11-16T11:41:00.968Z"
+        "id":  142,
+        "status":  "Montado",
+        "updatedAt":  "2026-11-19T11:37:00.351Z"
     },
     {
         "createdAt":  "2026-11-17T14:06:55.673Z",
