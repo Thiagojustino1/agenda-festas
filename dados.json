@@ -2382,5 +2382,22 @@
                         "imagens/foto-mwm8icec-21ks.jpg"
                     ],
         "updatedAt":  "2026-11-18T20:38:30.515Z"
+    },
+    {
+        "cliente":  "Claudia",
+        "evento":  "",
+        "dataMontagem":  "2026-11-28",
+        "horario":  "",
+        "dataEvento":  "",
+        "local":  "Garden",
+        "materiais":  "painel 3,00 x 2,20m",
+        "obs":  "",
+        "status":  "Agendado",
+        "imagens":  [
+
+                    ],
+        "id":  148,
+        "createdAt":  "2026-11-19T13:56:43.359Z",
+        "updatedAt":  "2026-11-19T13:56:43.359Z"
     }
 ]
