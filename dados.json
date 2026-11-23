@@ -2297,7 +2297,6 @@
     },
     {
         "createdAt":  "2026-11-17T14:06:55.673Z",
-        "id":  143,
         "cliente":  "Dani",
         "evento":  "casamento",
         "dataMontagem":  "2026-11-21",
@@ -2306,14 +2305,15 @@
         "local":  "",
         "materiais":  "4 fotos em lona 1,24cm largura x1,77cm altura \n( com aplicação no vidro )",
         "obs":  "As artes vão ser assim, essa parte da frente com essa foto e bem-vindos, e a parte detrás como essa",
-        "status":  "Agendado",
         "imagens":  [
                         "imagens/foto-mwkrqifo-1u6p.jpg",
                         "imagens/foto-mwkrqim3-8n.jpg",
                         "imagens/foto-mwkrqiqx-1xy5.jpg",
                         "imagens/foto-mwkyf9n7-xt8.jpg"
                     ],
-        "updatedAt":  "2026-11-17T17:16:27.922Z"
+        "id":  143,
+        "status":  "Montado",
+        "updatedAt":  "2026-11-23T12:27:59.062Z"
     },
     {
         "createdAt":  "2026-11-18T11:18:33.180Z",
@@ -2368,7 +2368,6 @@
     },
     {
         "createdAt":  "2026-11-18T14:46:33.799Z",
-        "id":  147,
         "cliente":  "Daiane",
         "evento":  "",
         "dataMontagem":  "2026-11-21",
@@ -2377,12 +2376,13 @@
         "local":  "",
         "materiais":  "Painel 2,20 x  2,20 \nPainel 1,00 x 2,30 \nPainel 0,50 x 2,10\n2 und cubo 0,60 x 0,60\ncubo 0,80 x 0,80 \npiso 3,50 x 3,50",
         "obs":  "",
-        "status":  "Agendado",
         "imagens":  [
                         "imagens/foto-mwnmb64z-10be.jpg",
                         "imagens/foto-mwnmk83i-12r7.jpg"
                     ],
-        "updatedAt":  "2026-11-19T14:07:42.267Z"
+        "id":  147,
+        "status":  "Montado",
+        "updatedAt":  "2026-11-23T12:27:59.062Z"
     },
     {
         "createdAt":  "2026-11-19T13:56:43.359Z",
