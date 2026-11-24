@@ -2471,20 +2471,20 @@
         "updatedAt":  "2026-11-24T12:33:15.680Z"
     },
     {
+        "createdAt":  "2026-11-24T13:20:29.491Z",
+        "id":  153,
         "cliente":  "Daiane",
         "evento":  "",
         "dataMontagem":  "2026-11-29",
         "horario":  "",
         "dataEvento":  "",
         "local":  "Chacará hall",
-        "materiais":  "portico 2,00 x 0,50 \n2 und portico 0,60 x 2,50 \npiso 2,50 x 2,00",
+        "materiais":  "portico 2,00 x 0,50 \n2 und portico 0,40 x 2,45\nPainel 2,00 x 2,50",
         "obs":  "",
         "status":  "Agendado",
         "imagens":  [
 
                     ],
-        "id":  153,
-        "createdAt":  "2026-11-24T13:20:29.491Z",
-        "updatedAt":  "2026-11-24T13:20:29.491Z"
+        "updatedAt":  "2026-11-24T17:24:18.021Z"
     }
 ]
