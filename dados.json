@@ -2486,5 +2486,22 @@
 
                     ],
         "updatedAt":  "2026-11-24T17:31:05.524Z"
+    },
+    {
+        "cliente":  "Paulo",
+        "evento":  "",
+        "dataMontagem":  "2026-11-27",
+        "horario":  "",
+        "dataEvento":  "",
+        "local":  "Arena Praia Mar",
+        "materiais":  "Painel 4,00 x 3,00",
+        "obs":  "",
+        "status":  "Agendado",
+        "imagens":  [
+                        "imagens/foto-mwv4h1oz-1xmz.jpg"
+                    ],
+        "id":  154,
+        "createdAt":  "2026-11-24T20:03:30.675Z",
+        "updatedAt":  "2026-11-24T20:03:30.675Z"
     }
 ]
