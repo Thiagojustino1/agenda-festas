@@ -2479,13 +2479,13 @@
         "horario":  "",
         "dataEvento":  "",
         "local":  "Chacará hall",
-        "materiais":  "portico 2,00 x 0,50 \n2 und portico 0,40 x 2,42\nPainel 2,00 x 2,50\nPainel meio boleado 0,70 x 2,00 \nPainel meio boleado 0,80 x 2,00",
+        "materiais":  "portico 2,00 x 0,50 \n2 und portico 0,40 x 2,42\nPainel 2,00 x 2,50\nPainel meio boleado 0,70 x 2,00 \nPainel meio boleado 0,80 x 2,00\n2 und display 0,60 x 0,60",
         "obs":  "",
         "status":  "Agendado",
         "imagens":  [
 
                     ],
-        "updatedAt":  "2026-11-24T17:31:05.524Z"
+        "updatedAt":  "2026-11-25T17:37:16.505Z"
     },
     {
         "cliente":  "Paulo",
