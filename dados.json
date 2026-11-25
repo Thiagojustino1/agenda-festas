@@ -2557,5 +2557,22 @@
                         "imagens/foto-mwwgpyty-1goh.jpg"
                     ],
         "updatedAt":  "2026-11-25T18:34:08.263Z"
+    },
+    {
+        "cliente":  "Daiane",
+        "evento":  "",
+        "dataMontagem":  "2026-12-05",
+        "horario":  "",
+        "dataEvento":  "",
+        "local":  "Sal e brasa",
+        "materiais":  "Painel 3,00 x 2,80",
+        "obs":  "",
+        "status":  "Agendado",
+        "imagens":  [
+
+                    ],
+        "id":  158,
+        "createdAt":  "2026-11-25T18:35:58.609Z",
+        "updatedAt":  "2026-11-25T18:35:58.609Z"
     }
 ]
