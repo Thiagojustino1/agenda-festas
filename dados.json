@@ -2547,12 +2547,12 @@
         "horario":  "",
         "dataEvento":  "",
         "local":  "Di Trento",
-        "materiais":  "Portico 3,40 x 0,70 \n2 und laterais 1,10 x 2,00\npiso 4,60 x 5,00\n2 und adesivo mesa 1,25 x 0,60 \nPainel 4,00 x 2,40 ( 8 und prateleiras ) \n2 und barracas",
+        "materiais":  "Portico 3,40 x 0,70 \n2 und laterais 1,10 x 2,00\npiso 4,60 x 5,00\n2 und adesivo mesa 1,25 x 0,60 \nPainel 4,00 x 2,40 ( 8 und prateleiras ) \n2 und barracas\npiso lona 9m x 4,20m",
         "obs":  "",
         "status":  "Agendado",
         "imagens":  [
 
                     ],
-        "updatedAt":  "2026-11-25T11:49:07.264Z"
+        "updatedAt":  "2026-11-25T15:02:23.221Z"
     }
 ]
