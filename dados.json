@@ -2445,13 +2445,13 @@
         "local":  "Arena das Dunas",
         "materiais":  "Painel 3,00 x 2,00",
         "obs":  "",
-        "status":  "Agendado",
         "imagens":  [
                         "imagens/foto-mwulyi3y-1axz.jpg"
                     ],
-        "id":  151,
         "createdAt":  "2026-11-24T11:25:12.137Z",
-        "updatedAt":  "2026-11-24T11:25:12.137Z"
+        "id":  151,
+        "status":  "Montado",
+        "updatedAt":  "2026-11-26T14:22:25.822Z"
     },
     {
         "cliente":  "Cristiane",
