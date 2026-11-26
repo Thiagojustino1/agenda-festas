@@ -2559,21 +2559,21 @@
         "updatedAt":  "2026-11-25T19:17:06.152Z"
     },
     {
-        "cliente":  "Daiane",
+        "createdAt":  "2026-11-25T18:35:58.609Z",
+        "id":  158,
+        "cliente":  "Gal",
         "evento":  "",
         "dataMontagem":  "2026-12-05",
         "horario":  "",
         "dataEvento":  "",
-        "local":  "Sal e brasa",
-        "materiais":  "Painel 3,00 x 2,80",
+        "local":  "Nau",
+        "materiais":  "Painel 3,00 x 3,00",
         "obs":  "",
         "status":  "Agendado",
         "imagens":  [
 
                     ],
-        "id":  158,
-        "createdAt":  "2026-11-25T18:35:58.609Z",
-        "updatedAt":  "2026-11-25T18:35:58.609Z"
+        "updatedAt":  "2026-11-26T14:23:08.557Z"
     },
     {
         "cliente":  "Natália Barbalho",
