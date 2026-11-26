@@ -2454,6 +2454,8 @@
         "updatedAt":  "2026-11-26T14:22:25.822Z"
     },
     {
+        "createdAt":  "2026-11-24T12:33:15.680Z",
+        "id":  152,
         "cliente":  "Cristiane",
         "evento":  "Formatura",
         "dataMontagem":  "2026-11-28",
@@ -2462,13 +2464,11 @@
         "local":  "Sapekas",
         "materiais":  "Painel 2,61 x 2,41",
         "obs":  "",
-        "status":  "Agendado",
+        "status":  "Montado",
         "imagens":  [
                         "imagens/foto-mwuoe0xi-ldl.jpg"
                     ],
-        "id":  152,
-        "createdAt":  "2026-11-24T12:33:15.680Z",
-        "updatedAt":  "2026-11-24T12:33:15.680Z"
+        "updatedAt":  "2026-11-26T20:30:48.636Z"
     },
     {
         "createdAt":  "2026-11-24T13:20:29.491Z",
