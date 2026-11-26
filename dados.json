@@ -2645,20 +2645,20 @@
         "updatedAt":  "2026-11-26T19:18:22.506Z"
     },
     {
+        "createdAt":  "2026-11-26T20:22:45.457Z",
+        "id":  163,
         "cliente":  "Adriana",
         "evento":  "",
         "dataMontagem":  "2026-12-05",
         "horario":  "",
         "dataEvento":  "",
-        "local":  "",
+        "local":  "Garden",
         "materiais":  "Painel 3,00 x 2,50",
         "obs":  "",
         "status":  "Agendado",
         "imagens":  [
 
                     ],
-        "id":  163,
-        "createdAt":  "2026-11-26T20:22:45.457Z",
-        "updatedAt":  "2026-11-26T20:22:45.457Z"
+        "updatedAt":  "2026-11-26T20:27:35.074Z"
     }
 ]
