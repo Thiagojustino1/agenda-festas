@@ -2576,6 +2576,8 @@
         "updatedAt":  "2026-11-26T14:23:08.557Z"
     },
     {
+        "createdAt":  "2026-11-25T18:50:04.220Z",
+        "id":  159,
         "cliente":  "Natália Barbalho",
         "evento":  "",
         "dataMontagem":  "2026-11-27",
@@ -2584,13 +2586,11 @@
         "local":  "makeshake",
         "materiais":  "Painel 1,70 x 2,20 \nPainel 1,35 x 2,20 \nPainel 1,20 x 2,20",
         "obs":  "",
-        "status":  "Agendado",
+        "status":  "Montado",
         "imagens":  [
                         "imagens/foto-mwwhagd5-1248.jpg"
                     ],
-        "id":  159,
-        "createdAt":  "2026-11-25T18:50:04.220Z",
-        "updatedAt":  "2026-11-25T18:50:04.220Z"
+        "updatedAt":  "2026-11-26T20:31:11.618Z"
     },
     {
         "createdAt":  "2026-11-26T14:24:10.912Z",
