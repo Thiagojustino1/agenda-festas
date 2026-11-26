@@ -2593,9 +2593,11 @@
         "updatedAt":  "2026-11-25T18:50:04.220Z"
     },
     {
+        "createdAt":  "2026-11-26T14:24:10.912Z",
+        "id":  160,
         "cliente":  "Daiane",
         "evento":  "",
-        "dataMontagem":  "",
+        "dataMontagem":  "2026-11-29",
         "horario":  "",
         "dataEvento":  "",
         "local":  "Sal e brasa",
@@ -2605,9 +2607,7 @@
         "imagens":  [
                         "imagens/foto-mwxn8dl8-j9a.jpg"
                     ],
-        "id":  160,
-        "createdAt":  "2026-11-26T14:24:10.912Z",
-        "updatedAt":  "2026-11-26T14:24:10.912Z"
+        "updatedAt":  "2026-11-26T14:51:56.785Z"
     },
     {
         "cliente":  "Daiane",
