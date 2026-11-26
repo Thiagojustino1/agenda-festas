@@ -2522,6 +2522,8 @@
         "updatedAt":  "2026-11-25T11:20:17.529Z"
     },
     {
+        "createdAt":  "2026-11-25T11:21:07.946Z",
+        "id":  156,
         "cliente":  "Lilian",
         "evento":  "",
         "dataMontagem":  "2026-11-28",
@@ -2530,13 +2532,11 @@
         "local":  "",
         "materiais":  "2 und painel 1,00 x 2,18 \npiso 2,50 x 2,00",
         "obs":  "",
-        "status":  "Agendado",
+        "status":  "Montado",
         "imagens":  [
                         "imagens/foto-mww194hm-230.jpg"
                     ],
-        "id":  156,
-        "createdAt":  "2026-11-25T11:21:07.946Z",
-        "updatedAt":  "2026-11-25T11:21:07.946Z"
+        "updatedAt":  "2026-11-26T20:30:55.567Z"
     },
     {
         "createdAt":  "2026-11-25T11:45:13.302Z",
