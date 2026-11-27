@@ -2723,5 +2723,22 @@
 
                     ],
         "updatedAt":  "2026-11-27T15:01:25.934Z"
+    },
+    {
+        "cliente":  "Jessica",
+        "evento":  "aniversário",
+        "dataMontagem":  "2026-11-29",
+        "horario":  "",
+        "dataEvento":  "",
+        "local":  "Let´s Party",
+        "materiais":  "Painel 1,00 x 2,20 boleado\nPainel 1,00 x 2,30 boleado\nPainel 1,00 x 2,00\nPainel 0,80 x 2,00 ( que vai ter a cortina holográfica colada )\narco\n3 und display",
+        "obs":  "",
+        "status":  "Agendado",
+        "imagens":  [
+                        "imagens/foto-mwzakhkt-1g7h.jpg"
+                    ],
+        "id":  167,
+        "createdAt":  "2026-11-27T18:05:13.335Z",
+        "updatedAt":  "2026-11-27T18:05:13.335Z"
     }
 ]
