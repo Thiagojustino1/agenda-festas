@@ -2702,9 +2702,11 @@
         "updatedAt":  "2026-11-27T14:54:38.177Z"
     },
     {
+        "createdAt":  "2026-11-27T15:01:02.160Z",
+        "id":  166,
         "cliente":  "Pinguinho",
         "evento":  "",
-        "dataMontagem":  "2026-10-28",
+        "dataMontagem":  "2026-11-27",
         "horario":  "",
         "dataEvento":  "",
         "local":  "Pinguinho",
@@ -2714,8 +2716,6 @@
         "imagens":  [
 
                     ],
-        "id":  166,
-        "createdAt":  "2026-11-27T15:01:02.160Z",
-        "updatedAt":  "2026-11-27T15:01:02.160Z"
+        "updatedAt":  "2026-11-27T15:01:25.934Z"
     }
 ]
