@@ -2679,5 +2679,26 @@
         "id":  164,
         "createdAt":  "2026-11-27T11:35:11.951Z",
         "updatedAt":  "2026-11-27T11:35:11.951Z"
+    },
+    {
+        "cliente":  "Alexandra",
+        "evento":  "",
+        "dataMontagem":  "2026-12-01",
+        "horario":  "",
+        "dataEvento":  "",
+        "local":  "Praiamar Arena Hotel - Av. Sen. Salgado Filho, 1906 - Lagoa Nova (ao lado da Arena das Dunas",
+        "materiais":  "LONA 03 Unidades Balcão 98x98cm\nLONA 300x220cm\nLONA 300x220cm\nLONA Backdrop 900x220cm\nLONA Testeira 9m x 25cm",
+        "obs":  "",
+        "status":  "Agendado",
+        "imagens":  [
+                        "imagens/foto-mwz3rdht-1kyu.jpg",
+                        "imagens/foto-mwz3rdsf-20g.jpg",
+                        "imagens/foto-mwz3re02-pv3.jpg",
+                        "imagens/foto-mwz3re5a-1xn1.jpg",
+                        "imagens/foto-mwz3re9a-y51.jpg"
+                    ],
+        "id":  165,
+        "createdAt":  "2026-11-27T14:54:38.177Z",
+        "updatedAt":  "2026-11-27T14:54:38.177Z"
     }
 ]
