@@ -2681,8 +2681,10 @@
         "updatedAt":  "2026-11-27T11:35:11.951Z"
     },
     {
+        "createdAt":  "2026-11-27T14:54:38.177Z",
+        "id":  165,
         "cliente":  "Alexandra",
-        "evento":  "",
+        "evento":  "XVII CONGRESSO DE SAÚDE",
         "dataMontagem":  "2026-12-01",
         "horario":  "",
         "dataEvento":  "",
@@ -2695,11 +2697,14 @@
                         "imagens/foto-mwz3rdsf-20g.jpg",
                         "imagens/foto-mwz3re02-pv3.jpg",
                         "imagens/foto-mwz3re5a-1xn1.jpg",
-                        "imagens/foto-mwz3re9a-y51.jpg"
+                        "imagens/foto-mwz3re9a-y51.jpg",
+                        "imagens/foto-mwz8prcq-1okz.jpg",
+                        "imagens/foto-mwz8prhu-139h.jpg",
+                        "imagens/foto-mwz8prmk-233t.jpg",
+                        "imagens/foto-mwz8prpa-10qp.jpg",
+                        "imagens/foto-mwz8prt9-19ww.jpg"
                     ],
-        "id":  165,
-        "createdAt":  "2026-11-27T14:54:38.177Z",
-        "updatedAt":  "2026-11-27T14:54:38.177Z"
+        "updatedAt":  "2026-11-27T17:13:20.707Z"
     },
     {
         "createdAt":  "2026-11-27T15:01:02.160Z",
