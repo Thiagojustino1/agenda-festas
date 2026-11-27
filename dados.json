@@ -2660,5 +2660,22 @@
 
                     ],
         "updatedAt":  "2026-11-26T20:27:35.074Z"
+    },
+    {
+        "cliente":  "Sales",
+        "evento":  "Evento",
+        "dataMontagem":  "2026-12-25",
+        "horario":  "",
+        "dataEvento":  "",
+        "local":  "Nau",
+        "materiais":  "2 UND painel 4,40 x 2,70 \nPainel 3,00 x 2,80 \nPiso 3,00m x 10m",
+        "obs":  "",
+        "status":  "Agendado",
+        "imagens":  [
+
+                    ],
+        "id":  164,
+        "createdAt":  "2026-11-27T11:35:11.951Z",
+        "updatedAt":  "2026-11-27T11:35:11.951Z"
     }
 ]
