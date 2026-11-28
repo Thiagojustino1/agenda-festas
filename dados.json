@@ -2709,7 +2709,6 @@
     },
     {
         "createdAt":  "2026-11-27T15:01:02.160Z",
-        "id":  166,
         "cliente":  "Pinguinho",
         "evento":  "",
         "dataMontagem":  "2026-11-27",
@@ -2718,11 +2717,12 @@
         "local":  "Pinguinho",
         "materiais":  "painel 4,00 x 2,20",
         "obs":  "hoje às 14:30",
-        "status":  "Agendado",
         "imagens":  [
 
                     ],
-        "updatedAt":  "2026-11-27T15:01:25.934Z"
+        "id":  166,
+        "status":  "Montado",
+        "updatedAt":  "2026-11-28T11:15:24.794Z"
     },
     {
         "createdAt":  "2026-11-27T18:05:13.335Z",
